@@ -1,0 +1,4 @@
+#Fid me in views/trips/show
+
+<%= link_to "Editer", edit_trip_path(@trip), class: "btn btn-primary" %>
+<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
