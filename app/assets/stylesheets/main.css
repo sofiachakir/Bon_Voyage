@@ -4,3 +4,7 @@ header,
 .view {
     height: 100%;
 }
+
+.long-page {
+  margin-top: 500px;
+}

@@ -1,0 +1,18 @@
+.navbar-brand {
+  font-size: 25px;
+  text-transform: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar-blur {
+  backdrop-filter: blur(40px) saturate(200%);
+}
+
+.navbar-black {
+  background-color: #494F5A;
+}
+
+.navbartext {
+  color: white;
+}
