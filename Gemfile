@@ -59,4 +59,15 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Webpacker makes it easy to use the JavaScript pre-processor and bundler webpack 4.x.x+ to manage application-like JavaScript in Rails. 
+gem 'webpacker', '~> 5.x'
+# Gems for user authentification, seed.rb, and db visualisation in console
+gem 'devise'
+gem 'faker'
+gem 'table_print'
+# Gem to protect API keys
+gem "dotenv-rails", "~> 2.7"
+# Gem used for active storage instead of S3
+gem 'cloudinary'
