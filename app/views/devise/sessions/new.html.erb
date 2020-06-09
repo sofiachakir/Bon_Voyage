@@ -1,32 +1,40 @@
-<h2>S'identifier</h2>
+<div class="container py-3 mx-auto col-7 my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
 
-<%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" } do |f| %>
-  <%= devise_error_messages! %>
+      <h2 class="text-center">S'identifier</h2>
 
-  <div class="form-group">
-    <%= f.label :email, "Email" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: "form-control" %>
-  </div>
+      <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" } do |f| %>
+        <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label :password , "Mot de passe" %><br />
-    <%= f.password_field :password, autocomplete: "current-password",  class: "form-control" %>
-  </div>
+        <div class="form-group">
+          <%= f.label :email, "Email" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: "form-control" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me , "Se souvenir de moi ?"%>
+        <div class="form-group">
+          <%= f.label :password , "Mot de passe" %><br />
+          <%= f.password_field :password, autocomplete: "current-password",  class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me , "Se souvenir de moi ?"%>
+          </div>
+        <% end %>
+
+        <div class="actions mt-3">
+          <%= f.submit "Se connecter" , class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+
+        <br>
+
+      <div class="text-center" >
+        Je n'ai pas de compte? <%= render "devise/shared/links" %>
+      </div>
+
     </div>
-  <% end %>
-
-  <div class="actions mt-5">
-    <%= f.submit "Se connecter" , class: "btn btn-lg btn-primary btn-block" %>
   </div>
-<% end %>
-
-  <br>
-
-<div class="text-center" >
-  Je n'ai pas de compte? <%= render "devise/shared/links" %>
 </div>
