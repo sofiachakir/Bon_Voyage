@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 2020_06_09_172028) do
     t.string "title"
     t.string "image_url"
     t.text "text"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_notes_on_event_id"
   end
 
   create_table "trips", force: :cascade do |t|
