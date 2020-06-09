@@ -14,4 +14,6 @@
   *= require bootstrap
   *= require site_colors
   *= require main
+  *= require header
+
  */
