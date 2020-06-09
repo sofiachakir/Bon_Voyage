@@ -12,6 +12,6 @@
  *
 
   *= require bootstrap
-  *= require site_colors.css
+  *= require site_colors
   *= require main
  */
