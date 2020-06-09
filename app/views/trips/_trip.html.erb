@@ -1,9 +1,22 @@
-<div class="card" style="width: 18rem;">
-	<!-- Pour l'instant image de test à changer !-->
-  <img src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= trip.title %></h5>
-    <p class="card-text"><%= trip.description %></p>
-    <% link_to 'Voir le voyage', "#", class: "card-link" %>
-  </div>
+<div class= "row">
+	<div class="col-lg-4 col-md-6">
+		<%= link_to do %>
+		<div class="card">
+
+			<div class="thumb">
+				<img class="img-fluid" src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+			</div>
+
+			<div class="card-body d-flex">
+				<span class="fa fa-location-arrow"></span><p><%= trip.country_name %></p>
+				<span class="fa fa-calendar ml-3"></span><p><%= trip.start_date.strftime ("%m/%d/%Y") %> - <%= trip.end_date.strftime ("%m/%d/%Y") %></p>
+			</div>
+				<h4 class="card-title"><%= trip.title %></h4>
+				<p class="card-text"><%= trip.description %></p>
+				<%= link_to 'Voir le voyage', root_path, class: "card-link mt-5" %>
+
+		</div>
+		<img src="https://image.freepik.com/free-vector/mafia-old-man-character_23-2148475297.jpg" class="card-trip-user avatar-bordered" />
+		<% end %>
+	</div>
 </div>
