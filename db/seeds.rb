@@ -11,7 +11,7 @@ puts "let's seed..."
 
 puts "Destroy all previous Items"
 
-Info.destroy_all
+Note.destroy_all
 Event.destroy_all
 Trip.destroy_all
 User.destroy_all
@@ -40,11 +40,11 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
             event_id: 1)
 
-Info.create(text: "Trouver Borne Free Wifi",
+Note.create(text: "Trouver Borne Free Wifi",
             event_id: 1)
 
 Event.create(city_name: "Asakusa",
@@ -53,20 +53,20 @@ Event.create(city_name: "Asakusa",
             end_time: "20200802123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
             event_id: 2)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
             event_id: 2)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
             event_id: 2)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
+Note.create(text: "Prendre le métro pour aller à Ueno",
             event_id: 2)
 
 Event.create(city_name: "Ueno",
@@ -75,24 +75,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200802200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 3)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 3)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 3)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 3)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 3)
 
 # ------------------
 
@@ -102,12 +102,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 4)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 4)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -115,21 +115,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200804123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 5)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 5)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 5)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 5)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -137,24 +137,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200804200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 6)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 6)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 6)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 6)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 6)
 #--------------------
 
 Event.create(city_name: "Haneda Airport",
@@ -163,12 +163,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 7)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 7)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -176,21 +176,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200806123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 8)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 8)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 8)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 8)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -198,24 +198,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200806200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 9)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 9)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 9)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 9)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 9)
 #-----------------
 Event.create(city_name: "Haneda Airport",
             name_event: "Arrivée à l'aéroport Haneda",
@@ -223,12 +223,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 10)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 10)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -236,21 +236,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200808123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 11)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 11)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 11)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 11)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -258,24 +258,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200808200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 12)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 12)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 12)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 12)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 12)
 
 #----------------------
 Event.create(city_name: "Haneda Airport",
@@ -284,12 +284,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 13)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 13)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -297,21 +297,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200810123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 14)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 14)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 14)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 14)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -319,24 +319,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200810200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 15)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 15)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 15)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 15)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 15)
 
 #-----------------------
 Event.create(city_name: "Haneda Airport",
@@ -345,12 +345,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 16)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 16)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -358,21 +358,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200812123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 17)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 17)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 17)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 17)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -380,24 +380,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200812200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 18)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 18)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 18)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 18)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 18)
 
 #-----------------
 Event.create(city_name: "Haneda Airport",
@@ -406,12 +406,12 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Trouver Keikyu Tourist Information Center",
+Note.create(title: "Trouver Keikyu Tourist Information Center",
             text: "Welcome! Tokyo Subway 72h Ticket + Keikyu Line One-Way",
-            event_id: 1)
+            event_id: 19)
 
-Info.create(text: "Trouver Borne Free Wifi",
-            event_id: 1)
+Note.create(text: "Trouver Borne Free Wifi",
+            event_id: 19)
 
 Event.create(city_name: "Asakusa",
             name_event: "Visite de la ville d'Asakusa",
@@ -419,21 +419,21 @@ Event.create(city_name: "Asakusa",
             end_time: "20200814123000",
             trip_id: 1)
 
-Info.create(title: "Porte de Kaminarimon",
+Note.create(title: "Porte de Kaminarimon",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 20)
 
-Info.create(title: "Temple Sensoji",
+Note.create(title: "Temple Sensoji",
             text: "ouvert de 6h à 17h - gratuit",
-            image: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
-            event_id: 2)
+            image_url: "https://d2ahiw9kb7is19.cloudfront.net/-/media/B3002A62D64F4EC6875E7B7AA344B7B6.jpg?d=20171117T100912&w=750",
+            event_id: 20)
 
-Info.create(title: "Rue Kappabashi",
+Note.create(title: "Rue Kappabashi",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 20)
 
-Info.create(text: "Prendre le métro pour aller à Ueno",
-            event_id: 2)
+Note.create(text: "Prendre le métro pour aller à Ueno",
+            event_id: 20)
 
 Event.create(city_name: "Ueno",
             name_event: "Visite de la ville de Ueno",
@@ -441,24 +441,24 @@ Event.create(city_name: "Ueno",
             end_time: "20200814200000",
             trip_id: 1)
 
-Info.create(image: "https://zupimages.net/up/20/24/8z4z.png",
-            event_id: 2)
+Note.create(image_url: "https://zupimages.net/up/20/24/8z4z.png",
+            event_id: 21)
 
-Info.create(title: "Parc Ueno",
+Note.create(title: "Parc Ueno",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 21)
 
-Info.create(title: "Temple Tennoji",
+Note.create(title: "Temple Tennoji",
             text: "ouvert - gratuit",
-            event_id: 2)
+            event_id: 21)
 
-Info.create(title: "Rue Ameya Yokochô",
+Note.create(title: "Rue Ameya Yokochô",
             text: "10h à 20h - Marchés",
-            event_id: 2)
+            event_id: 21)
 
-Info.create(title: "Rue Yanaka Ginza",
+Note.create(title: "Rue Yanaka Ginza",
             text: "Restaurants - Boutiques",
-            event_id: 2)
+            event_id: 21)
 
 #--------------
 Event.create(city_name: "Haneda Airport",
@@ -467,6 +467,6 @@ Event.create(city_name: "Haneda Airport",
             comment: "Voyage avec la compagnie AirFrance qui c'est bien passé. Indications claires dans l'aéroport. Je conseille vivement d'y atterrir.",
             trip_id: 1)
 
-Info.create(title: "Retour à la maison",
-            event_id: 1)
+Note.create(title: "Retour à la maison",
+            event_id: 22)
 puts "Done!"
