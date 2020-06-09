@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
-
+  before_action :is_trip_creator?, only: [:edit, :update, :destroy]
+  
   def index
   	@trips = Trip.all
   end
@@ -21,7 +22,7 @@ class TripsController < ApplicationController
   		flash[:success] = "Votre voyage a été créé"
   		redirect_to @trip
   	else
-  		flash[:danger] = @trip.errors.full_messages
+  		flash[:error] = @trip.errors.full_messages
   		render :new
   	end
 
