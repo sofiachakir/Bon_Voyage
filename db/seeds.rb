@@ -28,9 +28,10 @@ User.create(user_name: "team bon voyage",
             password: "motdepasse")
 
 Trip.create(title: "Voyage au pays du soleil levant",
+            description: "Mon premier voyage au Japon. "
             country_name: "Japon",
             city_name: "Tokyo",
-            stat_date: "20200801",
+            start_date: "20200801",
             end_date: "20200815",
             user_id: 1)
 
