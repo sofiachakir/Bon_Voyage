@@ -6,6 +6,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @trip = Trip.find(params[:id])
   end
 
   def new
@@ -27,12 +28,20 @@ class TripsController < ApplicationController
   end
 
   def edit
+    @trip = Trip.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    flash[:success] = "Votre voyage a été mis à jour"
+    redirect_to @trip
   end
 
   def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    redirect_to root_path
   end
 
   private
