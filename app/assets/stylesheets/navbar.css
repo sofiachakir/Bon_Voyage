@@ -6,6 +6,10 @@
 }
 
 .navbar-blur {
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  -moz-backdrop-filter: blur(40px) saturate(200%);
+  -ms-backdrop-filter: blur(40px) saturate(200%);
+  -o-backdrop-filter: blur(40px) saturate(200%);
   backdrop-filter: blur(40px) saturate(200%);
 }
 
