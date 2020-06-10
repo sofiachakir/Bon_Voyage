@@ -18,7 +18,7 @@ class Trip < ApplicationRecord
 
 # cette méthode nous renvoie le nombre de jour que l'on a dans un voyage
   def duration
-    self.end_date.day - self.start_date.day
+    ((self.end_date - self.start_date) / 60 / 60 / 24).to_i
   end
 
 # # cette méthode nous renvoie le nombre de semaine que l'on a dans un voyage
@@ -35,7 +35,7 @@ class Trip < ApplicationRecord
   def days
     days = []
     self.duration.times do |d|
-      days << (self.start_date + d.days).strftime("%A")
+      days << (self.start_date + d.days)
     end
     days
   end
@@ -46,9 +46,7 @@ class Trip < ApplicationRecord
     i = 0
     self.days.each_with_index do |day, index|
   #si day == Monday il faut passer à la semaine suivante
-      if day == "Monday" || index == self.days.length-1
-        puts "C'est lundi"
-        puts current_week
+      if day.strftime('%A') == "Monday" || index == self.days.length-1
         week_weeks_days << current_week
         current_week = []
       end
@@ -57,6 +55,18 @@ class Trip < ApplicationRecord
     end
     week_weeks_days
   end
+
+  def events_by_date(date)
+    # Cette méthode renvoie un array de events qui ont lieu à la date 'date'
+    events_by_date = []
+    self.events.each do |event|
+      if event.start_time.strftime('%D') == date.strftime('%D')
+        events_by_date << event
+      end
+    end
+    events_by_date
+  end
+
 end
 
 

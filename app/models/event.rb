@@ -5,9 +5,11 @@ class Event < ApplicationRecord
   validate :start_time_must_be_before_end_time
 
   def start_time_must_be_before_end_time
-    if self.end_time < self.start_time
-      errors.add(:end_time, "must be posterior to start_time")
-    end
+  	unless self.start_time.nil? || self.end_time.nil?
+	    if self.end_time < self.start_time
+	      errors.add(:end_time, "must be posterior to start_time")
+	    end
+	  end
   end
 
 end
