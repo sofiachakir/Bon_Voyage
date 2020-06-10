@@ -12,10 +12,10 @@ module ApplicationHelper
 	def is_trip_creator?
 		# si le current user est le trip.user il a accès, sinon redirigé
 		if params[:id] == nil
-		@trip = Trip.find(params[:trip_id])
-	else
-		@trip = Trip.find(params[:id])
-	end
+			@trip = Trip.find(params[:trip_id])
+		else
+			@trip = Trip.find(params[:id])
+		end
 		unless current_user == @trip.user
 			flash[:error] = "Seul le créateur du voyage a accès à cette page"
 			redirect_to root_path
