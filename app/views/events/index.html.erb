@@ -9,6 +9,32 @@
       <p><%= e.end_time %></p>
       <%= link_to "Editer", edit_trip_event_path(e.trip, e), class: "btn btn-primary mb-3" %>
       <%= link_to "Supprimer", trip_event_path(e.trip, e), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
+
+      <div class="container">
+        <div class="card-columns">
+          <% e.notes.each do |n| %>
+          <div class="card mt-4">
+            <%= link_to "", trip_event_note_path(e.trip, e, n), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-pen" %>
+            <% if n.title.to_s.empty?  %>
+            <% else %>
+            <p class="notetitle notecard"><%= n.title %></p>
+            <% end %>
+            <% if n.image_url.to_s.empty?  %>
+            <% else %>
+            <img src="<%= n.image_url %>" class="noteimage notecard">
+            <% end %>
+            <% if n.text.to_s.empty? %>
+            <% else %>
+            <p class="notetext notecard"><%= n.text %></p>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+          <div class="col-12 mt-4 text-center ">
+             <%= link_to "Ajouter une Note", new_trip_event_note_path(e.trip, e), class: "btn btn-primary" %>
+          </div>
+      </div>
+
     </div>
   <% end %>
 </div>
