@@ -1,6 +1,6 @@
 <div class="container">
-	<%= link_to do %>
-		<div class="card">
+	<%= link_to trip_path(trip) do %>
+		<div class="card" style="width: 18rem;">
 			<div class="thumb">
 				<img class="img-fluid" src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
 			</div>
@@ -11,7 +11,7 @@
 			</div>
 				<h4 class="card-title"><%= trip.title %></h4>
 				<p class="card-text"><%= trip.description %></p>
-				<%= link_to 'Voir le voyage', root_path, class: "card-link mt-5" %>
+				<%= link_to 'Voir le voyage', trip_path(trip), class: "card-link mt-5" %>
 				
 				<img src="https://image.freepik.com/free-vector/mafia-old-man-character_23-2148475297.jpg" class="card-trip-user avatar-bordered" />
 			

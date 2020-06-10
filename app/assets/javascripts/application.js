@@ -16,3 +16,4 @@
 //= require jquery
 //= require bootstrap.bundle
 //= require navbar
+//= require flash

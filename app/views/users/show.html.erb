@@ -1,0 +1,52 @@
+<div class="profil row align-items-center my-5 bg-light">
+		<!-- Image à changer -->
+		<img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg">
+		<div class= "col-2 align-items-center">
+			<!-- Si pas de username, on affiche son email -->
+			<% if @user.user_name %>
+				<h3><%= @user.user_name %></h3>
+			<% else %>
+				<h3><%= @user.email %></h3>
+			<% end %>
+		</div>
+		<!-- Lien vers éditer mon profil -->
+		<div class="col-3 ml-auto">
+			<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary btn-lg' %>
+		</div>
+	</div>
+
+
+<div class="container my-5">
+	<!-- Bannière avec le username et modification du profil -->
+
+	<!-- Mon voyage à venir -->
+	<div class="row">
+		<div class="col-4 d-flex align-items-center">
+			<h3 class="h3">Mon voyage à venir</h3>
+		</div>
+		<div class="col-8 d-flex align-items-center">
+			<% if @user.upcoming_trip %>
+					<%= render @user.upcoming_trip %>
+			<% else %>
+				<p>Pas de voyage prévu pour le moment</p>
+			<% end %>
+		</div>
+	</div>
+
+	<hr>
+
+	<!-- Mes anciens voyages -->
+	<div class="row">
+		<div class="col-4 d-flex align-items-center">
+			<h3 class="h3">Mes anciens voyages</h3>
+		</div>
+		<div class="col-8 d-flex align-items-center">
+			<% if @user.previous_trips %>
+					<%= render @user.previous_trips %>
+			<% else %>
+				<p>Pas de voyages déjà passés pour le moment</p>
+			<% end %>
+		</div>
+	</div>
+
+</div>
