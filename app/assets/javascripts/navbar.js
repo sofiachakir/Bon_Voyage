@@ -11,3 +11,6 @@ $(window).scroll(function(){
       $('.navbar a').addClass('navbartext')
     }
 });
+
+
+
