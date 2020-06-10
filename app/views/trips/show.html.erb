@@ -1,18 +1,40 @@
 <div class="container my-5">
 
-	<h1>Page en cours de construction</h1>
-
-	<div class="mt-5"> 
-		<h5 class="card-title"><%= @trip.title %></h5>
-	</div>
+	<h1 class="h1 mt-5"><%= @trip.title %></h1>
+	<h1 class="h3 mt-5">Par 
+		<%= link_to user_path(@trip.user) do %>
+			<%= @trip.user.email %>
+		<% end %>
+	</h1>
 
 	<div class="mt-5">
 		<%= link_to "Editer", edit_trip_path(@trip), class: "btn btn-primary" %>
 		<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
 	</div>
 
-	<div class="mt-5">
+	<div class="my-5">
 		<%= link_to "Voir le détail du voyage", trip_events_path(@trip), class: "btn btn-success" %>
 	</div>
+
+
+	<% @trip.week_weeks_days.each_with_index do |week, index| %>
+		<div class="card border border-primary p-0">
+			<div class="card-header">Semaine <%= index + 1 %></div>
+			<div class="row card-body d-flex justify-content-center">
+				<% week.each do |day| %>
+					<div class="col-2 card border border-secondary mx-2 p-0">
+						<div class="card-header"><%= day.strftime("%A") %></div>
+						<div class="card-body">
+							<ul>
+								<% @trip.events_by_date(day).each do |event| %>
+									<li><%= event.name_event %></li>
+								<% end %>
+							</ul>
+						</div>	
+					</div>
+				<% end %>
+			</div>	
+		</div>
+	<% end %>
 
 </div>
