@@ -1,11 +1,16 @@
 class User < ApplicationRecord
+	after_create :welcome_send
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+	
   has_many :trips, dependent: :destroy
-
+	
+  def welcome_send
+		UserMailer.welcome_email(self).deliver_now
+	end
+  
   def upcoming_trip
   	unless self.trips.empty?
   		upcoming_trips = []
@@ -27,4 +32,5 @@ class User < ApplicationRecord
   		previous_trips
   	end
   end
+
 end
