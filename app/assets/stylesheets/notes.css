@@ -47,3 +47,12 @@ border: 1px solid #000;
   left: 22px;
 
 }
+
+.fa-trash {
+  font-size: 0.75rem;
+  color: grey;
+  display: block;
+  position: absolute;
+  left: 40px;
+
+}
