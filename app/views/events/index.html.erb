@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <%= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
+
+  <% @events.each do |e| %>
+    <div class="card">
+      <p><%= e.city_name %></p>
+      <p><%= e.name_event %></p>
+      <p><%= e.start_time %></p>
+      <p><%= e.end_time %></p>
+      <%= link_to "Editer", edit_trip_event_path(e.trip, e), class: "btn btn-primary mb-3" %>
+      <%= link_to "Supprimer", trip_event_path(e.trip, e), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
