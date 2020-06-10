@@ -1,25 +1,36 @@
 <div class="container mt-5">
   <%= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
 
-  <% @trip.week_weeks_days.each_with_index do |week, index| %>
-    <div class="card border border-primary p-0">
-      <div class="card-header">
-        <span>
-          Semaine <%= index + 1 %> - <%= week[0].strftime('%d %B %Y') %>
-        </span>
-        <span> <%= @trip.country_name %> </span>
-        <!-- A FAIRE Afficher nom des villes visitées dans la semaine -->
+  <div class="accordion" id="accordionExample">
+    <% @trip.week_weeks_days.each_with_index do |week, index| %>
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+            <span>
+            Semaine <%= index + 1 %> - <%= week[0].strftime('%d %B %Y') %>
+            </span>
+            <span> <%= @trip.country_name %> </span>
+            <!-- A FAIRE Afficher nom des villes visitées dans la semaine -->
+          </button>
+          </h2>
+        </div>
+
+        <div id="collapse<%= index %>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <% week.each_with_index do |day, index| %>
+              <div class="card border border-secondary p-0">
+                <div class="card-header">
+                  J<%= index + 1 %> - <%= day.strftime('%d %B') %></div>
+                <div class="card-body">
+                  <%= render @trip.events_by_date(day) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-    <% week.each_with_index do |day, index| %>
-      <div class="card border border-secondary p-0">
-        <div class="card-header">
-          J<%= index + 1 %> - <%= day.strftime('%d %B') %></div>
-        <div class="card-body">
-            <%= render @trip.events_by_date(day) %>
-        </div>  
-      </div>
-    <% end %> 
-  <% end %>
+    <% end %>
+  </div>
 
 </div>
