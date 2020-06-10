@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :is_trip_creator?, only: [:new, :create]
-  before_action :is_event_creator?, only: [:edit, :update, :destroy]
+  # before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
 
   def new
@@ -14,7 +14,7 @@ class NotesController < ApplicationController
     @note.event = @event
 
     if @note.save
-      flash[:success] = "Votre note a été créé"
+      flash[:success] = "Vos notes ont été créés"
       redirect_to trip_events_path(@trip)
     else
       flash[:error] = @note.errors.full_messages
@@ -23,9 +23,15 @@ class NotesController < ApplicationController
   end
 
   def edit
+    @note = Note.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:trip_id])
+    @note = Note.find(params[:id])
+    @note.update(note_params)
+    flash[:success] = "Vos notes ont été mises à jour"
+    redirect_to trip_events_path(@trip)
   end
 
   def destroy

@@ -14,7 +14,8 @@
         <div class="card-columns">
           <% e.notes.each do |n| %>
           <div class="card mt-4">
-            <%= link_to "", trip_event_note_path(e.trip, e, n), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-pen" %>
+            <%= link_to "", trip_event_note_path(e.trip, e, n), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-trash" %>
+             <%= link_to "", edit_trip_event_note_path(e.trip, e, n), class: "fas fa-pen" %>
             <% if n.title.to_s.empty?  %>
             <% else %>
             <p class="notetitle notecard"><%= n.title %></p>
