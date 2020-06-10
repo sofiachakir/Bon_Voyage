@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
   def index
-    @events =  Event.all
     @trip = Trip.find(params[:trip_id])
+    @events = @trip.events
   end
 
   def show
