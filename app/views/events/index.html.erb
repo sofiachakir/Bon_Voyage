@@ -1,40 +1,25 @@
 <div class="container mt-5">
   <%= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
 
-  <% @events.each do |e| %>
-    <div class="card">
-      <p><%= e.city_name %></p>
-      <p><%= e.name_event %></p>
-      <p><%= e.start_time %></p>
-      <p><%= e.end_time %></p>
-      <%= link_to "Editer", edit_trip_event_path(e.trip, e), class: "btn btn-primary mb-3" %>
-      <%= link_to "Supprimer", trip_event_path(e.trip, e), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
-
-      <div class="container">
-        <div class="card-columns">
-          <% e.notes.each do |n| %>
-          <div class="card mt-4">
-            <%= link_to "", trip_event_note_path(e.trip, e, n), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-pen" %>
-            <% if n.title.to_s.empty?  %>
-            <% else %>
-            <p class="notetitle notecard"><%= n.title %></p>
-            <% end %>
-            <% if n.image_url.to_s.empty?  %>
-            <% else %>
-            <img src="<%= n.image_url %>" class="noteimage notecard">
-            <% end %>
-            <% if n.text.to_s.empty? %>
-            <% else %>
-            <p class="notetext notecard"><%= n.text %></p>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-          <div class="col-12 mt-4 text-center ">
-             <%= link_to "Ajouter une Note", new_trip_event_note_path(e.trip, e), class: "btn btn-primary" %>
-          </div>
+  <% @trip.week_weeks_days.each_with_index do |week, index| %>
+    <div class="card border border-primary p-0">
+      <div class="card-header">
+        <span>
+          Semaine <%= index + 1 %> - <%= week[0].strftime('%d %B %Y') %>
+        </span>
+        <span> <%= @trip.country_name %> </span>
+        <!-- A FAIRE Afficher nom des villes visitées dans la semaine -->
       </div>
-
     </div>
+    <% week.each_with_index do |day, index| %>
+      <div class="card border border-secondary p-0">
+        <div class="card-header">
+          J<%= index + 1 %> - <%= day.strftime('%d %B') %></div>
+        <div class="card-body">
+            <%= render @trip.events_by_date(day) %>
+        </div>  
+      </div>
+    <% end %> 
   <% end %>
+
 </div>
