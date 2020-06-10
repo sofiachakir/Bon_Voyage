@@ -13,6 +13,11 @@
   <body>
     <%= render 'shared/navbar'%>
     <%= render 'layouts/flash'%>
+  <% if !current_page?(root_path) %>
+    <%= render 'shared/miniheader' %>
+  <% else %>
+    <%= render 'layouts/header' %>
+  <% end %>
     <%= yield %>
     <%= render 'shared/footer'%>
   </body>

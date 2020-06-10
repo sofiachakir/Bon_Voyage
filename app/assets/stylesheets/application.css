@@ -16,6 +16,8 @@
   *= require main
   *= require navbar
   *= require header
+  *= require miniheader
   *= require trips
+  *= require users
 
  */
