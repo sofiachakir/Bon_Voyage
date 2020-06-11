@@ -1,0 +1,38 @@
+<div class="card mx-5">
+
+  <div class="card-header d-flex align-items-center">
+    <div class="col">
+      <%= event.start_time.strftime('%H:%M') unless event.start_time.nil? %>
+      - <%= event.end_time.strftime('%H:%M') unless event.end_time.nil? %>
+    </div>
+    <div class="col">
+      <%= event.city_name %>
+    </div>
+    <div class="col">
+      <%= event.name_event %>
+    </div>
+    <div class="col">
+      <!-- Bouton pour modifier-->
+      <%= link_to edit_trip_event_path(event.trip, event) do %>
+        <i class="fas fa-pencil-alt mr-5"></i>
+      <% end %>
+      <!-- Bouton pour supprimer-->
+      <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <div class="card-columns thumbnail-sortable">
+      <%= render event.notes %>
+    </div>
+
+    <div class="col-12 mt-4 text-center ">
+       <%= link_to "Ajouter une Note", new_trip_event_note_path(event.trip, event), class: "btn btn-primary" %>
+    </div>
+  </div>
+
+</div>

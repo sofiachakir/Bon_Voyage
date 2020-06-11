@@ -68,5 +68,4 @@ class Trip < ApplicationRecord
     end
     events_by_date
   end
-
 end

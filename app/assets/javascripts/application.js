@@ -14,6 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require sortable.min
 //= require bootstrap.bundle
 //= require navbar
 //= require flash
+//= require index

@@ -24,11 +24,20 @@ module ApplicationHelper
 
 	def is_event_creator?
 		# si le current user est le créateur de l'event il a accès, sinon redirigé
-		@event = Event.find(params[:id])
+		if params[:id] == nil
+			@event = Event.find(params[:event_id])
+		else
+			@event = Event.find(params[:id])
+		end
 		unless current_user == @event.trip.user
 			flash[:error] = "Seul le créateur du voyage a accès à cette page"
 			redirect_to root_path
 		end
+	end
+
+	def user_trip_owner?
+		@trip = Trip.find(params[:id])
+		user_signed_in? && current_user == @trip.user
 	end
 
 end

@@ -1,18 +1,79 @@
 <div class="container my-5">
 
-	<h1>Page en cours de construction</h1>
+	<h1 class="h1 mt-5"><%= @trip.title %></h1>
 
-	<div class="mt-5"> 
-		<h5 class="card-title"><%= @trip.title %></h5>
-	</div>
+	<!-- Ligne de présentation du voyage -->
+  <div class="row mt-5">
+    <div class="col-md-7 text-center">
+        <img class="img-fluid rounded mb-3 mb-md-0" src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" style="height: 300px;">
+    </div>
+    <div class="col-md-5">
+      <h3>Par <%= link_to user_path(@trip.user) do %><%= @trip.user.email %><% end %></h3>
+      <div class="d-flex text-secondary small">
+				<div class="flex-fill"><i class="fa fa-location-arrow"></i><%= @trip.country_name %></div>
+				<div class="flex-fill"><i class="fa fa-calendar"></i><%= @trip.start_date.strftime ("%m/%d/%Y") %> - <%= @trip.end_date.strftime ("%m/%d/%Y") %></div>
+			</div>
+      <p class="mt-3"><%= @trip.description%></p>
+      
+			<%= link_to "Voir le détail du voyage", trip_events_path(@trip), class: "btn btn-primary" %>
 
-	<div class="mt-5">
-		<%= link_to "Editer", edit_trip_path(@trip), class: "btn btn-primary" %>
-		<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
-	</div>
+			<% if user_trip_owner? %>
+				<div class="mt-3">
+					<%= link_to "Editer", edit_trip_path(@trip), class: "btn btn-secondary" %>
+					<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-secondary" %>
+				</div>
+			<% end %>
 
-	<div class="mt-5">
-		<%= link_to "Voir le détail du voyage", trip_events_path(@trip), class: "btn btn-success" %>
+    </div>
+  </div>
+  <!-- /.Ligne de présentation du voyage -->
+
+
+  <!-- Séparation -->
+  <hr class="my-5">
+  <!-- /.Séparation -->
+
+	
+
+	<!-- Affichage du programme du voyage -->
+	<div class="container mt-5 col-10">
+		<% @trip.week_weeks_days.each_with_index do |week, index| %>
+		<!-- Affichage de la semaine -->
+			<div class="card p-0 shadow">
+				<div class="card-header">
+					<h5 class="card-title text-center">
+						<i class="fas fa-calendar-week mr-2"></i>Semaine <%= index + 1 %>
+					</h5>
+				</div>
+				<div class="card-body row row-cols-1 row-cols-md-4 mx-3">
+					<% week.each do |day| %>
+						<!-- Affichage du jour -->
+						<div class="col mb-4">
+							<div class="card h-100 p-0 shadow-sm border">
+								<div class="card-header">
+									<h5 class="card-subtitle text-center"><%= day.strftime("%A") %></h5>
+								</div>
+								<div class="card-body">
+									<!--Affichage des évènements principaux-->
+									<ul class="list-group list-group-flush">
+										<% if @trip.events_by_date(day).length == 0 %>
+											<li class="list-group-item text-secondary">Rien de prévu !</li>
+										<% end %>
+										<% @trip.events_by_date(day).each do |event| %>
+											<li class="list-group-item">
+												<i class="fas fa-check-circle mr-2"></i><%= event.name_event %>
+											</li>
+										<% end %>
+									</ul>
+								</div>	
+							</div>
+						</div>
+						<!--./ Affichage jour-->
+					<% end %>
+				</div>	
+			</div>
+			<!-- ./ Affichage semaine -->
+		<% end %>
 	</div>
 
 </div>
