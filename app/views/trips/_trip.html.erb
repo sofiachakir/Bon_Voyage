@@ -1,17 +1,17 @@
 <div class="container">
 	<%= link_to trip_path(trip) do %>
-		<div class="card" style="width: 18rem;">
+		<div class="card-trip" style="width: 18rem;">
 			<div class="thumb">
 				<img class="img-fluid" src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
 			</div>
 
-			<div class="card-body d-flex">
+			<div class="card-trip-body d-flex">
 				<span class="fa fa-location-arrow"></span><p><%= trip.country_name %></p>
 				<span class="fa fa-calendar ml-3"></span><p><%= trip.start_date.strftime ("%m/%d/%Y") %> - <%= trip.end_date.strftime ("%m/%d/%Y") %></p>
 			</div>
-				<h4 class="card-title"><%= trip.title %></h4>
-				<p class="card-text"><%= trip.description %></p>
-				<%= link_to 'Voir le voyage', trip_path(trip), class: "card-link mt-5" %>
+				<h4 class="card-trip-title"><%= trip.title %></h4>
+				<p class="card-trip-text"><%= trip.description %></p>
+				<%= link_to 'Voir le voyage', trip_path(trip), class: "card-trip-link mt-5" %>
 				
 				<img src="https://image.freepik.com/free-vector/mafia-old-man-character_23-2148475297.jpg" class="card-trip-user avatar-bordered" />
 			
