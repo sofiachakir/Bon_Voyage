@@ -1,5 +1,6 @@
-<div class="card mt-4">
-  <%= link_to "", trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-pen" %>
+<div class="card mt-4 drag" draggable="true">
+  <%= link_to "", trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-trash" %>
+  <%= link_to "", edit_trip_event_note_path(note.event.trip, note.event, note), class: "fas fa-pen" %>
   <% if note.title.to_s.empty?  %>
   <% else %>
    <p class="notetitle notecard"><%= note.title %></p>
