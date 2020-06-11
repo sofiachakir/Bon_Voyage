@@ -1,3 +1,5 @@
+<% content_for :profil do %>
+<!-- Bannière avec le username et modification du profil -->
 <div class="profil row align-items-center my-5 bg-light">
 		<!-- Image à changer -->
 		<img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg">
@@ -13,11 +15,11 @@
 		<div class="col-3 ml-auto">
 			<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary btn-lg' %>
 		</div>
-	</div>
-
+</div>
+<% end %>
 
 <div class="container my-5">
-	<!-- Bannière avec le username et modification du profil -->
+
 
 	<!-- Mon voyage à venir -->
 	<div class="row">

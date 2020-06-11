@@ -1,1 +1,5 @@
-<div class="miniheader-img view"></div>
+<div class="miniheader-img view">
+  <% if current_page?(user_path) %>
+    <%= yield :profil %>
+  <% end %>
+</div>
