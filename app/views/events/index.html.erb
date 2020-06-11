@@ -11,9 +11,9 @@
       <%= link_to "Supprimer", trip_event_path(e.trip, e), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-primary" %>
 
       <div class="container">
-        <div class="card-columns">
+        <div class="card-columns thumbnail-sortable">
           <% e.notes.each do |n| %>
-          <div class="card mt-4">
+          <div class="card mt-4 drag" draggable="true">
             <%= link_to "", trip_event_note_path(e.trip, e, n), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-trash" %>
              <%= link_to "", edit_trip_event_note_path(e.trip, e, n), class: "fas fa-pen" %>
             <% if n.title.to_s.empty?  %>
