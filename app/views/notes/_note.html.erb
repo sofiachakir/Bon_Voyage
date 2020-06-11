@@ -1,16 +1,25 @@
-<div class="card mt-4 drag" draggable="true">
-  <%= link_to "", trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-trash" %>
-  <%= link_to "", edit_trip_event_note_path(note.event.trip, note.event, note), class: "fas fa-pen" %>
-  <% if note.title.to_s.empty?  %>
-  <% else %>
-   <p class="notetitle notecard"><%= note.title %></p>
+<div class="card mt-4 drag p-0 border h-100" draggable="true">
+  <div class="card-header d-flex justify-content-between">
+    <% unless note.title.to_s.empty?  %>
+      <h5 class="card-title"><%= note.title %></h5>
+    <% else %>
+      <h5 class="card-title">[Ajouter un titre]</h5>
+    <% end %>
+    <!-- Affichage des boutons uniquement pour le trip owner -->
+    <% if user_trip_owner?(note.event.trip) %>
+      <div class="justify-self-end">
+        <%= link_to edit_trip_event_note_path(note.event.trip, note.event, note) , class: "text-info" do %><i class="fas fa-pencil-alt" title="Modifier la note"></i><% end %>
+        <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-info" do %><i class="fas fa-trash-alt" title="Supprimer la note"></i><% end %>
+      </div>
+    <% end %>
+    <!-- ./Affichage des boutons uniquement pour le trip owner -->
+  </div>
+  <div class="card-body mx-3">
+  <% unless note.image_url.to_s.empty?  %>
+   <img src="<%= note.image_url %>" class="img-fluid">
   <% end %>
-  <% if note.image_url.to_s.empty?  %>
-  <% else %>
-   <img src="<%= note.image_url %>" class="noteimage notecard">
+  <% unless note.text.to_s.empty? %>
+    <p class="card-text"><%= note.text %></p>
   <% end %>
-  <% if note.text.to_s.empty? %>
-  <% else %>
-    <p class="notetext notecard"><%= note.text %></p>
-  <% end %>
+</div>
 </div>
