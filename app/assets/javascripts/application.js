@@ -19,3 +19,4 @@
 //= require navbar
 //= require flash
 //= require index
+//= require show

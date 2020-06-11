@@ -1,0 +1,9 @@
+.form-popup {
+  display: none;
+  bottom: 100px;
+  //right: 15px;
+  z-index: 9;
+  display: none;
+  bottom: 0;
+  right: 14px;
+}
