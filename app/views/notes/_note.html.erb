@@ -1,0 +1,16 @@
+<div class="card mt-4 drag" draggable="true">
+  <%= link_to "", trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "fas fa-trash" %>
+  <%= link_to "", edit_trip_event_note_path(note.event.trip, note.event, note), class: "fas fa-pen" %>
+  <% if note.title.to_s.empty?  %>
+  <% else %>
+   <p class="notetitle notecard"><%= note.title %></p>
+  <% end %>
+  <% if note.image_url.to_s.empty?  %>
+  <% else %>
+   <img src="<%= note.image_url %>" class="noteimage notecard">
+  <% end %>
+  <% if note.text.to_s.empty? %>
+  <% else %>
+    <p class="notetext notecard"><%= note.text %></p>
+  <% end %>
+</div>
