@@ -36,14 +36,6 @@
 
         <br>
 
-        <p>Profile picture</p>
-        <%= form_tag user_avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar, as: :file %>
-          <p></p>
-         <p><%= submit_tag "Mettre à jour" %></p>
-        <% end %>
-        <br>
-
         <div class="actions">
           <%= f.submit "Mettre à jour", class: "btn btn-lg btn-primary btn-block" %>
         </div>
@@ -61,3 +53,5 @@
     </div>
   </div>
 </div>
+
+

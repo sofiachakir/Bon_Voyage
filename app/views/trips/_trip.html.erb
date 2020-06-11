@@ -13,10 +13,14 @@
 				<p class="card-text"><%= trip.description %></p>
 				<%= link_to 'Voir le voyage', trip_path(trip), class: "card-link mt-5" %>
 
+          <%if trip.user.avatar.attached?%>
+            <%= cl_image_tag(trip.user.avatar.key, crop: :fill, class: "card-trip-user avatar-bordered") %>
+          <%else%>
+            <img class="card-trip-user avatar-bordered" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg">
+          <%end%>
 
-        <%= cl_image_tag(current_user.avatar.key, class: "card-trip-user avatar-bordered") %>
 
-		</div>
+      </div>
 	<% end %>
 </div>
 

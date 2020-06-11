@@ -6,7 +6,7 @@
       <img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg">
     <%end%>
 
-		<div class= "col-2 align-items-center">
+		<div class= "align-items-center">
 			<!-- Si pas de username, on affiche son email -->
 			<% if @user.user_name %>
 				<h3><%= @user.user_name %></h3>
@@ -15,10 +15,19 @@
 			<% end %>
 		</div>
 		<!-- Lien vers éditer mon profil -->
-		<div class="col-3 ml-auto">
+		<div class="row"></div>
+    <div class="col-3 ml-auto">
 			<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary btn-lg' %>
 		</div>
+
+      <%= form_tag user_avatars_path(@user), multipart: true do %>
+      <%= file_field_tag :avatar %>
+      <p></p>
+      <p><%= submit_tag "mettre à jour" %></p>
+      <% end %>
+    </div>
 	</div>
+
 
 
 <div class="container my-5">
