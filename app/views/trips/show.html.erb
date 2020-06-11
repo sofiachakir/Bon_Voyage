@@ -17,7 +17,7 @@
       
 			<%= link_to "Voir le détail du voyage", trip_events_path(@trip), class: "btn btn-primary" %>
 
-			<% if user_trip_owner? %>
+			<% if user_trip_owner?(@trip) %>
 				<div class="mt-3">
 					<%= link_to "Editer", edit_trip_path(@trip), class: "btn btn-secondary" %>
 					<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr?"}, class: "btn btn-secondary" %>
