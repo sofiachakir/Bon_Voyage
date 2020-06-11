@@ -1,4 +1,5 @@
 class Trip < ApplicationRecord
+  require 'pixabay'
 	belongs_to :user
   has_many :events, dependent: :destroy
 
@@ -43,10 +44,10 @@ class Trip < ApplicationRecord
   def week_weeks_days
     week_weeks_days = []
     current_week = []
-    i = 0
     self.days.each_with_index do |day, index|
   #si day == Monday il faut passer à la semaine suivante
       if day.strftime('%A') == "Monday" || index == self.days.length-1
+        current_week << day if self.duration == 1
         week_weeks_days << current_week
         current_week = []
       end
@@ -67,6 +68,18 @@ class Trip < ApplicationRecord
       end
     end
     events_by_date
+  end
+
+  def country_picture
+    # Cette méthode renvoie une image en fonction du country name du trip
+    if self.country_name.nil?
+      img_url = "https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    else
+      client = Pixabay.new
+      res = client.photos(q: self.country_name, safesearch: true, page: 1, per_page: 30)
+      img = res["hits"].first
+      img_url = img['largeImageURL']
+    end
   end
 
 end
