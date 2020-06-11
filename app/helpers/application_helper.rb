@@ -35,6 +35,11 @@ module ApplicationHelper
 		end
 	end
 
+
+	def current_user!
+		user_signed_in? && current_user == @user
+	end
+
 	def user_trip_owner?
 		@trip = Trip.find(params[:id])
 		user_signed_in? && current_user == @trip.user
