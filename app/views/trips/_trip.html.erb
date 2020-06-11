@@ -14,7 +14,7 @@
 				<%= link_to 'Voir le voyage', trip_path(trip), class: "card-link mt-5" %>
 
 
-        <%= cl_image_tag(current_user.avatar.key, crop: :fill, class: "card-trip-user avatar-bordered") %>
+        <%= cl_image_tag(current_user.avatar.key, class: "card-trip-user avatar-bordered") %>
 
 		</div>
 	<% end %>
