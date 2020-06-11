@@ -34,8 +34,11 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update(trip_params)
-    flash[:success] = "Votre voyage a été mis à jour"
+    if @trip.update(trip_params)
+      flash[:success] = "Votre voyage a été mis à jour"
+    else
+      flash[:error] = "Votre voyage n'a pas été mis à jour. Vérifiez les dates."
+    end
     redirect_to @trip
   end
 

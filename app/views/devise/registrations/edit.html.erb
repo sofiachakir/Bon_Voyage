@@ -1,8 +1,9 @@
 <div class="container py-3 mx-auto col-7 my-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
+      <% content_for :minihead do %>
       <h2 class="text-center">Modifier mon profil</h2>
+      <% end %>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -53,5 +54,3 @@
     </div>
   </div>
 </div>
-
-
