@@ -2,7 +2,11 @@
 	<!-- Bannière avec le username et modification du profil -->
 	<div class="profil row align-items-center">
 		<!-- Image à changer -->
-		<img class="rounded-circle col-4" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
+		  <%if @user.avatar.attached?%>
+       <%= image_tag @user.avatar, alt: 'avatar', class: "rounded-circle col-2"  %>
+     <%else%>
+       <img class="rounded-circle col-4" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg id="avatar"">
+     <%end%>
 	    <div class= "col-4 align-items-center">
 
 	      <!-- Si pas de username, on affiche son email -->
@@ -41,6 +45,14 @@
 				<div class="col-4 ml-auto">
 					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn bg-white btn-lg' %>
 				</div>
+
+         <%= form_tag user_avatars_path(@user), multipart: true do %>
+         <%= file_field_tag :avatar %>
+         <p></p>
+         <p><%= submit_tag "mettre à jour" %></p>
+
+       <% end %>
+
 			<% end %>
 
 	</div>
