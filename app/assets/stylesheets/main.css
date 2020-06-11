@@ -5,11 +5,11 @@ body {
 html,
 body,
 header,
-.view {
-    height: 100%;
-}
-
 .alert {
   top: 70px;
 }
 
+
+.home_title{
+  padding-top: 50px;
+}
