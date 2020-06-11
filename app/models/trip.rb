@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-	belongs_to :user
+  belongs_to :user
   has_many :events, dependent: :destroy
 
   validates :title, presence: true
@@ -68,5 +68,4 @@ class Trip < ApplicationRecord
     end
     events_by_date
   end
-
 end
