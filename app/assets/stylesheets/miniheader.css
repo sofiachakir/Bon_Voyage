@@ -1,0 +1,50 @@
+.profil {
+  position: relative;
+  padding-top: 13.5rem;
+  margin-left: 15rem;
+}
+
+.minihead {
+  position: absolute;
+}
+
+#avatar {
+  min-width: 7rem;
+  max-width: 12rem;
+}
+
+.mini {
+  margin-bottom: 2rem;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 1800px) {
+.profil {
+  padding-top: 11rem;
+  margin-left: 11rem;
+}
+}
+
+@media (max-width: 1600px) {
+.profil {
+  padding-top: 9rem;
+  margin-left: 9rem;
+}
+}
+
+
+@media (max-width: 1200px) {
+.profil {
+  padding-top: 7rem;
+  margin-left: 7rem;
+}
+}
+
+.textname {
+  color: white;
+  text-transform: uppercase;
+}
