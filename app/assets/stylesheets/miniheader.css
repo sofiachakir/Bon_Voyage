@@ -1,8 +1,0 @@
-.miniheader-img {
-    background: url("../assets/miniheader.png")no-repeat;
-    background-size: contain;
-}
-
-.miniheader-img, view {
-   height: 51%;
-}
