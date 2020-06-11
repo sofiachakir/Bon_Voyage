@@ -1,23 +1,54 @@
-<div class="profil row align-items-center my-5 bg-light">
+<% content_for :minihead do %>
+	<!-- Bannière avec le username et modification du profil -->
+	<div class="profil row align-items-center my-5 bg-light">
 		<!-- Image à changer -->
 		<img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg">
-		<div class= "col-2 align-items-center">
-			<!-- Si pas de username, on affiche son email -->
-			<% if @user.user_name %>
-				<h3><%= @user.user_name %></h3>
-			<% else %>
-				<h3><%= @user.email %></h3>
+	    <div class= "col-2 align-items-center">
+
+	      <!-- Si pas de username, on affiche son email -->
+	      <% if @user.user_name %>
+	        <h3><%= @user.user_name %></h3>
+
+						<!-- formulaire pour ajouter son nom -->
+		        <% if current_user! && @user.user_name == '' %>
+								<%= render 'form' %>
+						<% end %>
+
+						<!-- formulaire pour modifier son nom -->
+	        	<% if current_user! && @user.user_name != ''%>
+	        		<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
+	        		<div class="form-popup" id="myForm">
+	        			<%= form_for @user do |form| %>
+				          <div class="form-group mb-2">
+				            <%= form.text_field :user_name, class: 'form-control' %>
+				          </div>
+				          <%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+				          <button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
+				        <% end %>
+	        		</div>
+						<% end %>
+
+	      <% else %>
+	      <!-- formulaire pour ajouter son nom -->
+		      <% if current_user! %>
+						<%= render 'form' %>
+		      <% end %>
+	      <% end %>
+	    </div>
+
+			<!-- Lien vers éditer mon profil -->
+			<% if current_user! %>
+				<div class="col-3 ml-auto">
+					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary btn-lg' %>
+				</div>
 			<% end %>
-		</div>
-		<!-- Lien vers éditer mon profil -->
-		<div class="col-3 ml-auto">
-			<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary btn-lg' %>
-		</div>
+
 	</div>
+<% end %>
 
 
 <div class="container my-5">
-	<!-- Bannière avec le username et modification du profil -->
+
 
 	<!-- Mon voyage à venir -->
 	<div class="row">
