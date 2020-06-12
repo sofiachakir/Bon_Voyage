@@ -25,7 +25,6 @@ class TripsController < ApplicationController
   		flash[:error] = @trip.errors.full_messages
   		render :new
   	end
-
   end
 
   def edit
@@ -34,17 +33,20 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+
     if @trip.update(trip_params)
       flash[:success] = "Votre voyage a été mis à jour"
     else
       flash[:error] = "Votre voyage n'a pas été mis à jour. Vérifiez les dates."
     end
+
     redirect_to @trip
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
+
     redirect_to root_path
   end
 

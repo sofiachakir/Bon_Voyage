@@ -1,66 +1,66 @@
-<% content_for :minihead do %>
-	<!-- Bannière avec le username et modification du profil -->
-	<div class="profil d-flex align-items-center">
-		<!-- Image à changer -->
-		  <%if @user.avatar.attached?%>
-       <%= image_tag @user.avatar, alt: 'avatar', class: "rounded-circle col-2"  %>
-     <%else%>
-       <img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
-     <%end%>
-	    <div class= "col-2 align-items-center">
+<!-- Bannière avec le username et modification du profil -->
+<div class="profil d-flex align-items-center">
 
-	      <!-- Si pas de username, on affiche son email -->
-	      <% if @user.user_name %>
-	        <h2 class="textname"><%= @user.user_name %></h2>
+	<!-- Image à changer -->
+	<%if @user.avatar.attached?%>
+		<%= image_tag @user.avatar, alt: 'avatar', class: "rounded-circle col-2"  %>
+	<%else%>
+		<img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
+	<%end%>
 
-						<!-- formulaire pour ajouter son nom -->
-		        <% if current_user! && @user.user_name == '' %>
-								<%= render 'form' %>
-						<% end %>
+	<div class= "col-2 align-items-center">
 
-						<!-- formulaire pour modifier son nom -->
-	        	<% if current_user! && @user.user_name != ''%>
-	        		<a onclick="openForm()"><i class="fas fa-pencil-alt text-white mr-5"></i></a>
-	        		<div class="form-popup" id="myForm">
-	        			<%= form_for @user do |form| %>
-				          <div class="form-group mb-2">
-				            <%= form.text_field :user_name, class: 'form-control' %>
-				          </div>
-				          <%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
-				          <button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
-				        <% end %>
-	        		</div>
-						<% end %>
+		<!-- Si pas de username, on affiche son email -->
+		<% if @user.user_name %>
+			<h2 class="textname"><%= @user.user_name %></h2>
 
-	      <% else %>
-	      <!-- formulaire pour ajouter son nom -->
-		      <% if current_user! %>
-						<%= render 'form' %>
-		      <% end %>
-	      <% end %>
-	    </div>
+		<!-- formulaire pour ajouter son nom -->
+		<% if current_user! && @user.user_name == '' %>
+			<%= render 'form' %>
+		<% end %>
 
-			<!-- Lien vers éditer mon profil -->
-			<% if current_user! %>
-				<div class="col-2 ml-auto">
-					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn bg-white btn-lg' %>
+		<!-- formulaire pour modifier son nom -->
+		<% if current_user! && @user.user_name != ''%>
+			<a onclick="openForm()"><i class="fas fa-pencil-alt text-white mr-5"></i></a>
+
+				<div class="form-popup" id="myForm">
+					<%= form_for @user do |form| %>
+						<div class="form-group mb-2">
+							<%= form.text_field :user_name, class: 'form-control' %>
+						</div>
+						<%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+						<button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
+					<% end %>
 				</div>
 
-         <%= form_tag user_avatars_path(@user), multipart: true do %>
-         <%= file_field_tag :avatar %>
-         <p></p>
-         <p><%= submit_tag "mettre à jour" %></p>
+		<% end %>
 
-       <% end %>
-
+		<% else %>
+			<!-- formulaire pour ajouter son nom -->
+			<% if current_user! %>
+				<%= render 'form' %>
 			<% end %>
+		<% end %>
 
 	</div>
-<% end %>
 
+	<!-- Lien vers éditer mon profil -->
+	<% if current_user! %>
+		<div class="col-2 ml-auto">
+			<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn bg-white btn-lg' %>
+		</div>
+
+		<%= form_tag user_avatars_path(@user), multipart: true do %>
+		<%= file_field_tag :avatar %>
+			<p></p>
+			<p><%= submit_tag "mettre à jour" %></p>
+		<% end %>
+
+	<% end %>
+
+</div>
 
 <div class="container my-5">
-
 
 	<!-- Mon voyage à venir -->
 	<div class="row">
@@ -69,9 +69,9 @@
 		</div>
 		<div class="col-8 d-flex align-items-center">
 			<% if @user.upcoming_trip %>
-					<%= render @user.upcoming_trip %>
+			<%= render @user.upcoming_trip %>
 			<% else %>
-				<p>Pas de voyage prévu pour le moment</p>
+			<p>Pas de voyage prévu pour le moment</p>
 			<% end %>
 		</div>
 	</div>
@@ -85,9 +85,9 @@
 		</div>
 		<div class="col-8 d-flex align-items-center">
 			<% if @user.previous_trips %>
-					<%= render @user.previous_trips %>
+			<%= render @user.previous_trips %>
 			<% else %>
-				<p>Pas de voyages déjà passés pour le moment</p>
+			<p>Pas de voyages déjà passés pour le moment</p>
 			<% end %>
 		</div>
 	</div>

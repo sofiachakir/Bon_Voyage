@@ -1,5 +1,5 @@
-<div class="collapse" id="collapseDay<%= index %>">
-  <div class="card mx-5 p-0 border">
+<div class="collapse" id="collapseWeek<%= week_num %>Day<%= index %>">
+  <div class="card mx-5 p-0 border mt-5">
 
     <div class="card-header h6 d-flex justify-content-between">
       <div class="">
@@ -21,7 +21,7 @@
           <!-- Bouton pour ajouter-->
           <%= link_to new_trip_event_note_path(event.trip, event), class: "mr-2" do %><i class="fas fa-plus" title="Ajouter une note"></i><% end %>
           <!-- Bouton pour modifier-->
-          <%= link_to edit_trip_event_path(event.trip, event), class: "mr-2" do %><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i><%end %>
+          <%= link_to edit_trip_event_path(event.trip, event, day), class: "mr-2" do %><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i><%end %>
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
         </div>
