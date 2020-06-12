@@ -15,11 +15,8 @@
   *= require site_colors
   *= require main
   *= require navbar
-  *= require header
-  *= require miniheader
   *= require index
   *= require trips
-  *= require users
   *= require notes
   *= require show
  */
