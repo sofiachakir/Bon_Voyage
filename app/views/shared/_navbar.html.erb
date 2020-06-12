@@ -6,12 +6,8 @@
       <%= link_to 'Planifier mon Voyage', new_trip_path, class: "btn btn-primary mr-5 text-white" %>
 
         <% if !user_signed_in? %>
-          <a class="nav-link pr-3">
-            <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
-          </a>
-          <a class="nav-link">
-            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
-          </a>
+          <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %><span class="nav-symbol"> / </span>
+          <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
         <% else %>
 
           <div class="dropdown">

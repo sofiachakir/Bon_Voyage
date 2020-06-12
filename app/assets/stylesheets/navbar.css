@@ -1,10 +1,17 @@
+/*Logo text*/
 .navbar-brand {
-  font-size: 25px;
+  font-size: 30px !important;
   text-transform: none;
   padding-top: 0;
   padding-bottom: 0;
+  color: #e22620 !important;
 }
 
+.nav-symbol {
+  margin-top: 10px;
+  color: #ffffff !important;
+}
+/*Effet navbar transparent and color*/
 .navbar-blur {
   backdrop-filter: blur(40px) saturate(200%);
 }
@@ -22,3 +29,5 @@
 .navbartext {
   color: white;
 }
+
+
