@@ -72,3 +72,4 @@ gem "dotenv-rails", "~> 2.7"
 # Gem used for active storage instead of S3
 gem 'cloudinary'
 gem "letter_opener", "~> 1.7"
+gem 'pixabay-api', require: 'pixabay'

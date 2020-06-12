@@ -1,8 +1,18 @@
-.miniheader-img {
-    background: url("../assets/miniheader.png")no-repeat;
-    background-size: contain;
+.profil {
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591946716/slice2_ccstuy.png")no-repeat center center;
 }
 
-.miniheader-img, view {
-   height: 51%;
+.formhead {
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591946793/slice3_gaezoe.png")no-repeat center center;
+}
+
+.formtitle {
+  text-align: center;
+  color: white;
+  padding: 1rem 0rem;
+}
+
+.textname {
+  color: white;
+  text-transform: uppercase;
 }

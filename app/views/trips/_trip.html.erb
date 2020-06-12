@@ -2,7 +2,7 @@
 	<%= link_to trip_path(trip) do %>
 		<div class="card-trip">
 			<div class="thumb">
-				<img class="img-fluid" src="https://images.pexels.com/photos/346768/pexels-photo-346768.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+				<img class="img-fluid" src="<%= trip.country_picture%>" alt="">
 			</div>
 
 			<div class="card-trip-meta d-flex">
@@ -13,9 +13,12 @@
 				<h4 class="card-trip-title mb-3"><%= trip.title %></h4>
 				<p class="card-trip-text"><%= trip.description %></p>
 				<p class="card-trip-link"><%= link_to 'Voir le voyage', trip_path(trip) %></p>
-			<img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" class="card-trip-avatar avatar-bordered" />
+			    <%if trip.user.avatar.attached?%>
+              <%= cl_image_tag(trip.user.avatar.key, crop: :fill, class: "card-trip-avatar avatar-bordered") %>
+          <%else%>
+			        <img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" class="card-trip-avatar avatar-bordered" />
+          <%end%>
 			</div>
 		</div>
-		
 	<% end %>
 </div>

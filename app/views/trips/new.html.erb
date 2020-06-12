@@ -1,7 +1,8 @@
-<div class="container">
-
-  <h1>Créer un nouveau voyage</h1>
-
-  <%= render 'form' %>
-
+<% content_for :minihead do %>
+<div class="formhead">
+<h1 class="formtitle">Créer un nouveau voyage</h1>
 </div>
+<% end %>
+
+<%= render 'form' %>
+
