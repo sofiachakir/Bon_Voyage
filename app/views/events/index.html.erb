@@ -1,5 +1,5 @@
 <div class="container fluid my-5">
-  <%#= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
+    <h1 class="h1 mt-5"><%= @trip.title %></h1>
 
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
@@ -66,8 +66,11 @@
                     J<%= index + 1 %> - <%= day.strftime('%d %B') %>
                   </h2>
                 </div>
-                <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseDay<%= index %>" aria-expanded="false" aria-controls="collapseDay<%= index %>">
-                </button>
+                <div class="ml-5 align-items-center">
+                  <%= link_to "Ajouter un event", new_trip_event_path(@trip, day), class: "btn btn-secondary" %>
+                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseDay<%= index %>" aria-expanded="false" aria-controls="collapseDay<%= index %>">
+                  </button>
+                </div>
               </div>
               <hr>
               <% if @trip.events_by_date(day).length == 0 %>
@@ -76,7 +79,7 @@
                 </div>
               <% else %>
               <%= render partial: "event", collection: @trip.events_by_date(day),
-           as: :event, locals: {index: index} %>
+           as: :event, locals: {index: index, day: day} %>
               <% end %>
               <!--./ Jour -->
             </div>
