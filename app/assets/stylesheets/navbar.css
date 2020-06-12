@@ -19,17 +19,7 @@
 
 /* Titre du site ou Logo */
 
-
-.navbartext {
-  color: white;
+.brand {
+  max-height: 5.5vh;
+  padding-top: 2px;
 }
-
-
-
-.navbar-brand {
-  font-size: 25px;
-  text-transform: none;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
