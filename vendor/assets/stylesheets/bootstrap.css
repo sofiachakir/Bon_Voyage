@@ -12,6 +12,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css?family=News+Cycle:400,700&display=swap");
+
+}
 :root {
   --blue: #EB6864;
   --indigo: #6610f2;
@@ -366,7 +368,7 @@ template {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-family:"News Cycle", "Arial Narrow Bold", sans-serif;
   font-weight: 700;
   line-height: 1.1;
 }
