@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
 
-      <h1 class="my-5">Mot de passe oublié?</h1>
+      <h1 class="my-5 text-center">Mot de passe oublié?</h1>
 
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
