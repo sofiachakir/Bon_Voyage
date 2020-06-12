@@ -1,13 +1,10 @@
-.navbar-brand {
-  font-size: 25px;
-  text-transform: none;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+/* Pour une navbar avec effet de flou */
 
 .navbar-blur {
   backdrop-filter: blur(40px) saturate(200%);
 }
+
+/* Navbar de couleur pour Firefox, car flou incompatible */
 
 @-moz-document url-prefix() {
   .navbar-blur {
@@ -15,10 +12,11 @@
   }
 }
 
-.navbar-black {
-  background-color: #494F5A;
-}
+/* Titre du site ou Logo */
 
-.navbartext {
-  color: white;
+.navbar-brand {
+  font-size: 25px;
+  text-transform: none;
+  padding-top: 0;
+  padding-bottom: 0;
 }

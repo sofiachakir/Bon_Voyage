@@ -1,18 +1,4 @@
-body {
-  padding-top: 70px;
-}
-
-html,
-body,
-header,
-.view {
-    height: 100%;
-}
-
-.long-page {
-  margin-top: 500px;
-}
-
 .alert {
   top: 70px;
 }
+

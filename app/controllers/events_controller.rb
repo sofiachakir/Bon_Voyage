@@ -30,7 +30,6 @@ class EventsController < ApplicationController
       flash[:error] = @event.errors.full_messages
       render :new
     end
-
   end
 
   def edit
@@ -42,6 +41,7 @@ class EventsController < ApplicationController
   def update
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
+
     if @event.update(event_params)
       flash[:success] = "Votre évènement a été mis à jour"
       redirect_to trip_events_path(@trip)
@@ -49,12 +49,14 @@ class EventsController < ApplicationController
       flash[:error] = @event.errors.full_messages
       render :edit
     end
+
   end
 
   def destroy
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
     @event.destroy
+
     redirect_to trip_events_path(@trip)
   end
 
@@ -82,4 +84,5 @@ class EventsController < ApplicationController
     et_min = params[:end_time]['(5i)'].to_i
     end_time = day.change(hour: et_hour, min: et_min)
   end
+
 end

@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
   before_action :is_trip_creator?, only: [:edit, :update, :destroy]
-  
+
   def index
   	@trips = Trip.all
   end
@@ -25,7 +25,6 @@ class TripsController < ApplicationController
   		flash[:error] = @trip.errors.full_messages
   		render :new
   	end
-
   end
 
   def edit
@@ -34,14 +33,20 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
-    @trip.update(trip_params)
-    flash[:success] = "Votre voyage a été mis à jour"
+
+    if @trip.update(trip_params)
+      flash[:success] = "Votre voyage a été mis à jour"
+    else
+      flash[:error] = "Votre voyage n'a pas été mis à jour. Vérifiez les dates."
+    end
+
     redirect_to @trip
   end
 
   def destroy
     @trip = Trip.find(params[:id])
     @trip.destroy
+
     redirect_to root_path
   end
 
