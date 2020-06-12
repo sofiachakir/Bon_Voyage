@@ -3,7 +3,6 @@ class NotesController < ApplicationController
   before_action :is_trip_creator?, only: [:new, :create]
   # before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
-
   def new
     @note = Note.new
   end
@@ -30,6 +29,7 @@ class NotesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @note = Note.find(params[:id])
     @note.update(note_params)
+
     flash[:success] = "Vos notes ont été mises à jour"
     redirect_to trip_events_path(@trip)
   end
@@ -38,6 +38,7 @@ class NotesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @note = Note.find(params[:id])
     @note.destroy
+
     redirect_to trip_events_path(@trip)
   end
 

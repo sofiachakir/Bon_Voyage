@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+
     flash[:success] = "Votre nom a été mis à jour"
     redirect_to @user
   end
@@ -21,4 +22,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:user_name)
   end
+
 end

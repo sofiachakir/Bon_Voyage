@@ -1,15 +1,11 @@
-<% content_for :minihead do %>
-<div class="formhead">
-<h1 class="h1 formtitle"><%= @trip.title %></h1>
-</div>
-<% end %>
-
 <div class="container fluid my-5">
   <%#= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
 
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
+    <h1 class="my-5"><%= @trip.title %></h1>
     <div class="col-md-7 text-center">
+
         <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 300px;">
     </div>
     <div class="col-md-5">
