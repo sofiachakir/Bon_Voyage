@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  country_name: MyString
+  city_name: MyString
+  start_date: 2020-06-09 10:31:58
+  end_date: 2020-06-09 10:31:58
+
+two:
+  title: MyString
+  description: MyText
+  country_name: MyString
+  city_name: MyString
+  start_date: 2020-06-09 10:31:58
+  end_date: 2020-06-09 10:31:58

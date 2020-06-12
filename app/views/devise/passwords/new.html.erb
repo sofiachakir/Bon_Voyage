@@ -1,0 +1,28 @@
+<div class="container py-3 mx-auto col-7 my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <h1 class="my-5 text-center">Mot de passe oublié?</h1>
+
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="actions mt-3">
+          <%= f.submit "Envoyez-moi les instructions du nouveau mot de passe.", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+      <% end %>
+
+      <br>
+
+      <div class="text-center ">
+        <%= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-blur">
+
+  <div class="container-fluid">
+    <%= link_to root_path do %>
+      <img src="/assets/brand.png" alt="BonVoyage" class="brand">
+    <%end %>
+
+    <div class="nav navbar-nav">
+      <%= link_to 'Planifier mon Voyage', new_trip_path, class: "btn btn-primary mr-5 text-white" %>
+
+      <% if !user_signed_in? %>
+
+        <a class="nav-link">
+          <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
+        </a>
+        <a class="nav-link">
+          <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+        </a>
+
+      <% else %>
+
+        <div class="dropdown">
+          <a class="btn text-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%=current_user.email%>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Mon profil", user_path(current_user), class:"dropdown-item text-primary " %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item text-primary ", method: :delete %>
+          </div>
+        </div>
+
+      <%end %>
+
+    </div>
+  </div>
+</nav>
