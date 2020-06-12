@@ -1,6 +1,11 @@
+<% content_for :minihead do %>
+<div class="formhead">
+<h1 class="h1 formtitle"><%= @trip.title %></h1>
+</div>
+<% end %>
+
 <div class="container fluid my-5">
   <%#= link_to "Ajouter un event", new_trip_event_path(@trip), class: "btn btn-secondary mt-5" %>
-    <h1 class="h1 mt-5"><%= @trip.title %></h1>
 
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
@@ -37,7 +42,7 @@
               <!-- Semaine -->
               <div class="flex-fill">
                 <i class="fa fa-calendar mr-2"></i>
-                Semaine <%= index + 1 %> - 
+                Semaine <%= index + 1 %> -
                 <%= week[0].strftime('%d %B %Y') %>
               </div>
               <!-- ./ Semaine -->

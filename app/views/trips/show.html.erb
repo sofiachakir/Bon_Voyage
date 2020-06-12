@@ -1,6 +1,10 @@
-<div class="container my-5">
+<% content_for :minihead do %>
+<div class="formhead">
+<h1 class="h1 formtitle"><%= @trip.title %></h1>
+</div>
+<% end %>
 
-	<h1 class="h1 mt-5"><%= @trip.title %></h1>
+<div class="container my-5">
 
 	<!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
@@ -14,7 +18,7 @@
 				<div class="flex-fill"><i class="fa fa-calendar"></i><%= @trip.start_date.strftime ("%m/%d/%Y") %> - <%= @trip.end_date.strftime ("%m/%d/%Y") %></div>
 			</div>
       <p class="mt-3"><%= @trip.description%></p>
-      
+
 			<%= link_to "Voir le détail du voyage", trip_events_path(@trip), class: "btn btn-primary" %>
 
 			<% if user_trip_owner?(@trip) %>
@@ -33,7 +37,7 @@
   <hr class="my-5">
   <!-- /.Séparation -->
 
-	
+
 
 	<!-- Affichage du programme du voyage -->
 	<div class="container mt-5 col-10">
@@ -65,12 +69,12 @@
 											</li>
 										<% end %>
 									</ul>
-								</div>	
+								</div>
 							</div>
 						</div>
 						<!--./ Affichage jour-->
 					<% end %>
-				</div>	
+				</div>
 			</div>
 			<!-- ./ Affichage semaine -->
 		<% end %>
