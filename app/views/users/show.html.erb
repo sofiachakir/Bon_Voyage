@@ -36,7 +36,7 @@
 							<% end %>
 						</div>
 
-				<% end %>
+				<% end %>q
 
 				<% else %>
 					<!-- formulaire pour ajouter son nom -->
@@ -73,7 +73,7 @@
 					<% if @user.upcoming_trip %>
 						<%= render @user.upcoming_trip %>
 					<% else %>
-						<p>Pas de voyage prévu pour le moment</p>
+						<p class="text-center">Pas de voyage prévu pour le moment</p>
 					<% end %>
 	    </div>
 	  </div>
@@ -83,7 +83,7 @@
 					<% if @user.previous_trips %>
 						<%= render @user.previous_trips %>
 					<% else %>
-						<p>Pas de voyages déjà passés pour le moment</p>
+						<p class="text-center">Pas de voyages déjà passés pour le moment</p>
 					<% end %>
 	    </div>
 	  </div>
