@@ -1,13 +1,13 @@
 <% content_for :minihead do %>
 	<!-- Bannière avec le username et modification du profil -->
-	<div class="profil row align-items-center">
+	<div class="profil d-flex align-items-center">
 		<!-- Image à changer -->
 		  <%if @user.avatar.attached?%>
        <%= image_tag @user.avatar, alt: 'avatar', class: "rounded-circle col-2"  %>
      <%else%>
-       <img class="rounded-circle col-4" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
+       <img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
      <%end%>
-	    <div class= "col-4 align-items-center">
+	    <div class= "col-2 align-items-center">
 
 	      <!-- Si pas de username, on affiche son email -->
 	      <% if @user.user_name %>
@@ -42,7 +42,7 @@
 
 			<!-- Lien vers éditer mon profil -->
 			<% if current_user! %>
-				<div class="col-4 ml-auto">
+				<div class="col-2 ml-auto">
 					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn bg-white btn-lg' %>
 				</div>
 

@@ -1,47 +1,15 @@
 .profil {
-  position: relative;
-  padding-top: 13.5rem;
-  margin-left: 15rem;
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591946716/slice2_ccstuy.png")no-repeat center center;
 }
 
-.minihead {
-  position: absolute;
+.formhead {
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591946793/slice3_gaezoe.png")no-repeat center center;
 }
 
-#avatar {
-  min-width: 7rem;
-  max-width: 12rem;
-}
-
-.mini {
-  margin-bottom: 2rem;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (max-width: 1800px) {
-.profil {
-  padding-top: 11rem;
-  margin-left: 11rem;
-}
-}
-
-@media (max-width: 1600px) {
-.profil {
-  padding-top: 9rem;
-  margin-left: 9rem;
-}
-}
-
-
-@media (max-width: 1200px) {
-.profil {
-  padding-top: 7rem;
-  margin-left: 7rem;
-}
+.formtitle {
+  text-align: center;
+  color: white;
+  padding: 1rem 0rem;
 }
 
 .textname {
