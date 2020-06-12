@@ -45,14 +45,12 @@ class Trip < ApplicationRecord
     week_weeks_days = []
     current_week = []
     self.days.each_with_index do |day, index|
+      current_week << day
   #si day == Monday il faut passer à la semaine suivante
-      if day.strftime('%A') == "Monday" || index == self.days.length-1
-        current_week << day if self.duration == 1
+      if day.strftime('%A') == "Sunday" || index == self.days.length-1
         week_weeks_days << current_week
         current_week = []
       end
-
-      current_week << day
     end
     week_weeks_days
   end
