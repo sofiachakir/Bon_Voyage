@@ -22,16 +22,18 @@
 }
 
 .little-jumbo {
-	min-height: 40vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.2)), url("https://cdn.pixabay.com/photo/2017/12/01/14/54/turquoise-2991021_960_720.jpg");
-  background-size: cover;
-  background-position-y: 50;
+  min-height: 30vh;
+  background: url("/assets/miniheader.png");
+  background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
+  margin-top: 5rem;
+  opacity: 55%;
 }
 
 .banner {
-  min-height: 30vh;
-  background: url("/assets/icones.png");
+  min-height: 60vh;
+  background: url("/assets/banner2.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
