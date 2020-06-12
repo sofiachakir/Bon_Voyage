@@ -1,16 +1,9 @@
-html,
-body,
-header,
-.view {
-    height: 100%;
+.alert {
+  top: 70px;
 }
 
 .long-page {
   margin-top: 500px;
 }
-
-/*.fab .fa-github {
-color: rgba(255,255,255,.85);
-}*/
 
 

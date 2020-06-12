@@ -1,0 +1,39 @@
+<div class="collapse" id="collapseWeek<%= week_num %>Day<%= index %>">
+  <div class="card mx-5 p-0 border mt-5">
+
+    <div class="card-header h6 d-flex justify-content-between">
+      <div class="">
+        <i class="far fa-clock mr-2"></i>
+        <%= event.start_time.strftime('%H:%M') unless event.start_time.nil? %>
+        - <%= event.end_time.strftime('%H:%M') unless event.end_time.nil? %>
+      </div>
+      <div class="">
+        <i class="fas fa-map-marker-alt mr-2"></i>
+        <%= event.city_name %>
+      </div>
+      <div class="">
+        <i class="fas fa-directions mr-2"></i>
+        <%= event.name_event %>
+      </div>
+      <!-- Affichage des boutons uniquement pour le trip owner -->
+      <% if user_trip_owner?(event.trip) %>
+        <div class="">
+          <!-- Bouton pour ajouter-->
+          <%= link_to new_trip_event_note_path(event.trip, event), class: "mr-2" do %><i class="fas fa-plus" title="Ajouter une note"></i><% end %>
+          <!-- Bouton pour modifier-->
+          <%= link_to edit_trip_event_path(event.trip, event, day), class: "mr-2" do %><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i><%end %>
+          <!-- Bouton pour supprimer-->
+          <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
+        </div>
+      <% end %>
+      <!-- ./Affichage des boutons uniquement pour le trip owner -->
+    </div>
+
+    <div class="container">
+      <div class="card-columns thumbnail-sortable">
+        <%= render event.notes %>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,47 @@
+.card {
+padding: 20px 20px 20px;
+border: 1px solid #bbb;
+}
+
+.card:hover {
+border: 1px solid #bbb;
+box-shadow: none;
+}
+
+.card:hover img {
+  transform: none;
+}
+
+.notetitle {
+padding: 20px 20px 20px;
+border: 1px solid #000;
+text-align: center;
+margin: 0;
+font-size: 20px;
+font-weight: bold;
+}
+
+.noteimage {
+width: inherit;
+}
+
+.notetext {
+padding: 20px 20px 20px;
+border: 1px solid #000;
+}
+
+.fa-pen {
+  font-size: 0.75rem;
+  color: grey;
+  display: block;
+  position: absolute;
+  left: 22px;
+}
+
+.fa-trash {
+  font-size: 0.75rem;
+  color: grey;
+  display: block;
+  position: absolute;
+  left: 40px;
+}

@@ -1,0 +1,26 @@
+/* Formulaire popup du nom de profil */
+.form-popup {
+  display: none;
+  bottom: 100px;
+  right: 15px;
+  z-index: 9;
+  display: none;
+  bottom: 0;
+  right: 14px;
+}
+
+.textname {
+  font-size: 2vw;
+}
+
+.textname2 {
+  font-size: 1vw;
+}
+
+.vl {
+  border-left: 2px solid grey;
+  min-height: 500px;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
