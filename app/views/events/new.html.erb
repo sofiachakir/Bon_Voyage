@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-md-12">
 
-          <%= form_tag trip_events_path(@trip, @event, @day) do %>
+          <%= form_tag trip_events_path(@trip, @event) do %>
 
             <div class="form-group mb-4">
               <div class="row">
@@ -23,7 +23,7 @@
               <div class="row">
                 <div class="col-6">
               <%= label_tag :format, 'Jour' %>
-              <%= text_field_tag :format, @day, class: 'form-control', placeholder: 'Jour', readonly: true %>
+              <%= text_field_tag :format, @day, class: 'form-control', readonly: true %>
                  </div>
               </div>
             </div>
@@ -31,11 +31,11 @@
               <div class="row">
                 <div class="col-6">
                   <%= label_tag :start_time, "Heure de début" %>
-                  <%= time_field_tag :start_time, nil, class: 'form-control' %>
+                  <%= time_select :start_time, nil, class: 'form-control' %>
                 </div>
                 <div class="col-6">
                   <%= label_tag :end_time, "Heure de fin" %>
-                  <%= time_field_tag :end_time, nil, class: 'form-control' %>
+                  <%= time_select :end_time, nil, class: 'form-control' %>
                 </div>
               </div>
             </div>

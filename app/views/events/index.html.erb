@@ -77,7 +77,7 @@
                 </div>
               <% else %>
               <%= render partial: "event", collection: @trip.events_by_date(day),
-           as: :event, locals: {index: index} %>
+           as: :event, locals: {index: index, day: day} %>
               <% end %>
               <!--./ Jour -->
             </div>
