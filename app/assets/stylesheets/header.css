@@ -23,7 +23,7 @@
 
 .little-jumbo {
   min-height: 30vh;
-  background: url("/assets/miniheader.png");
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591991066/miniheader_dwubzy.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@
 
 .banner {
   min-height: 60vh;
-  background: url("/assets/banner2.png");
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1591991107/banner2_ckcjm7.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
