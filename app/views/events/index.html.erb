@@ -1,5 +1,4 @@
 <div class="container fluid my-5">
-    <h1 class="h1 mt-5 text-center"><%= @trip.title %></h1>
 
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
@@ -8,6 +7,7 @@
         <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 300px;">
     </div>
     <div class="col-md-5">
+      <h3 class="mb-3"><%= @trip.title %></h3>
       <h3>Par <%= link_to user_path(@trip.user) do %><%= @trip.user.email %><% end %></h3>
       <div class="d-flex text-secondary small">
         <div class="flex-fill"><i class="fa fa-location-arrow"></i><%= @trip.country_name %></div>
@@ -33,7 +33,7 @@
         <!-- Affichage numéro de semaine dans le card-header -->
         <div class="card-header" id="headingWeek<%= week_num %>" >
           <h2 class="mb-0">
-            <button class="btn btn-block text-left d-flex" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>" aria-expanded="true" aria-controls="collapseWeek<%= week_num %>">
+            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>" aria-expanded="true" aria-controls="collapseWeek<%= week_num %>">
               <!-- Semaine -->
               <div class="flex-fill">
                 <i class="fa fa-calendar mr-2"></i>
