@@ -5,8 +5,7 @@ class EventsController < ApplicationController
 
   def index
     @trip = Trip.find(params[:trip_id])
-    # @events = @trip.events
-    @events = Event.geocoded
+    @events = @trip.events.geocoded
 
     @markers = @events.map do |event|
       {
