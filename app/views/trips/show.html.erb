@@ -73,7 +73,7 @@
 	<!-- Affichage des modals -->
 	<% @trip.week_weeks_days.each_with_index do |week, index| %>
 		<% week.each_with_index do |day, ind| %>
-			<%= render partial: "events/new_event_modal", locals: {day: day, ind: ind} %>
+			<%= render partial: "events/new_event_modal", locals: {index: index, day: day, ind: ind} %>
 		<% end %>
 	<% end %>
 	<!-- ./Affichage des modals -->
@@ -104,7 +104,7 @@
 										<div class="card-body">
 											<!--Affichage des évènements principaux-->
 											<% if user_trip_owner?(@trip) %>
-												<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dayModal<%=ind%>">
+												<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
 											  	<i class="fas fa-plus mr-2"></i> Ajouter un event
 												</button>
 											<% end %>
@@ -137,15 +137,15 @@
 		  <div class=" container mt-5 accordion" id="accordionWeek">
 		    <!-- Affichage semaines dans une card -->
 		    <div class="card p-0">
-		      <% @trip.week_weeks_days.each_with_index do |week, week_num| %>
+		      <% @trip.week_weeks_days.each_with_index do |week, index| %>
 		        <!-- Affichage numéro de semaine dans le card-header -->
-		        <div class="card-header" id="headingWeek<%= week_num %>" >
+		        <div class="card-header" id="headingWeek<%= index %>" >
 		          <h2 class="mb-0">
-		            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>" aria-expanded="true" aria-controls="collapseWeek<%= week_num %>">
+		            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>">
 		              <!-- Semaine -->
 		              <div class="flex-fill">
 		                <i class="fa fa-calendar mr-2"></i>
-		                Semaine <%= week_num + 1 %> -
+		                Semaine <%= index + 1 %> -
 		                <%= week[0].strftime('%d %B %Y') %>
 		              </div>
 		              <!-- ./ Semaine -->
@@ -162,8 +162,8 @@
 		        <!-- ./Card header -->
 
 		        <!-- Affichage Journée -->
-		        <div id="collapseWeek<%= week_num %>" class="collapse show" aria-labelledby="headingWeek<%= week_num %>" data-parent="#accordionWeek">
-		          <% week.each_with_index do |day, index| %>
+		        <div id="collapseWeek<%= index %>" class="collapse show" aria-labelledby="headingWeek<%= index %>" data-parent="#accordionWeek">
+		          <% week.each_with_index do |day, ind| %>
 		          	<hr>
 		            <div class="card-body px-3">
 		              <!-- Jour -->
@@ -171,30 +171,30 @@
 		                <div class="ml-5">
 		                  <h2 class="h6 text-primary">
 		                    <i class="far fa-dot-circle mr-2"></i>
-		                    J<%= index + 1 %> - <%= day.strftime('%A %d %B') %>
+		                    J<%= ind + 1 %> - <%= day.strftime('%A %d %B') %>
 		                  </h2>
 		                </div>
 		                <div class="ml-5 align-items-center">
 		                  <!-- Affichage des boutons uniquement pour le trip owner -->
 		                  <% if user_trip_owner?(@trip) %>
-		                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#dayModal<%=index%>">
+		                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
 											  	<i class="fas fa-plus mr-2"></i> Ajouter un event
 												</button>
 		                  <% end %>
 		                  
 		                  <!-- ./Affichage des boutons uniquement pour le trip owner -->
-		                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>Day<%= index %>" aria-expanded="true" aria-controls="collapseWeek<%= week_num %>Day<%= index %>">
+		                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>Day<%= ind %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>Day<%= ind %>">
 		                  </button>
 		                </div>
 		              </div>
 		              <hr>
 		              <% if @trip.events_by_date(day).length == 0 %>
-		                <div class="collapse show text-secondary text-center" id="collapseWeek<%= week_num %>Day<%= index %>">
+		                <div class="collapse show text-secondary text-center" id="collapseWeek<%= index %>Day<%= ind %>">
 		                  Rien de prévu !
 		                </div>
 		              <% else %>
 		              <%= render partial: "events/event", collection: @trip.events_by_date(day),
-		           as: :event, locals: {index: index, day: day, week_num: week_num} %>
+		           as: :event, locals: {index: index, day: day, ind: ind} %>
 		              <% end %>
 		              <!--./ Jour -->
 		            </div>
