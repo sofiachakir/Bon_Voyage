@@ -1,8 +1,10 @@
 <div class="container my-5">
-  <h1 class="text-center">Créer un nouvel évènement</h1>
+  <h2 class="text-center">Créer un nouvel évènement</h2>
     <div class="container py-3 mx-auto col-7 my-5">
       <div class="row justify-content-center">
         <div class="col-md-12">
+
+          <h4 class="mb-4 text-primary"><%= @day.to_time.strftime("%A %d")%></h4>
 
           <%= form_tag trip_events_path(@trip, @event) do %>
 
@@ -22,8 +24,7 @@
             <div class="form-group mb-4">
               <div class="row">
                 <div class="col-6">
-              <%= label_tag :format, 'Jour' %>
-              <%= text_field_tag :format, @day, class: 'form-control', readonly: true %>
+              <%= text_field_tag :format, @day, class: 'd-none', readonly: true %>
                  </div>
               </div>
             </div>
@@ -41,8 +42,8 @@
             </div>
 
             <div class="form-group mb-4">
-              <%= label_tag :comment, 'Mettre un commentaire' %>
-              <%= text_area_tag :comment, nil, class: 'form-control', placeholder: 'Journée extraordianaire à la découverte des plus beau musées de Paris. Je recommande fortement d\'aller les visiter.' %>
+              <%#= label_tag :comment, 'Mettre un commentaire' %>
+              <%#= text_area_tag :comment, nil, class: 'form-control', placeholder: 'Journée extraordianaire à la découverte des plus beau musées de Paris. Je recommande fortement d\'aller les visiter.' %>
             </div>
 
             <div class="actions mt-5 text-center mb-5">
