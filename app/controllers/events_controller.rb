@@ -51,10 +51,16 @@ class EventsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
 
+<<<<<<< HEAD
 
     if @event.update(comment: params[:comment])
       flash[:success] = "Votre commentaire a été mis à jour"
       redirect_to trip_events_path(@trip)
+=======
+    if @event.update(event_params)
+      flash[:success] = "Votre évènement a été mis à jour"
+      redirect_to trip_path(@trip)
+>>>>>>> staging
     else
       if @event.update(event_params)
         flash[:success] = "Votre évènement a été mis à jour"
@@ -71,7 +77,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to trip_events_path(@trip)
+    redirect_to trip_path(@trip)
   end
 
   private
