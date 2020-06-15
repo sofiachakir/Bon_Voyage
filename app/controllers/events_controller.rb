@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       flash[:success] = "Votre évènement a été mis à jour"
-      redirect_to trip_events_path(@trip)
+      redirect_to trip_path(@trip)
     else
       flash[:error] = @event.errors.full_messages
       render :edit
@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to trip_events_path(@trip)
+    redirect_to trip_path(@trip)
   end
 
   private
