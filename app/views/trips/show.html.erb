@@ -67,6 +67,7 @@
   <nav class="nav nav-pills nav-justified" id="myTab" role="tablist">
 	  <a class="nav-item nav-link active" id="global-tab" data-toggle="pill" href="#global" role="tab" aria-controls="global" aria-selected="true">Vue globale</a>
 	  <a class="nav-item nav-link" id="detail-tab" data-toggle="pill" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Vue détaillée</a>
+	  <a class="nav-item nav-link" id="events-map-tab" data-toggle="pill" href="#events-map" role="tab" aria-controls="events-map" aria-selected="true">Carte</a>
 	</nav>
 	<!-- ./Onglets -->
 
@@ -132,6 +133,7 @@
 			</div>
 		</div>
 		<!-- ./Global tab = Vue globale -->
+		<!-- Detail tab = Vue détaillée -->
 		<div class="tab-pane" id="detail" role="tabpanel" aria-labelledby="detail-tab">
 			<!-- Accordeon -->
 		  <div class=" container mt-5 accordion" id="accordionWeek">
@@ -207,6 +209,17 @@
 		    <!--./ Affichage semaines dans une card -->
 		  </div>
 		  <!-- ./ Accordeon -->
+		</div>
+		<!-- ./Detail tab = Vue détaillée -->
+		<!-- Map tab = carte -->
+		<div class="tab-pane" id="events-map" role="tabpanel" aria-labelledby="events-map-tab">
+			<div class="container-fluid my-5 d-flex justify-content-center">
+				<div id="map" 
+				style="width: 50%; height: 300px;"
+		    data-markers="<%= @markers.to_json %>" 
+		    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+		    </div>
+		  </div>
 		</div>
 	</div>
 	<!-- ./Tab panes -->
