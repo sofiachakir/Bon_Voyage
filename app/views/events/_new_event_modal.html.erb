@@ -1,0 +1,56 @@
+<div class="modal fade" id="week<%=index%>dayModal<%=ind%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-lg modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Créer un évènement</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4 class="mb-4 text-primary"><%= day.to_time.strftime("%A %d")%></h4>
+
+          <%= form_tag trip_events_path(@trip, @event) do %>
+
+            <div class="form-group mb-4">
+              <div class="row">
+                <div class="col-6">
+                  <%= label_tag :city_name, 'Ville' %>
+                  <%= text_field_tag :city_name, nil, class: 'form-control', placeholder: 'Paris',required: true %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <%= label_tag :name_event, 'Donnez un nom à votre évènement' %>
+              <%= text_field_tag :name_event, nil, class: 'form-control', placeholder: 'Viste des musées de Paris', required: true %>
+            </div>
+            <div class="form-group mb-4">
+              <div class="row">
+                <div class="col-6">
+                  <%= text_field_tag :format, day, class: 'd-none', readonly: true %>
+                 </div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <div class="row">
+                <div class="col-6">
+                  <%= label_tag :start_time, "Heure de début" %>
+                  <%= time_select :start_time, nil, class: 'form-control' %>
+                </div>
+                <div class="col-6">
+                  <%= label_tag :end_time, "Heure de fin" %>
+                  <%= time_select :end_time, nil, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="actions mt-5 text-center mb-5">
+              <%= submit_tag 'Enregistrer mon évènement', class: 'btn btn-primary btn-lg btn-block' %>
+            </div>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
