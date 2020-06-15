@@ -8,6 +8,10 @@ border: 1px solid #bbb;
 box-shadow: none;
 }
 
+.grab:hover {
+  cursor: grabbing;
+}
+
 .card:hover img {
   transform: none;
 }
