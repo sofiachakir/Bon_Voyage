@@ -1,15 +1,11 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :is_trip_creator?, only: [:new, :create]
-  before_action :is_event_creator?, only: [:edit, :update, :destroy]
+  # before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
   def index
     @trip = Trip.find(params[:trip_id])
-  
-
     @events = @trip.events
-    # @event = []
-    # @event << @events.first
   end
 
   def show
@@ -20,7 +16,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @day = params[:format]
-      @event = Event.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def create
@@ -51,16 +47,9 @@ class EventsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
 
-<<<<<<< HEAD
-
     if @event.update(comment: params[:comment])
       flash[:success] = "Votre commentaire a été mis à jour"
-      redirect_to trip_events_path(@trip)
-=======
-    if @event.update(event_params)
-      flash[:success] = "Votre évènement a été mis à jour"
       redirect_to trip_path(@trip)
->>>>>>> staging
     else
       if @event.update(event_params)
         flash[:success] = "Votre évènement a été mis à jour"
@@ -88,7 +77,6 @@ class EventsController < ApplicationController
                      name_event: params[:name_event],
                      start_time: new_start_time,
                      end_time: new_end_time}
-                     # comment: params[:comment] }
   end
 
   def new_start_time
