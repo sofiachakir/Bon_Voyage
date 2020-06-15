@@ -36,3 +36,12 @@ a {
 a:hover {
   color: #D20F43;
 }
+
+.nav-item.nav-link.active {
+  background-color: #EF1852;
+  border-color: #EF1852;
+}
+
+.nav-link {
+  color: #EF1852;
+}
