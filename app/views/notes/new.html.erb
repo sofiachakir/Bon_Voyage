@@ -32,11 +32,12 @@
           <%= form.file_field :image %>
         </div>
 
-        <div class="actions mt-5 text-center mb-5">
+        <div class="actions mt-5 text-center mb-2">
           <%= form.submit 'Enregistrer mes Notes', class: 'btn btn-primary btn-lg btn-block' %>
         </div>
 
         <% end %>
+        <%= link_to "Revenir en arrière", :back , class: 'btn btn-secondary btn-sm mn-5' %>
 
       </div>
     </div>
