@@ -3,23 +3,33 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
 
-        <h1 class="my-5">Créer des Notes</h1>
+        <h2 class="my-5 text-center">Créer des Notes</h2>
 
-        <%= form_for @note, url: {action: "create"}  do |form| %>
+        <p>*Vous avez la possibilité d'ajouter une ou plusieurs informations.</p>
+
+        <%= form_with model: @note, url: trip_event_notes_path(@trip, @event), method: "post" do |form| %>
 
         <div class="form-group mb-4">
-          <%= form.label :title, 'Titre' %>
+          <%= form.label :title, 'Un titre ou du texte en gras', class: 'font-weight-bold' %>
           <%= form.text_field :title, class: 'form-control', placeholder: 'Tour Eiffel'%>
         </div>
 
         <div class="form-group mb-4">
-          <%= form.label :text, 'Notes' %>
-          <%= form.text_field :text, class: 'form-control', placeholder: 'Viste des musées de Paris'%>
+          <%= form.label :text, 'Vos notes, informations ou liens', class: 'font-weight-bold' %>
+          <%= form.text_area :text, class: 'form-control', placeholder: 'Viste des musées de Paris'%>
+        </div>
+
+        <hr>
+
+        <div class="form-group mb-4">
+          <%= form.label :image_url, "Importer une photo à partir d'une URL", class: 'font-weight-bold' %>
+          <%= form.text_field :image_url, class: 'form-control', placeholder: 'https://images.unsplash.com/photo' %>
         </div>
 
         <div class="form-group mb-4">
-          <%= form.label :image_url, 'Image avec son URL' %>
-          <%= form.text_area :image_url, class: 'form-control', placeholder: 'https://images.unsplash.com/photo' %>
+          <%= form.label :image, 'Importer une photo de votre disque-dur', class: 'font-weight-bold' %>
+          <br>
+          <%= form.file_field :image %>
         </div>
 
         <div class="actions mt-5 text-center mb-5">

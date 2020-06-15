@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :trips do
     resources :events do
-      resources :notes
+      resources :notes do
+        resources :images, only: [:create]
+      end
     end
   end
+
    resources :users, only: [:show,:edit, :update] do
      resources :avatars, only: [:create]
    end

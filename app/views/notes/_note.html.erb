@@ -1,32 +1,39 @@
 <div class="card grab mt-4 drag p-0 border h-100" draggable="true">
-  <div class="card-header d-flex justify-content-between">
 
-    <% unless note.title.to_s.empty?  %>
+  <!-- Affichage des boutons uniquement pour le trip owner -->
+
+  <% if user_trip_owner?(note.event.trip) %>
+    <div class="justify-self-end">
+      <%= link_to edit_trip_event_note_path(note.event.trip, note.event, note) , class: "text-info" do %><i class="fas fa-pencil-alt" title="Modifier la note"></i><% end %>
+      <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-info" do %><i class="fas fa-trash-alt" title="Supprimer la note"></i><% end %>
+    </div>
+  <% end %>
+
+
+  <% unless note.title.to_s.empty?  %>
+    <div class="card-body">
       <h5 class="card-title"><%= note.title %></h5>
-    <% else %>
-      <h5 class="card-title">[Ajouter un titre]</h5>
-    <% end %>
+    </div>
+  <% end %>
 
-    <!-- Affichage des boutons uniquement pour le trip owner -->
 
-    <% if user_trip_owner?(note.event.trip) %>
-      <div class="justify-self-end">
-        <%= link_to edit_trip_event_note_path(note.event.trip, note.event, note) , class: "text-info" do %><i class="fas fa-pencil-alt" title="Modifier la note"></i><% end %>
-        <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-info" do %><i class="fas fa-trash-alt" title="Supprimer la note"></i><% end %>
-      </div>
-    <% end %>
+  <% if note.image.attached? %>
+    <div class="card-body">
+      <%= image_tag note.image, alt: 'image', class: "img-fluid" %>
+    </div>
+  <% end %>
 
-  </div>
+  <% unless note.image_url.to_s.empty?  %>
+    <div class="card-body">
+      <img src="<%= note.image_url %>" class="img-fluid">
+    </div>
+  <% end %>
 
-  <!-- ./Affichage des boutons uniquement pour le trip owner -->
 
-  <div class="card-body mx-3">
-    <% unless note.image_url.to_s.empty?  %>
-     <img src="<%= note.image_url %>" class="img-fluid">
-    <% end %>
-    <% unless note.text.to_s.empty? %>
+  <% unless note.text.to_s.empty? %>
+    <div class="card-body">
       <p class="card-text"><%= note.text %></p>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
 </div>

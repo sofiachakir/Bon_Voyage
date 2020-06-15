@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
     @event.trip = @trip
-    
+
     if @event.save
       flash[:success] = "Votre évènement a été créé"
       redirect_to trip_events_path(@trip)

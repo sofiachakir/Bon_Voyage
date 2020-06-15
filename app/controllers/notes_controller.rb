@@ -5,6 +5,8 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    @trip = Trip.find(params[:trip_id])
+    @event = Event.find(params[:event_id])
   end
 
   def create
@@ -45,7 +47,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :image_url, :text)
+    params.require(:note).permit(:title, :image_url, :text, :image)
   end
 
 end
