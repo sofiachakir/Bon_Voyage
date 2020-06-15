@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     
     if @event.save
       flash[:success] = "Votre évènement a été créé"
-      redirect_to trip_events_path(@trip)
+      redirect_to trip_path(@trip)
     else
       flash[:error] = @event.errors.full_messages
       render :new
