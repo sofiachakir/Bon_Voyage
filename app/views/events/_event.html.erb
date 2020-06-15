@@ -1,4 +1,4 @@
-<div class="collapse" id="collapseWeek<%= week_num %>Day<%= index %>">
+<div class="collapse show" id="collapseWeek<%= week_num %>Day<%= index %>">
   <div class="card mx-5 p-0 border mt-5">
 
     <div class="card-header h6 d-flex justify-content-between">
@@ -18,8 +18,6 @@
       <!-- Affichage des boutons uniquement pour le trip owner -->
       <% if user_trip_owner?(event.trip) %>
         <div class="">
-          <!-- Bouton pour ajouter-->
-          <%= link_to new_trip_event_note_path(event.trip, event), class: "mr-2" do %><i class="fas fa-plus" title="Ajouter une note"></i><% end %>
           <!-- Bouton pour modifier-->
           <%= link_to edit_trip_event_path(event.trip, event, day), class: "mr-2" do %><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i><%end %>
           <!-- Bouton pour supprimer-->
@@ -30,6 +28,13 @@
     </div>
 
     <div class="container">
+      <% if user_trip_owner?(event.trip) %>
+        <div class="text-center mt-3">
+           <!-- Bouton pour ajouter-->
+            <%= link_to new_trip_event_note_path(event.trip, event), class: "btn btn-secondary mb-3" do %><i class="fas fa-plus mr-2"></i> Ajouter une note<% end %>
+           
+        </div>
+      <% end %>
       <div class="card-columns thumbnail-sortable">
         <%= render event.notes %>
       </div>
