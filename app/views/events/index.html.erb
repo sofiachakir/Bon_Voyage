@@ -3,8 +3,11 @@
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
     <div class="col-md-7 text-center">
-
-        <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 300px;">
+      <% if @trip.picture.attached? %>
+      <%= image_tag @trip.picture, alt: 'picture', size: '500', class: "img-fluid rounded mb-3 mb-md-0" %>
+      <% else %>
+        <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 330px;">
+      <% end %>
     </div>
     <div class="col-md-5">
       <h3 class="mb-3"><%= @trip.title %></h3>

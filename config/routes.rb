@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'pictures/create'
   root to: 'trips#index'
   devise_for :users
   resources :trips do
+    resources :pictures, only: [:create]
     resources :events do
       resources :notes
     end
