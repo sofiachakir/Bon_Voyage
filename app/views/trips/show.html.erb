@@ -24,7 +24,9 @@
             <div class="modal-body">
               <%= form_tag trip_pictures_path(@trip), multipart: true do %>
               <%= file_field_tag :picture %>
-              <%= image_tag @trip.picture, alt: 'picture', size: '100', class: "img-fluid rounded mb-3 mb-md-0" %>
+              <% if @trip.picture.attached? %>
+                <%= image_tag @trip.picture, alt: 'picture', size: '100', class: "img-fluid rounded mb-3 mb-md-0" %>
+              <% end %>
             </div>
             <div class="modal-footer">
               <%= submit_tag "Mettre à jour" %>
