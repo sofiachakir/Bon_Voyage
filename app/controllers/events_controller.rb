@@ -5,7 +5,15 @@ class EventsController < ApplicationController
 
   def index
     @trip = Trip.find(params[:trip_id])
-    @events = @trip.events
+    # @events = @trip.events
+    @events = Event.geocoded
+
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
   end
 
   def show
@@ -22,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
     @event.trip = @trip
-    
+
     if @event.save
       flash[:success] = "Votre évènement a été créé"
       redirect_to trip_events_path(@trip)

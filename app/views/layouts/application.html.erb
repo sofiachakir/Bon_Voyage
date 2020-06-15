@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -26,5 +29,29 @@
     <%= yield %>
 
     <%= render 'shared/footer'%>
+
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYm9udm95YWdlIiwiYSI6ImNrYmdoZ3dpeTE1bnoydXA4YjczeWg1MW0ifQ.yDOBAippFYqa66I4q9Ilxg';
+      const mapElement = document.getElementById('map');
+      if (mapElement) {
+
+      const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11'
+      });
+
+      const markers = JSON.parse(mapElement.dataset.markers);
+      markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+      });
+
+      const bounds = new mapboxgl.LngLatBounds();
+      markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+      map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+      }
+    </script>
   </body>
 </html>

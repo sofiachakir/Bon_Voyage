@@ -94,5 +94,12 @@
     </div>
     <!--./ Affichage semaines dans une card -->
   </div>
+<br>
+   <div id="map"
+     style="width: 50%; height: 300px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <!-- ./ Accordeon -->
 </div>
+
+
