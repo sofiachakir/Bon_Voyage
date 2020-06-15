@@ -35,5 +35,39 @@
       </div>
     </div>
 
+    <%# if  user_trip_owner?(@trip) %>
+      <div class="card-footer">
+        <h3>Ajouter un commentaire</h3>
+        <%= render partial: "form_comment" %>
+        <%= render partial: "event", collection: @events,
+           as: :event, locals: {event: @event, index: index, day: day, week_num: week_num} %>
+      </div>
+
+      <%#= event.comment %>
+      <%#= puts "="*60 %>
+      <%#= puts @trip.events%>
+    <%# end %>
+
   </div>
 </div>
+
+ <!-- &&  event.trip.is_past? -->
+
+         <%#= render partial: "form_comment", collection: @event,
+           as: :event, locals: {event: @event}%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
