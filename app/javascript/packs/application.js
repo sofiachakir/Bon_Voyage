@@ -18,9 +18,11 @@
 
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initCountries } from '../plugins/init_countries';
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
+  initCountries();
   initMapbox();
 })
 
