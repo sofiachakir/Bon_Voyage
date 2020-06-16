@@ -86,4 +86,26 @@ class Trip < ApplicationRecord
     self.start_date < Time.now
   end
 
+  def is_ongoing?
+    self.start_date <= Time.now && self.end_date >= Time.now
+  end
+
+  # def recap_of_the_day_send
+  #   if self.is_ongoing?
+  #     trip.days.each do |day|
+  #       UserMailer.recap_of_the_day_email(self.user, self, day).deliver_now
+  #     end
+  #   end
+  # end
+
+  # def recap_of_the_day_send
+ 
+  #     trip.start_date == Time.now
+  #     trip.days.each do |day|
+  #         UserMailer.recap_of_the_day_email(self).deliver_now
+  #       end
+  #     end
+  #   end
+  # end
+
 end
