@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalNoteEdit<%= note.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modifier une note</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p>*Vous avez la possibilité de modifier ou d'ajouter une ou plusieurs informations.</p>
+
+        <%= form_with url: trip_event_note_path(@trip, event, note), method: "patch" do |form| %>
+
+        <div class="form-group mb-4">
+          <%= form.label :title, 'Un titre ou du texte en gras' %>
+          <%= form.text_field :title, value: note.title, class: 'form-control'%>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= form.label :text, 'Vos notes, informations ou liens' %>
+          <%= form.text_area :text, value: note.text, class: 'form-control', placeholder: 'Viste des musées de Paris'%>
+        </div>
+
+        <hr>
+
+        <div class="form-group mb-4">
+          <%= form.label :image_url, "Importer une photo à partir d'une URL" %>
+          <%= form.text_field :image_url, value: note.image_url, class: 'form-control' %>
+        </div>
+
+        <%if note.image.attached?%>
+          <div class="form-group mb-4">
+            <%= form.label :image, 'Image présente' %>
+            <br>
+
+          <%= image_tag note.image, alt: 'image', class: "img-fluid" %>
+          <%= form.file_field :image, value: note.image, direct_upload: true %>
+          </div>
+        <%else%>
+          <div class="form-group mb-4">
+          <%= form.label :image, 'Importer une photo de votre disque-dur' %>
+          <br>
+            <%= form.file_field :image, direct_upload: true %>
+          <%end%>
+        </div>
+      </div>
+
+      <div class="modal-footer text-center">
+        <div class="container">
+          <%= form.submit 'Modifier mes Notes', class: 'btn btn-primary btn-lg mx-auto' %>
+        </div>
+        <% end %>
+        <div class="container">
+          <%= link_to "Revenir en arrière", :back , class: 'btn btn-secondary btn-sm mn-5' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

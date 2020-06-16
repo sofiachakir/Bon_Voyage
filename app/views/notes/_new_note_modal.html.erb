@@ -1,0 +1,53 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalNoteNew<%= event.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter une note</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p>*Vous avez la possibilité d'ajouter une ou plusieurs informations.</p>
+
+        <%= form_with model: @note, url: trip_event_notes_path(@trip, event), method: "post" do |form| %>
+
+        <div class="form-group mb-4">
+          <%= form.label :title, 'Un titre ou du texte en gras' %>
+          <%= form.text_field :title, class: 'form-control', placeholder: 'Tour Eiffel'%>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= form.label :text, 'Vos notes, informations ou liens' %>
+          <%= form.text_area :text, class: 'form-control', placeholder: 'Viste des musées de Paris'%>
+        </div>
+
+        <hr>
+
+        <div class="form-group mb-4">
+          <%= form.label :image_url, "Importer une photo à partir d'une URL" %>
+          <%= form.text_field :image_url, class: 'form-control', placeholder: 'https://images.unsplash.com/photo' %>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= form.label :image, 'Importer une photo de votre disque-dur' %>
+          <br>
+          <%= form.file_field :image, direct_upload: true %>
+        </div>
+      </div>
+
+      <div class="modal-footer text-center">
+        <div class="container">
+          <%= form.submit 'Enregistrer mes Notes', class: 'btn btn-primary btn-lg mx-auto' %>
+        </div>
+        <% end %>
+        <div class="container">
+          <%= link_to "Revenir en arrière", :back , class: 'btn btn-secondary btn-sm mn-5' %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

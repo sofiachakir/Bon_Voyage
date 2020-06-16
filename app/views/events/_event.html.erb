@@ -37,9 +37,13 @@
       <% if user_trip_owner?(event.trip) %>
         <div class="text-center mt-3">
            <!-- Bouton pour ajouter-->
-            <%= link_to new_trip_event_note_path(event.trip, event), class: "btn btn-secondary mb-3" do %><i class="fas fa-plus mr-2"></i> Ajouter une note<% end %>
+
+           <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalNoteNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une note</button>
 
         </div>
+
+        <%= render partial: "notes/new_note_modal", locals: {event: event} %>
+
       <% end %>
       <div class="card-columns thumbnail-sortable">
         <%= render event.notes %>
