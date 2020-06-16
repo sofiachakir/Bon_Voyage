@@ -24,3 +24,30 @@
   margin-left: -3px;
   top: 0;
 }
+
+@media print {
+    /* les styles d'impression commencent ici */
+    @page {
+        margin: 1cm;
+    }
+
+    .page-footer{
+      display: none;
+    }
+
+    .little-jumbo {
+      display: none;
+    }
+
+    .btn {
+      display: none;
+    }
+
+    .fas.fa-pencil-alt {
+      display: none;
+    }
+
+    .fas.fa-trash-alt {
+      display: none;
+    }
+}

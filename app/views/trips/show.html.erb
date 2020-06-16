@@ -51,6 +51,7 @@
 				<div class="mt-3">
 					<%= link_to "Modifier", edit_trip_path(@trip), class: "btn btn-primary" %>
 					<%= link_to "Supprimer", trip_path(@trip), method: :delete, data: {confirm: "Etes-vous sûr de vouloir supprimer ce voyage ?"}, class: "btn btn-secondary" %>
+					<%= link_to 'Imprimer la page', '#', :onclick => 'window.print();return false;', class: "btn btn-secondary" %>
 				</div>
 			<% end %>
 
@@ -136,7 +137,7 @@
 		<!-- Detail tab = Vue détaillée -->
 		<div class="tab-pane" id="detail" role="tabpanel" aria-labelledby="detail-tab">
 			<!-- Accordeon -->
-		  <div class=" container mt-5 accordion" id="accordionWeek">
+		  <div class="container mt-5 accordion" id="accordionWeek">
 		    <!-- Affichage semaines dans une card -->
 		    <div class="card p-0">
 		      <% @trip.week_weeks_days.each_with_index do |week, index| %>
