@@ -1,75 +1,119 @@
-<div class="container my-3">
+<div class="container fluid my-5">
 <!-- Bannière avec le username et modification du profil -->
-	<div class="profil  align-items-center">
-		<div class="row align-items-center">
 
-		<!-- Image à changer -->
+<h2 class="my-5">Bienvenue sur votre profil</h2>
 
+	<div class="row">
+		<div class="col-sm-4">
+			<!-- Image avatar -->
 			<%if @user.avatar.attached?%>
-				<%= image_tag @user.avatar, alt: 'avatar', class: "rounded-circle col-2"  %>
+				<%= image_tag @user.avatar, alt: 'avatar', class: "img-fluid" %>
 			<%else%>
-				<img class="rounded-circle col-2" alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar">
+				<img alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar"  class="img-fluid" >
 			<%end%>
 
-			<div class= "col-2 align-items-center">
+	
+		</div>
 
+		<div class="col-sm-8">
+			
+			<!-- formulaire pour ajouter son nom -->
+			<div class="user-name" style="width: 15rem;">
 				<!-- Si pas de username, on affiche son email -->
 				<% if @user.user_name %>
 					<h2 class="textname"><%= @user.user_name %></h2>
-
 				<!-- formulaire pour ajouter son nom -->
 				<% if current_user! && @user.user_name == '' %>
 					<%= render 'form' %>
 				<% end %>
-
 				<!-- formulaire pour modifier son nom -->
-				<% if current_user! && @user.user_name != ''%>
-					<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
-
-						<div class="form-popup" id="myForm">
-							<%= form_for @user do |form| %>
-								<div class="form-group mb-2">
-									<%= form.text_field :user_name, class: 'form-control' %>
-								</div>
-								<%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
-								<button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
-							<% end %>
+				<% if current_user! && @user.user_name != ''%><a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
+				<div class="form-popup" id="myForm">
+					<%= form_for @user do |form| %>
+						<div class="form-group mb-2">
+							<%= form.text_field :user_name, class: 'form-control' %>
 						</div>
-
+					<%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+					<button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
+					<% end %>
+				</div>
 				<% end %>
 
 				<% else %>
-					<!-- formulaire pour ajouter son nom -->
 					<% if current_user! %>
 						<%= render 'form' %>
 					<% end %>
 				<% end %>
-
 			</div>
 
-		<!-- Lien vers éditer mon profil -->
-			<% if current_user! %>
-				<div class="col-4 ml-auto text-center">
-					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-primary textname2 ' %>
+			<!-- Bouton modif avatar -->
+			<button type="button" class="btn btn-secondary  btn-sm mt-4" data-toggle="modal" data-target="#myModal">Modifier mon avatar</button>
+  		<!-- Modal -->
+  		<div class="modal fade" id="myModal" role="dialog">
+    		<div class="modal-dialog">
+      		<!-- Modal content-->
+      		<div class="modal-content">
+        		<div class="modal-header">
+          		<h4 class="modal-title">Modifier mon avatar</h4>
+          		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        		</div>
+        		<div class="modal-body">
+         		 	<%= form_tag user_avatars_path(@user), multipart: true do %>
+          		<%= file_field_tag :avatar %>
+          		<%if @user.avatar.attached? %>
+          		<%= image_tag @user.avatar, alt: 'avatar', size: '100', class: "img-fluid rounded mb-3 mb-md-0" %>
+          		<%end%>
+        		</div>
+        		<div class="modal-footer">
+          		<%= submit_tag "Mettre à jour" %>
+          		<% end %>
+        		</div>
+      		</div>
 				</div>
-			<% end %>
+			</div>
+
+			<!-- Lien vers éditer mon profil -->
+			<div class="edit-profil mt-4">
+				<% if current_user! %>
+					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-secondary  btn-sm' %>
+				<% end %>
+			</div>
+
+<hr class="row mt-5">
+<div class="container fluid d-flex align-items-end justify-content-end">
+			<div class="row">
+			<div class="text-center mr-2 ml-2">
+    		<p>Tous vos voyages
+    		<%= @user.trips.length %></p>
+			</div>
+			<p> / </p>
+			<div class="text-center mr-2 ml-2">
+    		<p>Voyages passés
+    		<% if @user.previous_trips %>
+    		<%= @user.previous_trips.length %>
+    		<% else %> 0 </p>
+    		<% end %>
+				</div>
+				<p> / </p>
+				<div class="text-center mr-2 ml-2">
+					<%= link_to new_trip_path do %>Nouveau voyage<i class="fas fa-plus-circle ml-2">
+					</i><% end %>
+				</div>
+			</div>
+		</div>
+</hr>
+<hr class="row mt-n1"></hr>
 		</div>
 	</div>
 </div>
 
-<div class="container">
-	<%= form_tag user_avatars_path(@user), class: "mt-2 textname2", multipart: true do %>
-		<%= file_field_tag :avatar %>
-		<p class="mt-2 textname2"><%= submit_tag "mettre à jour" %></p>
-	<% end %>
-	<hr>
-</div>
+<br>
 
-<div class="container my-5 mb-5">
+<div class="container my-5 mb-5 mt-5">
 	<div class="row row-cols-1 row-cols-md-2">
 	  <div class="col mb-4">
 	    <div class="card-body">
-				<h3 class=" mb-5 text-center">Mon voyage à venir</h3>
+				<h3 class=" mb-5 text-center font-weight-light">Mon voyage à venir</h3>
 					<% if @user.upcoming_trip %>
 						<%= render @user.upcoming_trip %>
 					<% else %>
@@ -88,4 +132,6 @@
 	    </div>
 	  </div>
 	</div>
+</div>
+
 </div>
