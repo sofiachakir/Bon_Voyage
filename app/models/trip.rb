@@ -82,4 +82,8 @@ class Trip < ApplicationRecord
     end
   end
 
+  def is_past?
+    self.start_date < Time.now
+  end
+
 end

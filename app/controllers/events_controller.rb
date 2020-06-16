@@ -23,6 +23,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @day = params[:format]
+    @event = Event.find(params[:id])
   end
 
   def create
@@ -46,17 +47,25 @@ class EventsController < ApplicationController
   end
 
   def update
+    puts "="*60
+    puts params
+
+
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
 
-    if @event.update(event_params)
-      flash[:success] = "Votre évènement a été mis à jour"
+    if @event.update(comment: params[:comment])
+      flash[:success] = "Votre commentaire a été mis à jour"
       redirect_to trip_path(@trip)
     else
-      flash[:error] = @event.errors.full_messages
-      render :edit
+      if @event.update(event_params)
+        flash[:success] = "Votre évènement a été mis à jour"
+        redirect_to trip_events_path(@trip)
+      else
+        flash[:error] = @event.errors.full_messages
+        render :edit
+      end
     end
-
   end
 
   def destroy
@@ -74,8 +83,7 @@ class EventsController < ApplicationController
     event_params = { city_name: params[:city_name],
                      name_event: params[:name_event],
                      start_time: new_start_time,
-                     end_time: new_end_time,
-                     comment: params[:comment] }
+                     end_time: new_end_time}
   end
 
   def new_start_time
