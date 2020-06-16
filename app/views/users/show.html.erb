@@ -1,7 +1,7 @@
 <div class="container fluid my-5">
 <!-- Bannière avec le username et modification du profil -->
 
-<h2 class="my-5">Bienvenue sur votre profil</h2>
+	<h2 class="my-5">Bienvenue sur votre profil</h2>
 
 	<div class="row">
 		<div class="col-sm-4">
@@ -11,8 +11,6 @@
 			<%else%>
 				<img alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar"  class="img-fluid" >
 			<%end%>
-
-	
 		</div>
 
 		<div class="col-sm-8">
@@ -28,7 +26,7 @@
 				<% end %>
 				<!-- formulaire pour modifier son nom -->
 				<% if current_user! && @user.user_name != ''%>
-				<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
+					<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
 				<div class="form-popup" id="myForm">
 					<%= form_for @user do |form| %>
 						<div class="form-group mb-2">
@@ -80,20 +78,20 @@
 				<% end %>
 			</div>
 
-<hr class="row mt-5">
-<div class="container fluid d-flex align-items-end justify-content-end">
+	<hr class="row mt-5">
+		<div class="container fluid d-flex align-items-end justify-content-end">
 			<div class="row">
-			<div class="text-center mr-2 ml-2">
-    		<p>Tous vos voyages
-    		<%= @user.trips.length %></p>
-			</div>
-			<p> / </p>
-			<div class="text-center mr-2 ml-2">
-    		<p>Voyages passés
-    		<% if @user.previous_trips %>
-    		<%= @user.previous_trips.length %>
-    		<% else %> 0 </p>
-    		<% end %>
+				<div class="text-center mr-2 ml-2">
+    			<p>Tous vos voyages
+    			<%= @user.trips.length %></p>
+				</div>
+				<p> / </p>
+				<div class="text-center mr-2 ml-2">
+    			<p>Voyages passés
+    			<% if @user.previous_trips %>
+    			<%= @user.previous_trips.length %>
+    			<% else %> 0 </p>
+    			<% end %>
 				</div>
 				<p> / </p>
 				<div class="text-center mr-2 ml-2">
@@ -102,10 +100,11 @@
 				</div>
 			</div>
 		</div>
-</hr>
-<hr class="row mt-n1"></hr>
-		</div>
+	</hr>
+
+	<hr class="row mt-n1"></hr>
 	</div>
+</div>
 </div>
 
 <br>
@@ -134,5 +133,4 @@
 	  </div>
 	</div>
 </div>
-
 </div>
