@@ -60,7 +60,7 @@ class Trip < ApplicationRecord
   def events_by_date(date)
     # Cette méthode renvoie un array de events qui ont lieu à la date 'date'
     events_by_date = []
-    self.events.each do |event|
+    self.events.order(:start_time).each do |event|
       unless event.start_time.nil?
         if event.start_time.strftime('%D') == date.strftime('%D')
           events_by_date << event
