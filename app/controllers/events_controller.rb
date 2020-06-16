@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :is_trip_creator?, only: [:new, :create]
-  #before_action :is_event_creator?, only: [:edit, :update, :destroy]
+  before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
   def index
     @trip = Trip.find(params[:trip_id])
@@ -60,6 +60,10 @@ class EventsController < ApplicationController
       flash[:success] = "Votre évènement a été mis à jour"
       redirect_to trip_path(@trip)
     else
+      if params[:new_trip_id] != nil
+        @event.destroy
+        redirect_to trip_path(@trip)
+      end
       flash[:error] = @event.errors.full_messages
       render :edit
     end

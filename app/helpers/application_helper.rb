@@ -29,9 +29,11 @@ module ApplicationHelper
 		else
 			@event = Event.find(params[:id])
 		end
-		unless current_user == @event.trip.user
-			flash[:error] = "Seul le créateur du voyage a accès à cette page"
-			redirect_to root_path
+		unless @event.trip.nil?
+			unless current_user == @event.trip.user
+				flash[:error] = "Seul le créateur du voyage a accès à cette page"
+				redirect_to root_path
+			end
 		end
 	end
 
