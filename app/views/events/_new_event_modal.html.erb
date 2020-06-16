@@ -1,5 +1,5 @@
 <div class="modal fade" id="week<%=index%>dayModal<%=ind%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-lg modal-dialog" role="document">
+  <div class="modal-lg modal-dialog-centered modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Créer un évènement</h5>
@@ -44,12 +44,10 @@
                 </div>
               </div>
             </div>
-
-            <div class="actions mt-5 text-center mb-5">
-              <%= submit_tag 'Enregistrer mon évènement', class: 'btn btn-primary btn-lg btn-block' %>
-            </div>
-
-          <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag 'Enregistrer mon évènement', class: 'btn btn-primary btn-lg mx-auto' %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -32,7 +32,7 @@
   <div class="accordion" id="accordionWeek">
     <!-- Affichage semaines dans une card -->
     <div class="card p-0">
-      <% @trip.week_weeks_days.each_with_ind do |week, index| %>
+      <% @trip.week_weeks_days.each_with_index do |week, index| %>
         <!-- Affichage numéro de semaine dans le card-header -->
         <div class="card-header" id="headingWeek<%= index %>" >
           <h2 class="mb-0">
