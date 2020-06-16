@@ -1,11 +1,25 @@
-Bonjour <%= @user.email %>! Voici le récapitulatif de votre journée.
-==========================================================
+Bonjour <%= @user.email %>! J'espère que vous passez un bon voyage. Voici le récapitulatif de votre journée.
+=============================================================================================================
+ 
+Nom de ton voyage: <%= @trip.title %>
+Jour: <%= @day %>
 
+Voici la liste de tous tes évènements:
+<% @events.each do |event| %>
 
+   - <%= event.start_time.strftime('%H:%M') unless event.start_time.nil? %> - <%= event.end_time.strftime('%H:%M') unless event.end_time.nil? %> : <%= event.city_name %> ,<%= event.name_event %>
+  <% event.notes.each do |note, ind| %>
+    <% unless note.title.to_s.empty?  %>
+      -> <%= note.title %>
+    <% end %>
+    <% unless note.text.to_s.empty? %>
+      -> <%= note.text %>
+    <% end %>
+  <% end %>
+<% end %>
 
 Pour accéder à ton espace utilisateur, connecte-toi via : <%= @url %>.
 
-BBBBBBBBB
 
 À très vite sur bon-voyage-app.herokuapp.com !
 La Team de BonVoyage vous remercie.

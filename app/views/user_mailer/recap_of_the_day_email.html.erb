@@ -45,13 +45,13 @@
 
                 <% if note.image.attached? %>
                   <div class="card-body">
-                    <%= image_tag note.image, alt: 'image', class: "img-fluid" %>
+                    <%= cl_image_tag(note.image.key, width: 500)%>
                   </div>
                 <% end %>
 
                 <% unless note.image_url.to_s.empty?  %>
                   <div class="card-body">
-                    <img src="<%= note.image_url %>" class="img-fluid">
+                    <img src="<%= note.image_url %>" class="img-fluid" style="width: 500px">
                   </div>
                 <% end %>
 
