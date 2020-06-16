@@ -7,4 +7,13 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Bienvenue sur notre site BonVoyage.')
 	end
 
+  def recap_of_the_day_email(user, trip, day)
+    @user = user
+    @trip = trip
+    @day = day
+    @events = @trip.events_by_date(day)
+    @url = 'https://bon-voyage-app.herokuapp.com/users/signin'
+    mail(to: @user.email, subject: 'Récapitulatif de la journée.')
+  end
+
 end
