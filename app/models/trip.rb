@@ -60,7 +60,7 @@ class Trip < ApplicationRecord
   def events_by_date(date)
     # Cette méthode renvoie un array de events qui ont lieu à la date 'date'
     events_by_date = []
-    self.events.each do |event|
+    self.events.order(:start_time).each do |event|
       unless event.start_time.nil?
         if event.start_time.strftime('%D') == date.strftime('%D')
           events_by_date << event
@@ -85,5 +85,27 @@ class Trip < ApplicationRecord
   def is_past?
     self.start_date < Time.now
   end
+
+  def is_ongoing?
+    self.start_date <= Time.now && self.end_date >= Time.now
+  end
+
+  # def recap_of_the_day_send
+  #   if self.is_ongoing?
+  #     trip.days.each do |day|
+  #       UserMailer.recap_of_the_day_email(self.user, self, day).deliver_now
+  #     end
+  #   end
+  # end
+
+  # def recap_of_the_day_send
+ 
+  #     trip.start_date == Time.now
+  #     trip.days.each do |day|
+  #         UserMailer.recap_of_the_day_email(self).deliver_now
+  #       end
+  #     end
+  #   end
+  # end
 
 end

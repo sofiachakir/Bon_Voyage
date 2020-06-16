@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+      <br>
+      <h1>Bonjour <%= @user.email %>! J'espère que vous passez un bon voyage. Voici le récapitulatif de votre journée.</h1>
+      <br>
+      <h3 class="text-center">Nom du voyage: <%= @trip.title %></h3>
+      <h3 class="text-center"><%= @day %></h3>
+
+      <% @events.each do |event| %>
+        <div class="card mx-5 p-0 border mt-5">
+          <div class="card-header h6 d-flex justify-content-between">
+            <div class="">
+              <i class="far fa-clock mr-2"></i>
+              <%= event.start_time.strftime('%H:%M') unless event.start_time.nil? %>
+              - <%= event.end_time.strftime('%H:%M') unless event.end_time.nil? %>
+            </div>
+            <div class="">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              <%= event.city_name %>
+            </div>
+            <div class="">
+              <i class="fas fa-directions mr-2"></i>
+              <%= event.name_event %>
+            </div>
+          </div>
+
+          <% event.notes.each do |note| %>
+          <div class="card-body">
+            <div class="card-columns">
+              <div class="card grab mt-4 drag p-0 border h-100" draggable="true">
+                <% unless note.title.to_s.empty?  %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= note.title %></h5>
+                  </div>
+                <% end %>
+
+
+                <% if note.image.attached? %>
+                  <div class="card-body">
+                    <%= cl_image_tag(note.image.key, width: 500)%>
+                  </div>
+                <% end %>
+
+                <% unless note.image_url.to_s.empty?  %>
+                  <div class="card-body">
+                    <img src="<%= note.image_url %>" class="img-fluid" style="width: 500px">
+                  </div>
+                <% end %>
+
+
+                <% unless note.text.to_s.empty? %>
+                  <div class="card-body">
+                    <p class="card-text"><%= note.text %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <p>Pour accéder à ton espace utilisateur, connecte-toi sur l'URL : <a href="https://bon-voyage-app.herokuapp.com/users/signin">bon-voyage-app.herokuapp.com/users/signin</a>.</p>
+
+      <br>
+      <p> À très vite sur  <a href="https://bon-voyage-app.herokuapp.com/">bon-voyage-app.herokuapp.com</a> !</p>
+
+      <em>La Team de BonVoyage vous remercie.</em>
+
+    </div>
+  </body>
+
+</html>

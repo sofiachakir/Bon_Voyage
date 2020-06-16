@@ -23,6 +23,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @day = params[:format]
+
     @event = Event.find(params[:id])
   end
 

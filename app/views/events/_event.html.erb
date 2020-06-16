@@ -23,7 +23,11 @@
           <%= link_to copy_trip_event_path(event.trip, event), class: "mr-2" do%> <i class="fas fa-copy" title="Copier l'événement"></i><% end %>
         <% else %>
           <!-- Bouton pour modifier-->
-          <%= link_to edit_trip_event_path(event.trip, event, day), class: "mr-2" do %><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i><%end %>
+          <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
+
+          <%= render partial: "events/edit_event_modal", locals: {event: event, day: day} %>
+
+
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
         <% end %>
