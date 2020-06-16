@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :is_trip_creator?, only: [:new, :create]
-  # before_action :is_event_creator?, only: [:edit, :update, :destroy]
+  before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
   def index
     @trip = Trip.find(params[:trip_id])
