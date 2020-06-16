@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :is_trip_creator?, only: [:new, :create]
-  before_action :is_event_creator?, only: [:edit, :update, :destroy]
+  #before_action :is_event_creator?, only: [:edit, :update, :destroy]
 
   def index
     @trip = Trip.find(params[:trip_id])
@@ -47,24 +47,21 @@ class EventsController < ApplicationController
   end
 
   def update
-    puts "="*60
-    puts params
-
-
-    @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
 
-    if @event.update(comment: params[:comment])
-      flash[:success] = "Votre commentaire a été mis à jour"
+    if params[:new_trip_id] == nil
+      @trip = Trip.find(params[:trip_id])
+    else
+      @trip = Trip.find(params[:new_trip_id])
+      @event.trip = @trip
+    end
+
+    if @event.update(event_params)
+      flash[:success] = "Votre évènement a été mis à jour"
       redirect_to trip_path(@trip)
     else
-      if @event.update(event_params)
-        flash[:success] = "Votre évènement a été mis à jour"
-        redirect_to trip_events_path(@trip)
-      else
-        flash[:error] = @event.errors.full_messages
-        render :edit
-      end
+      flash[:error] = @event.errors.full_messages
+      render :edit
     end
   end
 
@@ -76,14 +73,25 @@ class EventsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def copy
+    @trips = current_user.trips
+    @original_event = Event.find(params[:id])
+    @event = @original_event.dup
+    @event.save
+    @trip = Trip.find(params[:trip_id])
+  end
+
   private
 
   def event_params
-    event_params = Hash.new
-    event_params = { city_name: params[:city_name],
+    if params[:comment] == nil
+      event_params = { city_name: params[:city_name],
                      name_event: params[:name_event],
                      start_time: new_start_time,
                      end_time: new_end_time}
+    else
+      event_params = { comment: params[:comment] }
+    end
   end
 
   def new_start_time

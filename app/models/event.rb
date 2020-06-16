@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :trip
+  belongs_to :trip, optional: true #Pour pouvoir copier un évènement
   has_many :notes, dependent: :destroy
 
   geocoded_by :city_name
