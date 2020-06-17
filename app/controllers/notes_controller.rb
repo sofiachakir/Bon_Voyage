@@ -54,7 +54,6 @@ class NotesController < ApplicationController
                      image_url: params[:image_url],
                      text: params[:text],
                      image: params[:image]}
-    # params.require(:note).permit(:title, :image_url, :text, :image)
   end
 
 end

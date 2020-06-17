@@ -25,7 +25,6 @@
 
           <%= render partial: "events/edit_event_modal", locals: {event: event, day: day} %>
 
-
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
         </div>

@@ -21,7 +21,7 @@
 
         <div class="form-group mb-4">
           <%= form.label :text, 'Vos notes, informations ou liens' %>
-          <%= form.text_area :text, value: note.text, class: 'form-control', placeholder: 'Viste des musées de Paris'%>
+          <%= form.text_area :text, value: note.text, class: 'form-control'%>
         </div>
 
         <hr>
@@ -31,20 +31,10 @@
           <%= form.text_field :image_url, value: note.image_url, class: 'form-control' %>
         </div>
 
-        <%if note.image.attached?%>
-          <div class="form-group mb-4">
-            <%= form.label :image, 'Image présente' %>
-            <br>
-
-          <%= image_tag note.image, alt: 'image', class: "img-fluid" %>
-          <%= form.file_field :image, value: note.image, direct_upload: true %>
-          </div>
-        <%else%>
-          <div class="form-group mb-4">
+        <div class="form-group mb-4">
           <%= form.label :image, 'Importer une photo de votre disque-dur' %>
           <br>
-            <%= form.file_field :image, direct_upload: true %>
-          <%end%>
+          <%= form.file_field :image %>
         </div>
       </div>
 

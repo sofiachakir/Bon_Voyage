@@ -6,7 +6,7 @@
     <div class="justify-self-end">
 
       <a type="button" data-toggle="modal" class="text-info" data-target="#myModalNoteEdit<%= note.id %>"><i class="fas fa-pencil-alt" title="Modifier la note"></i></a>
-
+<!-- ---------- -->
       <%= render partial: "notes/edit_note_modal", locals: {event: note.event, note: note} %>
 
       <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-info" do %><i class="fas fa-trash-alt" title="Supprimer la note"></i><% end %>
