@@ -50,4 +50,8 @@
     .fas.fa-trash-alt {
       display: none;
     }
+
+    .collapse {
+      height: auto !important;
+    }
 }

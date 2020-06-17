@@ -26,7 +26,7 @@ class Event < ApplicationRecord
     self.comment = nil
     #trip id : to change
     self.trip_id = nil
-    
+
   end
 
   def start_time_must_be_before_end_time
@@ -37,6 +37,7 @@ class Event < ApplicationRecord
 	  end
   end
 
+
   def self.with_comments
     events = []
     Event.all.each do |event|
@@ -45,6 +46,10 @@ class Event < ApplicationRecord
       end
     end
     return events.sample(2) 
+    
+  def is_past?
+    self.end_time < Time.now
+
   end
 
 end
