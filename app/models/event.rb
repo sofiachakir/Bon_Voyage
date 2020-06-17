@@ -45,11 +45,15 @@ class Event < ApplicationRecord
         events << event
       end
     end
-    return events.sample(2) 
-    
-  def is_past?
-    self.end_time < Time.now
+    return events.sample(2)
+  end
 
+  def is_past?
+    if self.end_time.nil?
+      self.trip.is_past?
+    else
+      self.end_time < Time.now
+    end
   end
 
 end
