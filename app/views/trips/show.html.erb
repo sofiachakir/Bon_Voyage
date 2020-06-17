@@ -110,7 +110,7 @@
 											  	<i class="fas fa-plus mr-2"></i> Ajouter un event
 												</button>
 											<% end %>
-											
+
 											<ul class="list-group list-group-flush">
 												<% if @trip.events_by_date(day).length == 0 %>
 													<li class="list-group-item text-secondary">Rien de prévu !</li>
@@ -184,7 +184,7 @@
 											  	<i class="fas fa-plus mr-2"></i> Ajouter un event
 												</button>
 		                  <% end %>
-		                  
+
 		                  <!-- ./Affichage des boutons uniquement pour le trip owner -->
 		                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>Day<%= ind %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>Day<%= ind %>">
 		                  </button>
@@ -215,9 +215,9 @@
 		<!-- Map tab = carte -->
 		<div class="tab-pane" id="events-map" role="tabpanel" aria-labelledby="events-map-tab">
 			<div class="container-fluid my-5 d-flex justify-content-center">
-				<div id="map" 
-				style="width: 50%; height: 300px;"
-		    data-markers="<%= @markers.to_json %>" 
+				<div id="map"
+				style="width: 100%; height: 600px;"
+		    data-markers="<%= @markers.to_json %>"
 		    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 		    </div>
 		  </div>
