@@ -37,8 +37,19 @@ class Event < ApplicationRecord
 	  end
   end
 
+
+  def self.with_comments
+    events = []
+    Event.all.each do |event|
+      if event.comment != "" && event.comment != " " && event.comment != nil
+        events << event
+      end
+    end
+    return events.sample(2) 
+    
   def is_past?
     self.end_time < Time.now
+
   end
 
 end

@@ -4,6 +4,7 @@ class TripsController < ApplicationController
 
   def index
   	@trips = Trip.all
+    @events = Event.with_comments
   end
 
   def show
