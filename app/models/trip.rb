@@ -40,7 +40,7 @@ class Trip < ApplicationRecord
   #si day == Monday il faut passer à la semaine suivante
       if day.strftime('%A') == "Sunday" || index == self.days.length-1
         week_weeks_days << current_week
-        currnav ent_week = []
+        current_week = []
       end
     end
     week_weeks_days
