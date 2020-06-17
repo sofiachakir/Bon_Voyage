@@ -15,11 +15,13 @@
         <i class="fas fa-directions mr-2"></i>
         <%= event.name_event %>
       </div>
-      <!-- Affichage des boutons uniquement pour le trip owner -->
-      <% if user_trip_owner?(event.trip) %>
+      
         <div class="">
+          <!-- Affichage des boutons uniquement pour le trip owner -->
+        <% if !user_trip_owner?(event.trip) %>
           <!-- Bouton pour copier-->
-          <a><i class="fas fa-copy" title="Copier l'événement"></i></a>
+          <%= link_to copy_trip_event_path(event.trip, event), class: "mr-2" do%> <i class="fas fa-copy" title="Copier l'événement"></i><% end %>
+        <% else %>
           <!-- Bouton pour modifier-->
           <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
 
@@ -28,8 +30,9 @@
 
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
+        <% end %>
         </div>
-      <% end %>
+      
       <!-- ./Affichage des boutons uniquement pour le trip owner -->
     </div>
 
