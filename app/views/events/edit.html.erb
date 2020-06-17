@@ -3,7 +3,8 @@
     <div class="container py-3 mx-auto col-7 my-5">
       <div class="row justify-content-center">
         <div class="col-md-12">
-
+          
+          <h4 class="mb-4 text-primary"><%= l(@day.to_date, format: '%A %d')%></h4>
           <%= form_tag trip_event_path(@trip, @event), method: "patch" do %>
 
             <div class="form-group mb-4">
