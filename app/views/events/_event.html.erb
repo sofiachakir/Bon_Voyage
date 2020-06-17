@@ -38,13 +38,18 @@
     <div class="container">
       <% if user_trip_owner?(event.trip) %>
         <div class="text-center mt-3">
-           <!-- Bouton pour ajouter-->
-
-           <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalNoteNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une note</button>
+          <!-- Bouton pour ajouter-->
+          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalTitleNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter un titre</button>
+          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalNoteNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une note</button>
+          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalImageUrlNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une image</button>
+          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalImageNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Uploader une image</button>
 
         </div>
 
+        <%= render partial: "notes/new_title_modal", locals: {event: event} %>
         <%= render partial: "notes/new_note_modal", locals: {event: event} %>
+        <%= render partial: "notes/new_image_url_modal", locals: {event: event} %>
+        <%= render partial: "notes/new_image_modal", locals: {event: event} %>
 
       <% end %>
       <div class="card-columns thumbnail-sortable">
