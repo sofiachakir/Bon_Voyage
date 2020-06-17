@@ -7,7 +7,7 @@
 				<div class="card-header">
 					<h5 class="card-title text-center">
 						<i class="fas fa-calendar-week mr-2"></i>
-						Semaine <%= index + 1 %> : <%= week[0].strftime('%d %B %Y') %> - <%= week[-1].strftime('%d %B %Y') %>
+						Semaine <%= index + 1 %> : <%= l(week[0].to_date, format: '%d %B %Y') %> - <%= l(week[-1].to_date, format: '%d %B %Y') %>
 					</h5>
 				</div>
 				<div class="card-body row row-cols-1 row-cols-md-4 mx-3">
@@ -16,7 +16,7 @@
 						<div class="col mb-4">
 							<div class="card h-100 p-0 shadow-sm border">
 								<div class="card-header">
-									<h5 class="card-subtitle text-center"><%= day.strftime("%A %d/%m") %></h5>
+									<h5 class="card-subtitle text-center"><%= l(day.to_date, format: '%A %d/%m') %></h5>
 								</div>
 								<div class="card-body">
 									<!--Affichage des évènements principaux-->
