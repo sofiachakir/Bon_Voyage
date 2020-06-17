@@ -26,7 +26,7 @@ class Event < ApplicationRecord
     self.comment = nil
     #trip id : to change
     self.trip_id = nil
-    
+
   end
 
   def start_time_must_be_before_end_time
@@ -35,6 +35,10 @@ class Event < ApplicationRecord
 	      errors.add(:end_time, "must be posterior to start_time")
 	    end
 	  end
+  end
+
+  def is_past?
+    self.end_time < Time.now
   end
 
 end
