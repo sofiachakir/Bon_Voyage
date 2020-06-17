@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h4 class="mb-4 text-primary"><%= day.to_time.strftime("%A %d")%></h4>
+        <h4 class="mb-4 text-primary"><%= l(day.to_date, format: '%A %d')%></h4>
 
           <%= form_tag trip_events_path(@trip, @event) do %>
 
