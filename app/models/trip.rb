@@ -24,17 +24,6 @@ class Trip < ApplicationRecord
     ((self.end_date - self.start_date) / 60 / 60 / 24).to_i
   end
 
-# # cette méthode nous renvoie le nombre de semaine que l'on a dans un voyage
-#   def weeks
-# # si semaine complète %7 = 0
-#     if self.duration % 7 == 0
-#       self.duration / 7
-# # si semaine incomplète %7 != 0 on ajoute une semaine en plus
-#     else
-#       (self.duration / 7) + 1
-#     end
-#   end
-
   def days
     days = []
     self.duration.times do |d|
@@ -89,23 +78,5 @@ class Trip < ApplicationRecord
   def is_ongoing?
     self.start_date <= Time.now && self.end_date >= Time.now
   end
-
-  # def recap_of_the_day_send
-  #   if self.is_ongoing?
-  #     trip.days.each do |day|
-  #       UserMailer.recap_of_the_day_email(self.user, self, day).deliver_now
-  #     end
-  #   end
-  # end
-
-  # def recap_of_the_day_send
- 
-  #     trip.start_date == Time.now
-  #     trip.days.each do |day|
-  #         UserMailer.recap_of_the_day_email(self).deliver_now
-  #       end
-  #     end
-  #   end
-  # end
 
 end
