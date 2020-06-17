@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
 
 	def welcome_email(user)
 		@user = user
-		@url = 'https://bon-voyage-app.herokuapp.com/users/signin'
+    @url = 'https://bon-voyage-app.herokuapp.com'
+		@sign_in_url = 'https://bon-voyage-app.herokuapp.com/users/sign_in'
 		mail(to: @user.email, subject: 'Bienvenue sur notre site BonVoyage.')
 	end
 
@@ -12,7 +13,8 @@ class UserMailer < ApplicationMailer
     @trip = trip
     @day = day
     @events = @trip.events_by_date(day)
-    @url = 'https://bon-voyage-app.herokuapp.com/users/signin'
+    @url = 'https://bon-voyage-app.herokuapp.com'
+    @sign_in_url = 'https://bon-voyage-app.herokuapp.com/users/sign_in'
     mail(to: @user.email, subject: 'Récapitulatif de la journée.')
   end
 
