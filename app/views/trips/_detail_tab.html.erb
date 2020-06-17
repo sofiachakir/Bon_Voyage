@@ -12,7 +12,7 @@
 		              <div class="flex-fill">
 		                <i class="fa fa-calendar mr-2"></i>
 		                Semaine <%= index + 1 %> -
-		                <%= week[0].strftime('%d %B %Y') %>
+		                <%= l(week[0].to_date, format: '%d %B %Y') %>
 		              </div>
 		              <!-- ./ Semaine -->
 		              <!-- Pays -->
@@ -37,7 +37,7 @@
 		                <div class="ml-5">
 		                  <h2 class="h6 text-primary">
 		                    <i class="far fa-dot-circle mr-2"></i>
-		                    J<%= ind + 1 %> - <%= day.strftime('%A %d %B') %>
+		                    J<%= ind + 1 %> - <%= l(day.to_date, format: '%A %d %B') %>
 		                  </h2>
 		                </div>
 		                <div class="ml-5 align-items-center">
