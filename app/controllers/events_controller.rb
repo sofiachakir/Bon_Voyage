@@ -48,22 +48,25 @@ class EventsController < ApplicationController
   end
 
   def update
-    @day = params[:format]
-    @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
 
-    if @trip.is_past?
-      @event.update(comment: params[:comment])
-      flash[:success] = "Votre commentaire a été mis à jour"
+    if params[:new_trip_id] == nil
+      @trip = Trip.find(params[:trip_id])
+    else
+      @trip = Trip.find(params[:new_trip_id])
+      @event.trip = @trip
+    end
+
+    if @event.update(event_params)
+      flash[:success] = "Votre évènement a été mis à jour"
       redirect_to trip_path(@trip)
     else
-      if @event.update(event_params)
-        flash[:success] = "Votre évènement a été mis à jour"
+      if params[:new_trip_id] != nil
+        @event.destroy
         redirect_to trip_path(@trip)
-      else
-        flash[:error] = @event.errors.full_messages
-        render :edit
       end
+      flash[:error] = @event.errors.full_messages
+      render :edit
     end
   end
 
@@ -75,14 +78,25 @@ class EventsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def copy
+    @trips = current_user.trips
+    @original_event = Event.find(params[:id])
+    @event = @original_event.dup
+    @event.save
+    @trip = Trip.find(params[:trip_id])
+  end
+
   private
 
   def event_params
-    event_params = Hash.new
-    event_params = { city_name: params[:city_name],
+    if params[:comment] == nil
+      event_params = { city_name: params[:city_name],
                      name_event: params[:name_event],
                      start_time: new_start_time,
                      end_time: new_end_time}
+    else
+      event_params = { comment: params[:comment] }
+    end
   end
 
   def new_start_time

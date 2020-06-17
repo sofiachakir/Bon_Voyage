@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="col-sm-8">
-			
+
 			<!-- formulaire pour ajouter son nom -->
 			<div class="user-name" style="width: 15rem;">
 				<!-- Si pas de username, on affiche son email -->
@@ -46,6 +46,7 @@
 			</div>
 
 			<!-- Bouton modif avatar -->
+      <% if current_user! %>
 			<button type="button" class="btn btn-secondary  btn-sm mt-4" data-toggle="modal" data-target="#myModal">Modifier mon avatar</button>
   		<!-- Modal -->
   		<div class="modal fade" id="myModal" role="dialog">
@@ -70,6 +71,7 @@
       		</div>
 				</div>
 			</div>
+      <% end %>
 
 			<!-- Lien vers éditer mon profil -->
 			<div class="edit-profil mt-4">
@@ -82,7 +84,7 @@
 		<div class="container fluid d-flex align-items-end justify-content-end">
 			<div class="row">
 				<div class="text-center mr-2 ml-2">
-    			<p>Tous vos voyages
+    			<p>Tous mes voyages
     			<%= @user.trips.length %></p>
 				</div>
 				<p> / </p>
@@ -95,8 +97,10 @@
 				</div>
 				<p> / </p>
 				<div class="text-center mr-2 ml-2">
+          <% if current_user! %>
 					<%= link_to new_trip_path do %>Nouveau voyage<i class="fas fa-plus-circle ml-2">
 					</i><% end %>
+          <% end %>
 				</div>
 			</div>
 		</div>

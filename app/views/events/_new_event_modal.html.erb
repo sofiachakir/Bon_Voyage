@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <h4 class="mb-4 text-primary"><%= day.to_time.strftime("%A %d")%></h4>
+        <h4 class="mb-4 text-primary"><%= l(day.to_date, format: '%A %d')%></h4>
 
           <%= form_tag trip_events_path(@trip, @event) do %>
 
@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-6">
                   <%= label_tag :city_name, 'Ville' %>
-                  <%= text_field_tag :city_name, nil, class: 'form-control', placeholder: 'Paris',required: true %>
+                  <%= text_field_tag :city_name, nil, class: 'form-control city-name', placeholder: 'Paris',required: true %>
                 </div>
               </div>
             </div>

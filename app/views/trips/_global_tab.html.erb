@@ -1,0 +1,50 @@
+<div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
+	<!-- Affichage du programme du voyage -->
+	<div class="container mt-5">
+		<% @trip.week_weeks_days.each_with_index do |week, index| %>
+		<!-- Affichage de la semaine -->
+			<div class="card p-0 shadow my-3">
+				<div class="card-header">
+					<h5 class="card-title text-center">
+						<i class="fas fa-calendar-week mr-2"></i>
+						Semaine <%= index + 1 %> : <%= l(week[0].to_date, format: '%d %B %Y') %> - <%= l(week[-1].to_date, format: '%d %B %Y') %>
+					</h5>
+				</div>
+				<div class="card-body row row-cols-1 row-cols-md-4 mx-3">
+					<% week.each_with_index do |day, ind| %>
+						<!-- Affichage du jour -->
+						<div class="col mb-4">
+							<div class="card h-100 p-0 shadow-sm border">
+								<div class="card-header">
+									<h5 class="card-subtitle text-center"><%= l(day.to_date, format: '%A %d/%m') %></h5>
+								</div>
+								<div class="card-body">
+									<!--Affichage des évènements principaux-->
+									<% if user_trip_owner?(@trip) %>
+										<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
+									  	<i class="fas fa-plus mr-2"></i> Ajouter un event
+										</button>
+									<% end %>
+
+									<ul class="list-group list-group-flush">
+										<% if @trip.events_by_date(day).length == 0 %>
+											<li class="list-group-item text-secondary">Rien de prévu !</li>
+										<% end %>
+										<% @trip.events_by_date(day).each do |event| %>
+											<li class="list-group-item">
+												<i class="fas fa-check-circle mr-2"></i><%= event.name_event %>
+											</li>
+										<% end %>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--./ Affichage jour-->
+					<% end %>
+				</div>
+				<!-- ./Affichage du programme du voyage -->
+			</div>
+			<!-- ./ Affichage semaine -->
+		<% end %>
+	</div>
+</div>

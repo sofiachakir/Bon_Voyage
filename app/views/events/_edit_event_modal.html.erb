@@ -10,13 +10,14 @@
       </div>
 
       <div class="modal-body">
+        <h4 class="mb-4 text-primary"><%= l(day.to_date, format: '%A %d')%></h4>
         <%= form_tag trip_event_path(@trip, event), method: "patch" do %>
 
         <div class="form-group mb-4">
           <div class="row">
             <div class="col-6">
               <%= label_tag :city_name, 'Ville' %>
-              <%= text_field_tag :city_name, event.city_name, class: 'form-control',required: true %>
+              <%= text_field_tag :city_name, event.city_name, class: 'form-control city-name',required: true %>
             </div>
           </div>
         </div>
