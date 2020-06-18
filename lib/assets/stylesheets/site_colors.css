@@ -24,7 +24,12 @@ html, body {
   border-color: #EF1852;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #D20F43;
+  border-color: #D20F43;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
   background-color: #D20F43;
   border-color: #D20F43;
 }
