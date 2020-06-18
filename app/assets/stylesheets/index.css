@@ -37,7 +37,7 @@
 }
 
 #commenttextbox p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 #commenttext {
@@ -46,4 +46,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+.card-text small {
+  font-size: 90%;
 }

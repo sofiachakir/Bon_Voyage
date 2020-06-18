@@ -22,10 +22,37 @@ box-shadow: none;
   cursor: grabbing;
 }
 
+.grab:hover i {
+  display: block !important;
+}
+
+
+#buttons {
+    width:262px;
+    top:50px;
+    left:-266px;
+    height: 50px;
+    background-color:red;
+    display: inline-block;
+    position:relative;
+}
+
 .grab {
 border: none !important;
-background-color: #F0F0F0;
+background-color: #FCFCFC;
 }
+
+.grab i {
+  display: none;
+  color: #EF1852;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.grab i:hover {
+  opacity: 0.9;
+}
+
 
 .card:hover img {
   transform: none;
