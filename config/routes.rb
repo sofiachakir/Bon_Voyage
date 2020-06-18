@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :trips do
     resources :pictures, only: [:create]
-    resources :events do
+    resources :events, only: [:create, :update, :destroy] do
       member do
         get 'copy'
       end
