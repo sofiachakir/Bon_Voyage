@@ -23,6 +23,11 @@ z-index: 99999;}
 
 /* Titre du site ou Logo */
 .brand {
-  max-height: 4vh;
   padding-top: 2px;
+  background-image: url(https://res.cloudinary.com/die4stsje/image/upload/v1592206227/brandv2_soc9iy.png);
+  width: 10rem;
+  height: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }

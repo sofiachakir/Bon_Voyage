@@ -23,17 +23,16 @@
 
 .little-jumbo {
   min-height: 30vh;
-  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1592206352/miniheaderv2_xhqi0g.png");
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1592499851/slice1_lsry3p.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 5rem;
   opacity: 55%;
 }
 
 .banner {
   min-height: 30vh;
-  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1592206314/iconesv2_kymvzy.png");
+  background: url("https://res.cloudinary.com/die4stsje/image/upload/v1592499905/ico_gsl1jv.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
