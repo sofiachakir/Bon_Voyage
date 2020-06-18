@@ -11,8 +11,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-
+      <div class="modal-dialog modal-dialog-centered">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -21,7 +20,7 @@
           </div>
           <div class="modal-body">
             <%= form_tag trip_pictures_path(trip), multipart: true do %>
-            <%= file_field_tag :picture %>
+            <%= file_field_tag :picture, required: true %>
             <% if trip.picture.attached? %>
               <%= image_tag trip.picture, alt: 'picture', size: '100', class: "img-fluid rounded mb-3 mb-md-0" %>
             <% end %>

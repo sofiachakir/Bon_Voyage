@@ -5,6 +5,6 @@ class AvatarsController < ApplicationController
     @user.avatar.attach(params[:avatar])
 
     redirect_to(user_path(@user))
-   end
+  end
 
 end

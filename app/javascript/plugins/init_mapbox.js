@@ -10,7 +10,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
       center: [-74.5, 40],
-      zoom: 100
+      zoom: 1
     });
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.NavigationControl());
