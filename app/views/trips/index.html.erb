@@ -1,7 +1,7 @@
 <div class="container my-5">
 
 	<div id="trip-pop" class="home_title my-5 d-flex justify-content-center" >
-		<h1>Voyages populaires</h1>
+		<h3>Voyages populaires</h3>
 	</div>
 
 <!-- Appel de la partial pour afficher les cartes de voyages -->
@@ -9,51 +9,41 @@
 		<%= render @trips %>
 	</div>
 
+  <hr>
 <!-- Ici il faudra ajouter les avis des voyageurs sur leurs voyages avec un caroussel-->
 <!-- <h3>Avis sur vos voyages</h3> -->
 	<div class="home_title my-5 d-flex justify-content-center" >
-		<h2>Avis sur vos voyages</h2>
+		<h3>Avis sur vos voyages</h3>
 	</div>
 
   <div class="row">
-
-    <div class="col">
-      <div class="card mb-3" style="max-width: 540px;">
+    <% @events.each do |event|%>
+    <div class="col-md-6 col-sm-12 my-2">
+      <div class="card mb-3 h-100" style="max-width: 540px;">
         <div class="row no-gutters">
           <div class="col-md-4">
-    <!-- Remplacer par code de l'avatar -->
-          <img src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" class="card-img" alt="...">
+            <%if event.trip.user.avatar.attached?%>
+              <%= image_tag event.trip.user.avatar, alt: 'avatar', class: "card-img" %>
+            <%else%>
+              <img alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar"  class="card-img" >
+            <%end%>
+
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Visite du chateau</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Martin Dupond</small></p>
+              <h5 class="card-title"><%= event.name_event %></h5>
+              <p class="card-text"><%= event.comment %></p>
+              <p class="card-text"><small class="text-muted"><%= event.trip.user.email %></small></p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col">
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-    <!-- Remplacer par code de l'avatar -->
-          <img src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Visite du chateau</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Martin Dupond</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <% end %>
+</div>
 
-  </div>
+
 
 </div>
 

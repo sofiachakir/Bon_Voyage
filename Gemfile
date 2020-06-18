@@ -61,7 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Webpacker makes it easy to use the JavaScript pre-processor and bundler webpack 4.x.x+ to manage application-like JavaScript in Rails. 
+# Webpacker makes it easy to use the JavaScript pre-processor and bundler webpack 4.x.x+ to manage application-like JavaScript in Rails.
 gem 'webpacker', '~> 5.x'
 # Gems for user authentification, seed.rb, and db visualisation in console
 gem 'devise'
@@ -73,3 +73,4 @@ gem "dotenv-rails", "~> 2.7"
 gem 'cloudinary'
 gem "letter_opener", "~> 1.7"
 gem 'pixabay-api', require: 'pixabay'
+gem 'geocoder'

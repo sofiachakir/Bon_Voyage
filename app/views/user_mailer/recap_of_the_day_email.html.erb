@@ -1,0 +1,51 @@
+<div>
+  <br>
+  <h1>Bonjour <%= @user.email %> ! Voici le récapitulatif de votre journée.</h1>
+  <br>
+  <h3>Voyage : <%= @trip.title %> | Jour : <%= @day %></h3>
+  <br>
+  <p>Voici la liste de tous vos évènements prévus :</p>
+  <ul>
+  <% @events.each do |event| %>
+    <li>
+      <strong><%= event.name_event %></strong>
+      | <strong>où</strong> : <%= event.city_name %>
+      | <strong>quand</strong> : <%= event.start_time.strftime('%H:%M') unless event.start_time.nil? %> - <%= event.end_time.strftime('%H:%M') unless event.end_time.nil? %> 
+      <ul>
+        <% event.notes.each do |note| %>
+          <li>
+          <% unless note.title.to_s.empty?  %>
+              <strong><%= note.title %></strong>
+          <% end %>
+
+
+          <% if note.image.attached? %>
+            <%= cl_image_tag(note.image.key, width: 500)%>
+          <% end %>
+
+          <% unless note.image_url.to_s.empty?  %>
+            <img src="<%= note.image_url %>" style="width: 500px">
+          <% end %>
+
+
+          <% unless note.text.to_s.empty? %>
+            <p><%= note.text %></p>
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </li>    
+  <% end %>
+  </ul>
+
+  <br>
+  <p>
+    Pour accéder à votre espace utilisateur, connectez-vous sur via : <a href="<%= @sign_in_url %>"><%= @sign_in_url %></a>.
+  </p>
+
+  <br>
+  <p> À très vite sur  <a href='<%= @url %>'>BonVoyage</a> !  </p>
+
+  <em>La Team de BonVoyage vous remercie.</em>
+
+</div>

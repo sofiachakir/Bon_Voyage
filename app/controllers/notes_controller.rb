@@ -5,6 +5,8 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    @trip = Trip.find(params[:trip_id])
+    @event = Event.find(params[:event_id])
   end
 
   def create
@@ -14,7 +16,7 @@ class NotesController < ApplicationController
 
     if @note.save
       flash[:success] = "Vos notes ont été créés"
-      redirect_to trip_events_path(@trip)
+      redirect_to trip_path(@trip)
     else
       flash[:error] = @note.errors.full_messages
       render :new
@@ -31,7 +33,7 @@ class NotesController < ApplicationController
     @note.update(note_params)
 
     flash[:success] = "Vos notes ont été mises à jour"
-    redirect_to trip_events_path(@trip)
+    redirect_to trip_path(@trip)
   end
 
   def destroy
@@ -39,13 +41,13 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.destroy
 
-    redirect_to trip_events_path(@trip)
+    redirect_to trip_path(@trip)
   end
 
   private
 
   def note_params
-    params.require(:note).permit(:title, :image_url, :text)
+    params.require(:note).permit(:title, :image_url, :text, :image)
   end
 
 end

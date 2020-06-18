@@ -1,0 +1,59 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalEdit<%= event.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modifier mon évènement</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <h4 class="mb-4 text-primary"><%= l(day.to_date, format: '%A %d')%></h4>
+        <%= form_tag trip_event_path(@trip, event), method: "patch" do %>
+
+        <div class="form-group mb-4">
+          <div class="row">
+            <div class="col-6">
+              <%= label_tag :city_name, 'Ville' %>
+              <%= text_field_tag :city_name, event.city_name, class: 'form-control city-name',required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= label_tag :name_event, 'Donnez un nom à votre évènement' %>
+          <%= text_field_tag :name_event, event.name_event, class: 'form-control', placeholder: 'Viste des musées de Paris', required: true %>
+        </div>
+
+        <div class="form-group mb-4">
+          <div class="row">
+            <div class="col-6">
+              <%= text_field_tag :format, day, class: 'd-none', readonly: true %>
+             </div>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <div class="row">
+            <div class="col-6">
+              <%= label_tag :start_time, "Heure de début" %>
+              <%= time_select :start_time, nil, class: 'form-control' %>
+            </div>
+            <div class="col-6">
+              <%= label_tag :end_time, "Heure de fin" %>
+              <%= time_select :end_time, nil, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <%= submit_tag 'Modifier mon évènement', class: 'btn btn-primary btn-lg mx-auto' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

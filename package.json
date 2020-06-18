@@ -2,7 +2,11 @@
   "name": "bon_voyage",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.1.1"
+    "@rails/webpacker": "5.1.1",
+    "jquery": "^3.5.1",
+    "mapbox-gl": "^1.11.0",
+    "places.js": "^1.19.0",
+    "select2": "^4.0.13"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"

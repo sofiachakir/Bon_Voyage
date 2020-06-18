@@ -1,13 +1,16 @@
 <div class="container fluid my-5">
-    <h1 class="h1 mt-5 text-center"><%= @trip.title %></h1>
 
   <!-- Ligne de présentation du voyage -->
   <div class="row mt-5">
     <div class="col-md-7 text-center">
-
-        <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 300px;">
+      <% if @trip.picture.attached? %>
+      <%= image_tag @trip.picture, alt: 'picture', size: '500', class: "img-fluid rounded mb-3 mb-md-0" %>
+      <% else %>
+        <img class="img-fluid rounded mb-3 mb-md-0" src="<%= @trip.country_picture%>" alt="" style="height: 330px;">
+      <% end %>
     </div>
     <div class="col-md-5">
+      <h3 class="mb-3"><%= @trip.title %></h3>
       <h3>Par <%= link_to user_path(@trip.user) do %><%= @trip.user.email %><% end %></h3>
       <div class="d-flex text-secondary small">
         <div class="flex-fill"><i class="fa fa-location-arrow"></i><%= @trip.country_name %></div>
@@ -29,15 +32,15 @@
   <div class="accordion" id="accordionWeek">
     <!-- Affichage semaines dans une card -->
     <div class="card p-0">
-      <% @trip.week_weeks_days.each_with_index do |week, week_num| %>
+      <% @trip.week_weeks_days.each_with_index do |week, index| %>
         <!-- Affichage numéro de semaine dans le card-header -->
-        <div class="card-header" id="headingWeek<%= week_num %>" >
+        <div class="card-header" id="headingWeek<%= index %>" >
           <h2 class="mb-0">
-            <button class="btn btn-block text-left d-flex" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>" aria-expanded="true" aria-controls="collapseWeek<%= week_num %>">
+            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>">
               <!-- Semaine -->
               <div class="flex-fill">
                 <i class="fa fa-calendar mr-2"></i>
-                Semaine <%= week_num + 1 %> -
+                Semaine <%= index + 1 %> -
                 <%= week[0].strftime('%d %B %Y') %>
               </div>
               <!-- ./ Semaine -->
@@ -54,15 +57,15 @@
         <!-- ./Card header -->
 
         <!-- Affichage Journée -->
-        <div id="collapseWeek<%= week_num %>" class="collapse show" aria-labelledby="headingWeek<%= week_num %>" data-parent="#accordionWeek">
-          <% week.each_with_index do |day, index| %>
+        <div id="collapseWeek<%= index %>" class="collapse show" aria-labelledby="headingWeek<%= index %>" data-parent="#accordionWeek">
+          <% week.each_with_index do |day, ind| %>
             <div class="card-body px-3">
               <!-- Jour -->
               <div class="d-flex align-items-center justify-content-between">
                 <div class="ml-5">
                   <h2 class="h6 text-primary">
                     <i class="far fa-dot-circle mr-2"></i>
-                    J<%= index + 1 %> - <%= day.strftime('%d %B') %>
+                    J<%= ind + 1 %> - <%= day.strftime('%d %B') %>
                   </h2>
                 </div>
                 <div class="ml-5 align-items-center">
@@ -71,18 +74,18 @@
                     <%= link_to "Ajouter un event", new_trip_event_path(@trip, day), class: "btn btn-secondary" %>
                   <% end %>
                   <!-- ./Affichage des boutons uniquement pour le trip owner -->
-                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= week_num %>Day<%= index %>" aria-expanded="false" aria-controls="collapseWeek<%= week_num %>Day<%= index %>">
+                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>Day<%= ind %>" aria-expanded="false" aria-controls="collapseWeek<%= index %>Day<%= ind %>">
                   </button>
                 </div>
               </div>
               <hr>
               <% if @trip.events_by_date(day).length == 0 %>
-                <div class="collapse text-secondary text-center" id="collapseWeek<%= week_num %>Day<%= index %>">
+                <div class="collapse text-secondary text-center" id="collapseWeek<%= index %>Day<%= ind %>">
                   Rien de prévu !
                 </div>
               <% else %>
               <%= render partial: "event", collection: @trip.events_by_date(day),
-           as: :event, locals: {index: index, day: day, week_num: week_num} %>
+           as: :event, locals: {ind: ind, day: day, index: index} %>
               <% end %>
               <!--./ Jour -->
             </div>
@@ -94,5 +97,13 @@
     </div>
     <!--./ Affichage semaines dans une card -->
   </div>
+<br>
+    <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+     </div>
   <!-- ./ Accordeon -->
 </div>
+
+

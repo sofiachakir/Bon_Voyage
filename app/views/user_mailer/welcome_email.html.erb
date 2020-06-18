@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html>
+<div class="container">
+	<br>
+	<h1 class="h3 mb-5">Bienvenue sur le site BonVoyage !</h1>
+	<br>
+	<p>
+		Vous vous êtes inscrit sur le site <a href='<%= @url %>'>BonVoyage</a>. en utilisant l'email suivant : <%= @user.email %>.
+	</p>
+	<br>
+	<p>
+		Pour accéder à votre espace utilisateur, connectez-vous sur via : <a href="<%= @sign_in_url %>"><%= @sign_in_url %></a>.
+	</p>
 
-	<head>
-		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-	</head>
+	<br>
+	<p> À très vite sur  <a href='<%= @url %>'>BonVoyage</a> ! </p>
 
-	<body>
-		<div class="container">
-			<br>
-			<h1>Bienvenue <%= @user.email %> sur le site BonVoyage !</h1>
-			<br>
-			<p>Tu es maintenant inscrit sur le site <a href="https://bon-voyage-app.herokuapp.com/">bon-voyage-app.herokuapp.com</a>. L'adresse mail renseignée pour ton compte utilisateur est : <%= @user.email %>.</p>
+	<em>La Team de BonVoyage vous remercie.</em>
 
-			<p>Pour accéder à ton espace utilisateur, connecte-toi sur l'URL : <a href="https://bon-voyage-app.herokuapp.com/users/signin">bon-voyage-app.herokuapp.com/users/signin</a>.</p>
+</div>
 
-			<br>
-			<p> À très vite sur  <a href="https://bon-voyage-app.herokuapp.com/">bon-voyage-app.herokuapp.com</a> !</p>
-
-			<em>La Team de BonVoyage vous remercie.</em>
-
-		</div>
-	</body>
-
-</html>
