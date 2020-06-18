@@ -14,10 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require sortable.min
 //= require jquery3
 //= require jquery_ujs
 //= require_tree
+//= require sortable.min
 //= require bootstrap.bundle
 //= require flash
 //= require index
