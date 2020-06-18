@@ -19,3 +19,7 @@
 //= require flash
 //= require index
 //= require show
+
+$(document).on('turbolinks:load', function() {
+
+});

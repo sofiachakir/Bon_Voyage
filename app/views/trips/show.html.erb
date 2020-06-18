@@ -22,14 +22,15 @@
 	</nav>
 	<!-- ./Onglets -->
 
-
-
-
 	<!-- Affichage des modals -->
 	<% @trip.week_weeks_days.each_with_index do |week, index| %>
 		<% week.each_with_index do |day, ind| %>
 			<%= render partial: "events/new_event_modal", locals: {index: index, day: day, ind: ind} %>
 		<% end %>
+	<% end %>
+	
+	<% @trip.events.each do |event| %>
+		<%= render partial: "events/edit_event_modal", locals: {event: event, day: event.day} %>
 	<% end %>
 	<!-- ./Affichage des modals -->
 

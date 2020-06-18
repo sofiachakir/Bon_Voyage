@@ -24,22 +24,21 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @day = params[:format]
-
-    @event = Event.find(params[:id])
   end
 
   def create
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
     @event.trip = @trip
+    @day = @event.day
 
     if @event.save
       flash[:success] = "Votre évènement a été créé"
-      redirect_to trip_path(@trip)
     else
       flash[:error] = @event.errors.full_messages
-      render :new
+      redirect_to trip_path(@trip)
     end
+
   end
 
   def edit
@@ -51,23 +50,14 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if params[:new_trip_id] == nil
-      @trip = Trip.find(params[:trip_id])
-    else
-      @trip = Trip.find(params[:new_trip_id])
-      @event.trip = @trip
-    end
+    params[:new_trip_id] == nil ? @trip = Trip.find(params[:trip_id]) : @trip = Trip.find(params[:new_trip_id])
+    @event.trip = @trip
 
     if @event.update(event_params)
       flash[:success] = "Votre évènement a été mis à jour"
-      redirect_to trip_path(@trip)
     else
-      if params[:new_trip_id] != nil
-        @event.destroy
-        redirect_to trip_path(@trip)
-      end
       flash[:error] = @event.errors.full_messages
-      render :edit
+      #redirect_to trip_path(@trip)
     end
   end
 
@@ -75,8 +65,10 @@ class EventsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @event = Event.find(params[:id])
     @event.destroy
-
-    redirect_to trip_path(@trip)
+    respond_to do |format|
+      format.html {redirect_to trip_path(@trip)}
+      format.js {}
+    end
   end
 
   def copy
