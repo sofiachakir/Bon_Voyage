@@ -20,10 +20,12 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initCountries } from '../plugins/init_countries';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener("turbolinks:load", function() {
   initAutocomplete();
   initCountries();
   initMapbox();
+  $('.map-div').show();
+  $('#map').resize();
 })
 
 
