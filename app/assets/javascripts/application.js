@@ -15,11 +15,15 @@
 //= require turbolinks
 //= require jquery
 //= require sortable.min
+//= require jquery3
+//= require jquery_ujs
+//= require_tree
 //= require bootstrap.bundle
 //= require flash
 //= require index
 //= require show
 
-$(document).on('turbolinks:load', function() {
-
+$( document ).ready(function(){
+  document.addEventListener("turbolinks:load", function() {
+  });
 });
