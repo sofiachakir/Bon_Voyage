@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalNoteEdit<%= note.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modifier une note</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+
+        <%= form_with url: trip_event_note_path(@trip, event, note), method: "patch" do |form| %>
+
+        <div class="form-group mb-4">
+          <%= form.label :text, 'Vos notes, informations ou liens' %>
+          <%= form.text_area :text, value: note.text, class: 'form-control'%>
+        </div>
+
+      </div>
+
+      <div class="modal-footer text-center">
+        <div class="container">
+          <%= form.submit 'Modifier ma note', class: 'btn btn-primary btn-lg mx-auto' %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
