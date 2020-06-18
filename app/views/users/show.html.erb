@@ -113,11 +113,11 @@
 
 <br>
 
-<div class="container my-5 mb-5 mt-5">
+<div class="container my-5 mb-5 mt-5 ">
 	<div class="row row-cols-1 row-cols-md-2">
-	  <div class="col mb-4">
+	  <div class="col mb-5">
 	    <div class="card-body">
-				<h3 class=" mb-5 text-center font-weight-light">Mon voyage à venir</h3>
+				<h3 class=" mb-5 text-center">Mon voyage à venir</h3>
 					<% if @user.upcoming_trip %>
 						<%= render @user.upcoming_trip %>
 					<% else %>
@@ -125,14 +125,14 @@
 					<% end %>
 	    </div>
 	  </div>
-	  <div class="col mb-4">
-	    <div class="card-body">
-	      <h3 class=" mb-5 text-center">Mes anciens voyages</h3>
-					<% if @user.previous_trips %>
-						<%= render @user.previous_trips %>
-					<% else %>
-						<p class="text-center">Pas de voyages déjà passés pour le moment</p>
-					<% end %>
+	  <div class="col mb-5">
+	    <h3 class=" mb-5 text-center">Mes anciens voyages</h3>
+	     	<div class="card-body mb-2">
+				<% if @user.previous_trips %>
+					<%= render @user.previous_trips %>
+				<% else %>
+					<p class="text-center">Pas de voyages déjà passés pour le moment</p>
+				<% end %>
 	    </div>
 	  </div>
 	</div>
