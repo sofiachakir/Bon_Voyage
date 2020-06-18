@@ -10,6 +10,8 @@ class NotesController < ApplicationController
   end
 
   def create
+    puts "="*200
+    puts params
     @note = Note.new(note_params)
     @event = Event.find(params[:event_id])
     @note.event = @event
@@ -47,7 +49,11 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :image_url, :text, :image)
+    note_params = Hash.new
+    note_params = { title: params[:title],
+                     image_url: params[:image_url],
+                     text: params[:text],
+                     image: params[:image]}
   end
 
 end

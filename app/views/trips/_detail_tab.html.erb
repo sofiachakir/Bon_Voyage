@@ -54,14 +54,10 @@
 		                </div>
 		              </div>
 		              <hr>
-		              <% if @trip.events_by_date(day).length == 0 %>
-		                <div class="collapse show text-secondary text-center" id="collapseWeek<%= index %>Day<%= ind %>">
-		                  Rien de prévu !
-		                </div>
-		              <% else %>
+		              <div class="collapse show detailed_events_<%=day.to_i%>" id="collapseWeek<%= index %>Day<%= ind %>">
 		              <%= render partial: "events/event", collection: @trip.events_by_date(day),
 		           as: :event, locals: {index: index, day: day, ind: ind} %>
-		              <% end %>
+		              </div>
 		              <!--./ Jour -->
 		            </div>
 		          <% end %>

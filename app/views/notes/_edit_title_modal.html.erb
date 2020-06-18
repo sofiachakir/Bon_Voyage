@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalTitleEdit<%= note.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modifier mon titre</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+
+        <%= form_with url: trip_event_note_path(@trip, event, note), method: "patch" do |form| %>
+
+        <div class="form-group mb-4">
+          <%= form.label :title, 'Un titre ou du texte en gras' %>
+          <%= form.text_field :title, value: note.title, class: 'form-control'%>
+        </div>
+
+      </div>
+
+      <div class="modal-footer text-center">
+        <div class="container">
+          <%= form.submit 'Modifier mon titre', class: 'btn btn-primary btn-lg mx-auto' %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
