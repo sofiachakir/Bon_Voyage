@@ -2,10 +2,10 @@
     <% if event.is_past? %>
       <!-- Si le voyage est passé, si je suis le créateur du voyage, si il n'y a pas de commentaire -->
       <% if user_trip_owner?(@trip) && event.comment == nil %>
-        <button type="button" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#myModal<%= index %>Day<%= ind %>"><i class="fas fa-plus mr-2"></i> Ajouter un commentaire</button>
+        <button type="button" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#myModal_comment_event_<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter un commentaire</button>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal<%= index %>Day<%= ind %>" role="dialog">
+          <div class="modal fade" id="myModal_comment_event_<%= event.id %>" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg">
 
               <!-- Modal content-->
@@ -36,10 +36,10 @@
             <%= event.comment %>
         </div>
         <div class="">
-          <button type="button" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#myModal<%= index %>Day<%= ind %>"><i class="fas fa-pencil-alt mr-2"></i> Modifier mon commentaire</button>
+          <button type="button" class="btn btn-primary btn-sm mt-3" data-toggle="modal" data-target="#myModal_comment_event_<%= event.id %>"><i class="fas fa-pencil-alt mr-2"></i> Modifier mon commentaire</button>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal<%= index %>Day<%= ind %>" role="dialog">
+          <div class="modal fade" id="myModal_comment_event_<%= event.id %>" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-lg">
 
               <!-- Modal content-->

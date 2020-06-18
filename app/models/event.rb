@@ -56,4 +56,8 @@ class Event < ApplicationRecord
     end
   end
 
+  def day
+    self.start_time.to_date.to_datetime
+  end
+
 end

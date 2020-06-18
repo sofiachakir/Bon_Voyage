@@ -26,16 +26,10 @@
 										</button>
 									<% end %>
 
-									<ul class="list-group list-group-flush">
-										<% if @trip.events_by_date(day).length == 0 %>
-											<li class="list-group-item text-secondary">Rien de prévu !</li>
-										<% end %>
-										<% @trip.events_by_date(day).each do |event| %>
-											<li class="list-group-item">
-												<i class="fas fa-check-circle mr-2"></i><%= event.name_event %>
-											</li>
-										<% end %>
+									<ul class="list-group list-group-flush" id="global_events_<%= day.to_i%>">
+										<%= render partial: "events/event_global_tab", collection: @trip.events_by_date(day), as: :event %>
 									</ul>
+
 								</div>
 							</div>
 						</div>

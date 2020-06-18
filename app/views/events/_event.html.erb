@@ -1,4 +1,4 @@
-<div class="collapse show" id="collapseWeek<%= index %>Day<%= ind %>">
+<div id="event_<%=event.id%>">
   <div class="card mx-5 p-0 border mt-5">
 
     <div class="card-header h6 d-flex justify-content-between">
@@ -24,11 +24,8 @@
         <% else %>
           <!-- Bouton pour modifier-->
           <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
-
-          <%= render partial: "events/edit_event_modal", locals: {event: event, day: day} %>
-
           <!-- Bouton pour supprimer-->
-          <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
+          <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} , remote: true do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
         <% end %>
         </div>
 
@@ -58,6 +55,6 @@
     </div>
   </div>
 
-<%= render partial: "events/comment", locals: {event: event, day: day, index: index, ind: ind} %>
+<%= render partial: "events/comment", locals: {event: event} %>
 
 </div>
