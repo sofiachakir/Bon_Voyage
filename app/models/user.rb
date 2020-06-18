@@ -13,6 +13,10 @@ class User < ApplicationRecord
 		UserMailer.welcome_email(self).deliver_now
 	end
 
+  def completed_profile?
+    self.user_name.present?
+  end
+
   def upcoming_trip
   	unless self.trips.empty?
   		upcoming_trips = []
