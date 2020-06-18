@@ -25,6 +25,20 @@
   top: 0;
 }
 
+.profil .img-fluid {
+  height: 14rem;
+  width: 14rem;
+  object-fit: cover;
+}
+
+#addeventbtn {
+  font-size: 0.79rem;
+}
+
+#eventlist {
+  padding: 0.40rem 0rem;
+}
+
 @media print {
     /* les styles d'impression commencent ici */
     @page {

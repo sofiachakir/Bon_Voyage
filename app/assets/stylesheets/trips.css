@@ -30,7 +30,7 @@
   margin-bottom: 30px;
 }
 
-.img-fluid {
+.thumb .img-fluid {
   height: 13rem;
   object-fit: cover;
 }

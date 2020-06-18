@@ -13,7 +13,7 @@
   background-color: initial;
 }
 
-#avatar {
+#commentbox #avatar {
   width: 5rem;
   height: 5rem;
   object-fit: cover;

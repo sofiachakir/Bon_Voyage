@@ -16,22 +16,24 @@
 						<div class="col mb-4">
 							<div class="card h-100 p-0 shadow-sm border">
 								<div class="card-header">
-									<h5 class="card-subtitle text-center"><%= l(day.to_date, format: '%A %d/%m') %></h5>
+									<h6 class="card-subtitle text-center"><%= l(day.to_date, format: '%A %d %B') %></h6>
 								</div>
 								<div class="card-body">
 									<!--Affichage des évènements principaux-->
 									<% if user_trip_owner?(@trip) %>
-										<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
-									  	<i class="fas fa-plus mr-2"></i> Ajouter un event
+									<div class="text-center">
+										<button type="button" class="btn btn-secondary" data-toggle="modal" id="addeventbtn" data-target="#week<%=index%>dayModal<%=ind%>">
+									  	Ajouter événement
 										</button>
+									</div>
 									<% end %>
 
-									<ul class="list-group list-group-flush">
+									<ul class="list-group list-group-flush mt-1">
 										<% if @trip.events_by_date(day).length == 0 %>
 											<li class="list-group-item text-secondary">Rien de prévu !</li>
 										<% end %>
 										<% @trip.events_by_date(day).each do |event| %>
-											<li class="list-group-item">
+											<li class="list-group-item" id="eventlist">
 												<i class="fas fa-check-circle mr-2"></i><%= event.name_event %>
 											</li>
 										<% end %>

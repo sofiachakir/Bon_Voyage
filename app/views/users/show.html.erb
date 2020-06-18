@@ -1,10 +1,10 @@
 <div class="container fluid my-5">
 <!-- Bannière avec le username et modification du profil -->
 
-	<h2 class="my-5">Bienvenue sur votre profil</h2>
+	<h2 class="my-5 text-center">Bienvenue sur votre profil</h2>
 
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm-4 profil">
 			<!-- Image avatar -->
 			<%if @user.avatar.attached?%>
 				<%= image_tag @user.avatar, alt: 'avatar', class: "img-fluid" %>
@@ -19,7 +19,7 @@
 			<div class="user-name" style="width: 15rem;">
 				<!-- Si pas de username, on affiche son email -->
 				<% if @user.user_name %>
-					<h2 class="textname"><%= @user.user_name %></h2>
+					<h2 class="textname text-primary"><%= @user.user_name %></h2>
 				<!-- formulaire pour ajouter son nom -->
 				<% if current_user! && @user.user_name == '' %>
 					<%= render 'form' %>
