@@ -13,7 +13,6 @@
 
         <%= form_with model: @note, url: trip_event_notes_path(@trip, event), method: "post" do |form| %>
 
-
         <div class="form-group mb-4">
           <%= form.label :image_url, "Importer une photo à partir d'une URL" %>
           <%= form.text_area :image_url, class: 'form-control', placeholder: 'https://images.unsplash.com/photo' %>
@@ -26,9 +25,6 @@
           <%= form.submit 'Enregistrer mon image', class: 'btn btn-primary btn-lg mx-auto' %>
         </div>
         <% end %>
-        <div class="container">
-          <%= link_to "Revenir en arrière", :back , class: 'btn btn-secondary btn-sm mn-5' %>
-        </div>
       </div>
 
     </div>
