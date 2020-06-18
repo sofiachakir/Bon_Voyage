@@ -19,21 +19,21 @@
   <div class="row">
     <% @events.each do |event|%>
     <div class="col-md-6 col-sm-12 my-2">
-      <div class="card h-100" style="max-width: 540px;">
+      <div class="card h-100" id="commentbox">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-2 mr-4">
             <%if event.trip.user.avatar.attached?%>
-              <%= image_tag event.trip.user.avatar, alt: 'avatar', class: "card-img" %>
+              <%= image_tag event.trip.user.avatar, alt: 'avatar', class: "card-img", id: "avatar"%>
             <%else%>
               <img alt="Avatar" src="https://secureimg.stitcher.com/feedimagesplain328/190254.jpg" id="avatar"  class="card-img" >
             <%end%>
 
           </div>
-          <div class="col-md-8">
+          <div class="col-md-9" id="commenttextbox">
             <div class="card-body">
-              <h5 class="card-title"><%= event.name_event %></h5>
-              <p class="card-text"><%= event.comment %></p>
-              <p class="card-text"><small class="text-muted"><%= event.trip.user.email %></small></p>
+              <p class="card-text"><small class="text-muted text-primary"><%= event.trip.user.email %></small></p>
+              <h6 class="card-title"><%= event.name_event %></h6>
+              <p class="card-text" id="commenttext"><%= event.comment %></p>
             </div>
           </div>
         </div>
