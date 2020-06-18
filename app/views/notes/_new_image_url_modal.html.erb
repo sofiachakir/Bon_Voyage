@@ -11,7 +11,7 @@
 
       <div class="modal-body">
 
-        <%= form_with model: @note, url: trip_event_notes_path(@trip, event), method: "post" do |form| %>
+        <%= form_with model: @note, url: trip_event_notes_path(@trip, event), method: "post", local: true do |form| %>
 
         <div class="form-group mb-4">
           <%= form.label :image_url, "Importer une photo à partir d'une URL" %>

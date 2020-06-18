@@ -10,8 +10,6 @@ class NotesController < ApplicationController
   end
 
   def create
-    puts "="*200
-    puts params
     @note = Note.new(note_params)
     @event = Event.find(params[:event_id])
     @note.event = @event

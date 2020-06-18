@@ -14,14 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jquery3
-//= require jquery_ujs
-//= require_tree
 //= require sortable.min
 //= require bootstrap.bundle
-//= require flash
-//= require index
-//= require show
+//= require_tree
+
 
 $( document ).ready(function(){
   document.addEventListener("turbolinks:load", function() {

@@ -51,7 +51,7 @@
                 <div class="modal-body">
                   <%= form_tag trip_event_path(@trip, event), method: "patch" do %>
                     <div class="form-group mb-2">
-                      <%= text_area_tag :comment, nil, class: 'form-control' %>
+                      <%= text_area_tag :comment, event.comment, class: 'form-control' %>
                     </div>
                 </div>
                 <div class="actions text-center mb-2">
