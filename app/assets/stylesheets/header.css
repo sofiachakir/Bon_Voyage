@@ -14,6 +14,12 @@
   margin-left: 10rem;
 }
 
+@media all and (max-width: 768px) {
+  .content-header {
+    margin-left: 1rem;
+}
+}
+
 /* Textes du Header de la page accueil */
 
 .header-title {
