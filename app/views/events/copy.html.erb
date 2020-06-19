@@ -1,32 +1,40 @@
 <div class="container my-5">
-  <h1 class="text-center">Créer un nouvel évènement</h1>
+  <h2 class="text-center">Créer un nouvel évènement</h2>
     <div class="container py-3 mx-auto col-7 my-5">
       <div class="row justify-content-center">
         <div class="col-md-12">
 
           <%= form_tag trip_event_path(@trip, @event), method: "patch" do %>
 
+            <div class="form-mb-4">
+              <%= label_tag :new_trip_id, 'Choisis un voyage :' %>
+              <% trips_array = @trips.map { |trip| [trip.title, trip.id] } %>
+              <%= select_tag :new_trip_id, options_for_select(trips_array)  %>
+              
+            </div>
+
             <div class="form-group mb-4">
               <div class="row">
                 <div class="col-6">
                   <%= label_tag :city_name, 'Ville' %>
-                  <%= text_field_tag :city_name, @event.city_name, class: 'form-control',required: true %>
+                  <%= text_field_tag :city_name, @event.city_name, class: 'form-control' %>
                 </div>
               </div>
             </div>
 
             <div class="form-group mb-4">
               <%= label_tag :name_event, 'Donnez un nom à votre évènement' %>
-              <%= text_field_tag :name_event, @event.name_event, class: 'form-control', placeholder: 'Viste des musées de Paris', required: true %>
+              <%= text_field_tag :name_event, @event.name_event, class: 'form-control' %>
             </div>
+
             <div class="form-group mb-4">
               <div class="row">
                 <div class="col-6">
-              <%= label_tag :format, 'Jour' %>
-              <%= text_field_tag :format, @day, class: 'form-control', readonly: true %>
+                  <%= date_field_tag :format, nil, class: 'form-control'%>
                  </div>
               </div>
             </div>
+
             <div class="form-group mb-4">
               <div class="row">
                 <div class="col-6">
@@ -38,11 +46,6 @@
                   <%= time_select :end_time, nil, class: 'form-control' %>
                 </div>
               </div>
-            </div>
-
-            <div class="form-group mb-4">
-              <%= label_tag :comment, 'Mettre un commentaire' %>
-              <%= text_area_tag :comment, @event.comment, class: 'form-control', placeholder: 'Journée extraordianaire à la découverte des plus beau musées de Paris. Je recommande fortement d\'aller les visiter.' %>
             </div>
 
             <div class="actions mt-5 text-center mb-5">

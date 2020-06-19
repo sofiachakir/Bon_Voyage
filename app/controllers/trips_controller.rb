@@ -4,10 +4,20 @@ class TripsController < ApplicationController
 
   def index
   	@trips = Trip.all
+    @events = Event.with_comments
   end
 
   def show
     @trip = Trip.find(params[:id])
+    @events = @trip.events.geocoded
+
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: {event: event})
+      }
+    end
   end
 
   def new
@@ -53,7 +63,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-  	params.require(:trip).permit(:title, :description, :country_name, :start_date, :end_date)
+  	params.require(:trip).permit(:title, :description, :country_name, :city_name, :start_date, :end_date)
   end
 
 end

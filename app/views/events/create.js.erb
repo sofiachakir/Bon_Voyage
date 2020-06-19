@@ -1,0 +1,6 @@
+$('.modal').modal('hide');
+$('#global_events_<%= @event.day.to_i%>').append("<%= j render 'event_global_tab' , event: @event %>");
+$('.detailed_events_<%= @event.day.to_i%>').append("<%= j render 'event' , event: @event %>");
+$('.tab-content').before("<%= j render 'edit_event_modal', event: @event, day: @event.day %>");
+
+alert('Votre évènement a bien été créé! Pour ajouter vos notes, veuillez recharger la page');

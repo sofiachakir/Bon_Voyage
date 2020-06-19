@@ -1,11 +1,23 @@
+
+/* Aspect des 'Cards' qui englobent les Notes */
+
 .card {
-padding: 20px 20px 20px;
-border: 1px solid #bbb;
+  padding: 20px 20px 20px;
+  border: 1px solid #bbb;
 }
 
-.card:hover {
-border: 1px solid #bbb;
-box-shadow: none;
+.card-note {
+  padding: 0.5rem!important;
+  margin-bottom: 0rem!important;
+}
+
+.grab:hover {
+  cursor: grabbing;
+}
+
+.grab {
+  border: none !important;
+  background-color: #FCFCFC;
 }
 
 .card:hover img {
@@ -13,35 +25,54 @@ box-shadow: none;
 }
 
 .notetitle {
-padding: 20px 20px 20px;
-border: 1px solid #000;
-text-align: center;
-margin: 0;
-font-size: 20px;
-font-weight: bold;
+  padding: 20px 20px 20px;
+  border: 1px solid #000;
+  text-align: center;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .noteimage {
-width: inherit;
+  width: inherit;
 }
 
 .notetext {
-padding: 20px 20px 20px;
-border: 1px solid #000;
+  padding: 20px 20px 20px;
+  border: 1px solid #000;
 }
 
-.fa-pen {
-  font-size: 0.75rem;
-  color: grey;
-  display: block;
-  position: absolute;
-  left: 22px;
+#buttons {
+  width:262px;
+  top:50px;
+  left:-266px;
+  height: 50px;
+  background-color:red;
+  display: inline-block;
+  position:relative;
 }
 
-.fa-trash {
-  font-size: 0.75rem;
-  color: grey;
-  display: block;
+/* Icones qui apparraissent sur les Notes */
+
+.grab i {
+  display: none;
+  color: #EF1852;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.grab i:hover {
+  opacity: 0.9;
+}
+
+.justify-self-end {
   position: absolute;
-  left: 40px;
+  top: 0;
+  right: 0;
+}
+
+/* Fait apparaitre les icones */
+
+.grab:hover i {
+  display: block !important;
 }

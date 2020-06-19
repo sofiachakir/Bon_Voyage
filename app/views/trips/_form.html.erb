@@ -22,7 +22,7 @@
             </div>
             <div class="col-6">
               <%= form.label :city_name, "Ville d'arrivée" %>
-              <%= form.text_field :city_name, placeholder: 'Paris', class: 'form-control' %>
+              <%= form.text_field :city_name, placeholder: 'Paris', class: 'form-control city-name' %>
             </div>
           </div>
         </div>
@@ -40,12 +40,12 @@
           </div>
         </div>
 
-        <div class="actions mt-5 text-center mb-5">
+        <div class="actions mt-5 text-center mb-2">
           <%= form.submit 'Enregistrer mon voyage', class: 'btn btn-primary btn-lg btn-block' %>
         </div>
 
       <% end %>
-
+      <%= link_to "Revenir en arrière", :back , class: 'mb-5'%>
     </div>
   </div>
 </div>

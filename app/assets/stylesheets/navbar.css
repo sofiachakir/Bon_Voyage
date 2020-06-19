@@ -1,10 +1,14 @@
-/* Pour une navbar avec effet de flou */
 
-.nav-symbol {
-  margin-top: 10px;
-  color: #ffffff !important;
+/* Navbar collée en haut lors du scroll */
+
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
 }
-/*Effet navbar transparent and color*/
+
+/* Effet navbar transparent and color */
+
 .navbar-blur {
   backdrop-filter: blur(40px) saturate(200%);
 }
@@ -20,6 +24,16 @@
 /* Titre du site ou Logo */
 
 .brand {
-  max-height: 5.5vh;
   padding-top: 2px;
+  background-image: url(https://res.cloudinary.com/die4stsje/image/upload/v1592206227/brandv2_soc9iy.png);
+  width: 10rem;
+  height: 2rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.nav-symbol {
+  margin-top: 10px;
+  color: #ffffff !important;
 }

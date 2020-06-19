@@ -1,32 +1,45 @@
-<div class="card mt-4 drag p-0 border h-100" draggable="true">
-  <div class="card-header d-flex justify-content-between">
+<div class="card grab mt-4 drag p-0 h-100" id="note" draggable="true">
+  <!-- Affichage des boutons uniquement pour le trip owner -->
 
-    <% unless note.title.to_s.empty?  %>
-      <h5 class="card-title"><%= note.title %></h5>
-    <% else %>
-      <h5 class="card-title">[Ajouter un titre]</h5>
+  <% if user_trip_owner?(note.event.trip) %>
+    <div class="justify-self-end">
+
+    <% if note.text != nil %>
+      <a type="button" data-toggle="modal" class="text-secondary" data-target="#myModalNoteEdit<%= note.id %>"><i class="fas fa-edit" title="Modifier la note"></i></a>
     <% end %>
 
-    <!-- Affichage des boutons uniquement pour le trip owner -->
-
-    <% if user_trip_owner?(note.event.trip) %>
-      <div class="justify-self-end">
-        <%= link_to edit_trip_event_note_path(note.event.trip, note.event, note) , class: "text-info" do %><i class="fas fa-pencil-alt" title="Modifier la note"></i><% end %>
-        <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-info" do %><i class="fas fa-trash-alt" title="Supprimer la note"></i><% end %>
-      </div>
+    <% if note.title != nil %>
+      <a type="button" data-toggle="modal" class="text-secondary" data-target="#myModalTitleEdit<%= note.id %>"><i class="fas fa-edit" title="Modifier le titre"></i></a>
     <% end %>
 
-  </div>
+    <%= render partial: "notes/edit_note_modal", locals: {event: note.event, note: note} %>
+      
+    <%= render partial: "notes/edit_title_modal", locals: {event: note.event, note: note} %>
 
-  <!-- ./Affichage des boutons uniquement pour le trip owner -->
+    <%= link_to [note.event.trip, note.event, note], method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-secondary" do %><i class="fas fa-times" title="Supprimer"></i><% end %>
 
-  <div class="card-body mx-3">
-    <% unless note.image_url.to_s.empty?  %>
-     <img src="<%= note.image_url %>" class="img-fluid">
-    <% end %>
-    <% unless note.text.to_s.empty? %>
+    </div>
+
+  <% end %>
+
+  <% if note.title != nil %>
+    <div class="card-body card-note text-center">
+      <h3><%= note.title %></h3>
+    </div>
+  <% elsif note.image.attached? %>
+    <div class="">
+      <%= image_tag note.image, alt: 'image', class: "img-fluid" %>
+    </div>
+  <% elsif note.image_url != nil %>
+    <div class="">
+      <img src="<%= note.image_url %>" class="img-fluid">
+    </div>
+  <% elsif note.text != nil %>
+    <div class="card-body card-note">
       <p class="card-text"><%= note.text %></p>
+    </div>
+    <% else %>
     <% end %>
-  </div>
 
 </div>
+

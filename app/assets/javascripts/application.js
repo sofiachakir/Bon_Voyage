@@ -16,6 +16,8 @@
 //= require jquery
 //= require sortable.min
 //= require bootstrap.bundle
-//= require flash
-//= require index
-//= require show
+//= require_tree
+
+document.addEventListener("turbolinks:load", function() {
+
+});

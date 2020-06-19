@@ -1,9 +1,0 @@
-/* Button Voir Plus & Voir Moins */
-
-.viewMore[aria-expanded="false"]:before {
-  content:"Voir plus";
-}
-
-.viewMore[aria-expanded="true"]:before {
-  content:"Voir moins";
-}

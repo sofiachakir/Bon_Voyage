@@ -3,6 +3,8 @@ class Trip < ApplicationRecord
 	belongs_to :user
   has_many :events, dependent: :destroy
 
+  has_one_attached :picture
+
   validates :title, presence: true
   validates :description, presence: true
   validates :start_date, presence: true
@@ -21,17 +23,6 @@ class Trip < ApplicationRecord
   def duration
     ((self.end_date - self.start_date) / 60 / 60 / 24).to_i
   end
-
-# # cette méthode nous renvoie le nombre de semaine que l'on a dans un voyage
-#   def weeks
-# # si semaine complète %7 = 0
-#     if self.duration % 7 == 0
-#       self.duration / 7
-# # si semaine incomplète %7 != 0 on ajoute une semaine en plus
-#     else
-#       (self.duration / 7) + 1
-#     end
-#   end
 
   def days
     days = []
@@ -58,7 +49,7 @@ class Trip < ApplicationRecord
   def events_by_date(date)
     # Cette méthode renvoie un array de events qui ont lieu à la date 'date'
     events_by_date = []
-    self.events.each do |event|
+    self.events.order(:start_time).each do |event|
       unless event.start_time.nil?
         if event.start_time.strftime('%D') == date.strftime('%D')
           events_by_date << event
@@ -76,8 +67,18 @@ class Trip < ApplicationRecord
       client = Pixabay.new
       res = client.photos(q: self.country_name, safesearch: true, page: 1, per_page: 30)
       img = res["hits"].first
-      img_url = img['largeImageURL']
+      if !img.nil?
+        img_url = img['largeImageURL']
+      end
     end
+  end
+
+  def is_past?
+    self.start_date < Time.now
+  end
+
+  def is_ongoing?
+    self.start_date <= Time.now && self.end_date >= Time.now
   end
 
 end

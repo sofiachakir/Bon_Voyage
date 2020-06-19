@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade" id="myModalTitleNew<%= event.id %>" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter un titre</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+
+        <%= simple_form_for event.notes.build, url: trip_event_notes_path(@trip, event), method: "post" do |form| %>
+
+        <div class="form-group mb-4">
+          <%= form.label :title, 'Un titre ou du texte en gras' %>
+          <%= form.text_field :title, class: 'form-control', placeholder: 'Tour Eiffel'%>
+        </div>
+      </div>
+
+      <div class="modal-footer text-center">
+        <div class="container">
+          <%= form.submit 'Enregistrer mon titre', class: 'btn btn-primary btn-lg mx-auto' %>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

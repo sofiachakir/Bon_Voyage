@@ -1,0 +1,45 @@
+
+/* Commentaires de la page accueil */
+
+#commentbox{
+  border: none;
+  background-color: initial;
+}
+
+#commentbox #avatar {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+
+#commenttextbox {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 70px -50px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 70px -50px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 70px -50px rgba(0,0,0,0.5);
+  height: 9.5rem;
+}
+
+#commenttextbox .card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+#commenttextbox p {
+  font-size: 0.9rem;
+}
+
+#commenttext {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.card-text small {
+  font-size: 90%;
+}
