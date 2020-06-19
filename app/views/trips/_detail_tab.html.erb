@@ -1,71 +1,71 @@
 <div class="tab-pane" id="detail" role="tabpanel" aria-labelledby="detail-tab">
-		  <div class="container mt-5">
-		    <!-- Affichage semaines dans une card -->
-		    <div class="border rounded p-0">
-		      <% @trip.week_weeks_days.each_with_index do |week, index| %>
-		        <!-- Affichage numéro de semaine dans le card-header -->
-		        <div class="card-header" id="headingWeek<%= index %>" >
-		          <h2 class="mb-0">
-		            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>">
+  <div class="container mt-5">
+    <!-- Affichage semaines dans une card -->
+    <div class="border rounded p-0">
+      <% @trip.week_weeks_days.each_with_index do |week, index| %>
+        <!-- Affichage numéro de semaine dans le card-header -->
+        <div class="card-header" id="headingWeek<%= index %>" >
+          <h2 class="mb-0">
+            <button class="btn btn-block text-left d-flex text-grey" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>">
 
-		              <!-- Semaine -->
-		              <div class="flex-fill">
-		                <i class="fa fa-calendar mr-2"></i>
-		                Semaine <%= index + 1 %> -
-		                <%= l(week[0].to_date, format: '%d %B %Y') %>
-		              </div>
-		              <!-- ./ Semaine -->
-		              <!-- Pays -->
-		              <div>
-		                <i class="fa fa-location-arrow"></i>
-		                <%= @trip.country_name %>
-		              </div>
-		              <!-- ./ Pays -->
-		              <!-- A FAIRE Afficher nom des villes visitées dans la semaine -->
-		            </button>
-		          </h2>
-		        </div>
-		        <!-- ./Card header -->
+              <!-- Semaine -->
+              <div class="flex-fill">
+                <i class="fa fa-calendar mr-2"></i>
+                Semaine <%= index + 1 %> -
+                <%= l(week[0].to_date, format: '%d %B %Y') %>
+              </div>
+              <!-- ./ Semaine -->
+              <!-- Pays -->
+              <div>
+                <i class="fa fa-location-arrow"></i>
+                <%= @trip.country_name %>
+              </div>
+              <!-- ./ Pays -->
+              <!-- A FAIRE Afficher nom des villes visitées dans la semaine -->
+            </button>
+          </h2>
+        </div>
+        <!-- ./Card header -->
 
-		        <!-- Affichage Journée -->
-		        <div id="collapseWeek<%= index %>" class="collapse show d-print-inline" aria-labelledby="headingWeek<%= index %>" >
-		          <% week.each_with_index do |day, ind| %>
-		          	<hr>
-		            <div class="card-body px-3">
-		              <!-- Jour -->
-		              <div class="d-flex align-items-center justify-content-between">
-		                <div class="ml-5">
-		                  <h2 class="h6 text-primary">
-		                    <i class="far fa-dot-circle mr-2"></i>
-		                    J<%= ind + 1 %> - <%= l(day.to_date, format: '%A %d %B') %>
-		                  </h2>
-		                </div>
-		                <div class="ml-5 align-items-center">
-		                  <!-- Affichage des boutons uniquement pour le trip owner -->
-		                  <% if user_trip_owner?(@trip) %>
-		                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
-											  Ajouter événement
-												</button>
-		                  <% end %>
+        <!-- Affichage Journée -->
+        <div id="collapseWeek<%= index %>" class="collapse show d-print-inline" aria-labelledby="headingWeek<%= index %>" >
+          <% week.each_with_index do |day, ind| %>
+          	<hr>
+            <div class="card-body px-3">
+              <!-- Jour -->
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="ml-5">
+                  <h2 class="h6 text-primary">
+                    <i class="far fa-dot-circle mr-2"></i>
+                    J<%= ind + 1 %> - <%= l(day.to_date, format: '%A %d %B') %>
+                  </h2>
+                </div>
+                <div class="ml-5 align-items-center">
+                  <!-- Affichage des boutons uniquement pour le trip owner -->
+                  <% if user_trip_owner?(@trip) %>
+                    <button type="button" class="btn btn-outline-event" data-toggle="modal" data-target="#week<%=index%>dayModal<%=ind%>">
+									  Ajouter événement
+										</button>
+                  <% end %>
 
-		                  <!-- ./Affichage des boutons uniquement pour le trip owner -->
-		                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>Day<%= ind %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>Day<%= ind %>">
-		                  </button>
-		                </div>
-		              </div>
-		              <hr>
-		              <div class="collapse show detailed_events_<%=day.to_i%>" id="collapseWeek<%= index %>Day<%= ind %>">
-		              <%= render partial: "events/event", collection: @trip.events_by_date(day),
-		           as: :event, locals: {index: index, day: day, ind: ind} %>
-		              </div>
-		              <!--./ Jour -->
-		            </div>
-		          <% end %>
-		        </div>
-		        <!--./ Affichage Journée-->
-		      <% end %>
-		      <!-- ./ Affichage numéro de semaine dans le card-header -->
-		    </div>
-		    <!--./ Affichage semaines dans une card -->
-		  </div>
-		</div>
+                  <!-- ./Affichage des boutons uniquement pour le trip owner -->
+                  <button id="collapse-btn" class="btn btn-primary mr-5 viewMore" type="button" data-toggle="collapse" data-target="#collapseWeek<%= index %>Day<%= ind %>" aria-expanded="true" aria-controls="collapseWeek<%= index %>Day<%= ind %>">
+                  </button>
+                </div>
+              </div>
+              <hr>
+              <div class="collapse show detailed_events_<%=day.to_i%>" id="collapseWeek<%= index %>Day<%= ind %>">
+              <%= render partial: "events/event", collection: @trip.events_by_date(day),
+           as: :event, locals: {index: index, day: day, ind: ind} %>
+              </div>
+              <!--./ Jour -->
+            </div>
+          <% end %>
+        </div>
+        <!--./ Affichage Journée-->
+      <% end %>
+      <!-- ./ Affichage numéro de semaine dans le card-header -->
+    </div>
+    <!--./ Affichage semaines dans une card -->
+  </div>
+</div>

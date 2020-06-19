@@ -1,3 +1,6 @@
+
+/* Aspect des 'Cards' des Voyages */
+
 .card-trip {
   position: relative;
   padding: 5px;
@@ -10,11 +13,15 @@
   box-shadow: 0px 0px 75px -55px rgba(0,0,0,0.7);
 }
 
+.cards-trip {
+  display: grid;
+  grid-gap: 16px;
+}
+
 .card-trip:hover {
   -webkit-box-shadow: 0px 0px 75px -55px rgba(0,0,0,0.7);
   -moz-box-shadow: 0px 0px 75px -55px rgba(0,0,0,0.7);
   box-shadow: 0px 0px 85px -45px rgba(0,0,0,0.7);
-
 }
 
 .card-trip:hover img {
@@ -32,12 +39,21 @@
 
 .thumb .img-fluid {
   height: 13rem;
+  width: max-content;
   object-fit: cover;
 }
 
 .fa {
   margin-top: 2px;
   margin-right: 5px;
+}
+
+.event-icons i {
+  opacity: 0.5;
+}
+
+.event-icons:hover i {
+  opacity: 1;
 }
 
 .card-trip-title {
@@ -48,7 +64,6 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-
 }
 
 .card-trip-text {
@@ -58,51 +73,17 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-
 }
-
 
 .card-trip-meta {
   margin-bottom: 10px;
 }
 
-a {
-	text-decoration: none !important;
-}
-
 .card-trip-link {
   margin-top: 20px;
-
 }
 
-
-.avatar-bordered {
-  width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
-
-.card-trip-avatar{
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  transform: none !important;
-}
-
-.cards-trip {
-	display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
-}
-
-
-.cards-trip {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
-/***Card responsive***/
+/* Card responsive */
 
 /* Smallest device */
 @media (min-width: 100px) and (max-width: 575px) {

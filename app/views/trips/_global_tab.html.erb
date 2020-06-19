@@ -2,27 +2,32 @@
 	<!-- Affichage du programme du voyage -->
 	<div class="container mt-5">
 		<% @trip.week_weeks_days.each_with_index do |week, index| %>
+
 		<!-- Affichage de la semaine -->
 			<div class="card p-0 shadow my-3">
+
 				<div class="card-header">
 					<h5 class="card-title text-center">
 						<i class="fas fa-calendar-week mr-2"></i>
 						Semaine <%= index + 1 %> : <%= l(week[0].to_date, format: '%d %B %Y') %> - <%= l(week[-1].to_date, format: '%d %B %Y') %>
 					</h5>
 				</div>
+
 				<div class="card-body row row-cols-1 row-cols-md-4 mx-3">
 					<% week.each_with_index do |day, ind| %>
 						<!-- Affichage du jour -->
 						<div class="col mb-4">
 							<div class="card h-100 p-0 shadow-sm border">
+
 								<div class="card-header">
 									<h6 class="card-subtitle text-center"><%= l(day.to_date, format: '%A %d %B') %></h6>
 								</div>
+
 								<div class="card-body">
 									<!--Affichage des évènements principaux-->
 									<% if user_trip_owner?(@trip) %>
 									<div class="text-center">
-										<button type="button" class="btn btn-secondary" data-toggle="modal" id="addeventbtn" data-target="#week<%=index%>dayModal<%=ind%>">
+										<button type="button" class="btn btn-outline-event" data-toggle="modal" id="addeventbtn" data-target="#week<%=index%>dayModal<%=ind%>">
 									  	Ajouter événement
 										</button>
 									</div>
@@ -31,8 +36,8 @@
 									<ul class="list-group list-group-flush" id="global_events_<%= day.to_i%>">
 										<%= render partial: "events/event_global_tab", collection: @trip.events_by_date(day), as: :event %>
 									</ul>
-
 								</div>
+
 							</div>
 						</div>
 						<!--./ Affichage jour-->

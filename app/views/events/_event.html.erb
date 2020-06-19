@@ -16,16 +16,17 @@
         <%= event.name_event %>
       </div>
 
-        <div class="">
+        <div class="event-icons">
           <!-- Affichage des boutons uniquement pour le trip owner -->
         <% if !user_trip_owner?(event.trip) %>
           <!-- Bouton pour copier-->
           <%= link_to copy_trip_event_path(event.trip, event), class: "mr-2" do%> <i class="fas fa-copy" title="Copier l'événement"></i><% end %>
         <% else %>
           <!-- Bouton pour modifier-->
-          <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>" ><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
+          <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-edit" title="Modifier l'évènement"></i></a>
+
           <!-- Bouton pour supprimer-->
-          <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} , remote: true do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
+          <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} , remote: true do %><i class="ml-2 fas fa-times" title="Supprimer l'évènement"></i><% end %>
         <% end %>
         </div>
 
@@ -36,10 +37,10 @@
       <% if user_trip_owner?(event.trip) %>
         <div class="text-center mt-3">
           <!-- Bouton pour ajouter-->
-          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalTitleNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter un titre</button>
-          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalNoteNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une note</button>
-          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalImageUrlNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une image</button>
-          <button type="button" data-toggle="modal" class="btn btn-secondary mb-3" data-target="#myModalImageNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Uploader une image</button>
+          <button type="button" data-toggle="modal" class="btn btn-outline-note mb-3" data-target="#myModalTitleNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter un titre</button>
+          <button type="button" data-toggle="modal" class="btn btn-outline-note mb-3" data-target="#myModalNoteNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une note</button>
+          <button type="button" data-toggle="modal" class="btn btn-outline-note mb-3" data-target="#myModalImageUrlNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Ajouter une image</button>
+          <button type="button" data-toggle="modal" class="btn btn-outline-note mb-3" data-target="#myModalImageNew<%= event.id %>"><i class="fas fa-plus mr-2"></i> Uploader une image</button>
 
         </div>
 
