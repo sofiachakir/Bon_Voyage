@@ -18,8 +18,6 @@
 //= require bootstrap.bundle
 //= require_tree
 
+document.addEventListener("turbolinks:load", function() {
 
-$( document ).ready(function(){
-  document.addEventListener("turbolinks:load", function() {
-  });
 });

@@ -23,7 +23,7 @@
           <%= link_to copy_trip_event_path(event.trip, event), class: "mr-2" do%> <i class="fas fa-copy" title="Copier l'événement"></i><% end %>
         <% else %>
           <!-- Bouton pour modifier-->
-          <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
+          <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>" ><i class="fas fa-pencil-alt" title="Modifier l'évènement"></i></a>
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} , remote: true do %><i class="fas fa-trash-alt" title="Supprimer l'évènement"></i><% end %>
         <% end %>
