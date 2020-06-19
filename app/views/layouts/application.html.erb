@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,22 +15,20 @@
   </head>
 
   <body>
+
     <%= render 'shared/navbar'%>
     <%= render 'shared/flash'%>
 
-      <% if current_page?(root_path) %>
-        <%= render 'shared/header' %>
-        <%= render 'shared/banner' %>
-      <% else %>
-        <%= render 'shared/miniheader' %>
-      <% end %>
+    <% if current_page?(root_path) %>
+      <%= render 'shared/header' %>
+      <%= render 'shared/banner' %>
+    <% else %>
+      <%= render 'shared/miniheader' %>
+    <% end %>
 
     <%= yield %>
 
     <%= render 'shared/footer'%>
-
-    </div>
-
 
   </body>
 </html>
