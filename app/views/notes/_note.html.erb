@@ -12,15 +12,9 @@
       <a type="button" data-toggle="modal" class="text-secondary" data-target="#myModalTitleEdit<%= note.id %>"><i class="fas fa-pencil-alt" title="Modifier le titre"></i></a>
     <% end %>
 
-    <% if note.image_url != nil %>
-      <a type="button" data-toggle="modal" class="text-secondary" data-target="#myModalImageUrlEdit<%= note.id %>"><i class="fas fa-pencil-alt" title="Modifier l'image"></i></a>
-    <% end %>
-
     <%= render partial: "notes/edit_note_modal", locals: {event: note.event, note: note} %>
 
     <%= render partial: "notes/edit_title_modal", locals: {event: note.event, note: note} %>
-
-    <%= render partial: "notes/edit_image_url_modal", locals: {event: note.event, note: note} %>
 
     <%= link_to trip_event_note_path(note.event.trip, note.event, note), method: :delete, data: {confirm: "Etes-vous sûr?"} , class: "text-secondary" do %><i class="fas fa-trash-alt" title="Supprimer"></i><% end %>
     </div>

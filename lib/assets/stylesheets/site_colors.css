@@ -34,6 +34,41 @@ html, body {
   border-color: #D20F43;
 }
 
+
+.btn-outline-danger {
+  color: #FFF;
+  border-color: #FFF;
+}
+
+.btn-outline-danger:hover, .btn-outline-danger:focus {
+  background-color: #FFF;
+  border-color: #EF1852;
+  color: #EF1852;
+}
+
+.btn-outline-danger:not(:disabled):not(.disabled):active {
+  background-color: #FFF;
+  border-color: #EF1852;
+  color: #EF1852;
+}
+
+.btn-outline-event {
+  color: #EF1852;
+  border-color: #EF1852;
+}
+
+.btn-outline-event:hover, .btn-outline-event:focus {
+  background-color: #EF1852;
+  border-color: #FFF;
+  color: #FFF;
+}
+
+.btn-outline-event:not(:disabled):not(.disabled):active {
+  background-color: #FFF;
+  border-color: #EF1852;
+  color: #EF1852;
+}
+
 a {
   color: #EF1852;
 }
