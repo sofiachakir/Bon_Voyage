@@ -1,12 +1,5 @@
-/* Button Voir Plus & Voir Moins */
 
-.viewMore[aria-expanded="false"]:before {
-  content:"Voir plus";
-}
-
-.viewMore[aria-expanded="true"]:before {
-  content:"Voir moins";
-}
+/* Commentaires de la page accueil */
 
 #commentbox{
   border: none;
@@ -33,7 +26,6 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-
 }
 
 #commenttextbox p {

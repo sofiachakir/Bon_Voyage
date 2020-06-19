@@ -1,4 +1,5 @@
 // Fonction de sortable.js, permet de déplacer les cards
+
 $(document).on('turbolinks:load', function() {
 	$(function() {
 	  $('.thumbnail-sortable').sortable({
