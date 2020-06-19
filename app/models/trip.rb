@@ -67,7 +67,9 @@ class Trip < ApplicationRecord
       client = Pixabay.new
       res = client.photos(q: self.country_name, safesearch: true, page: 1, per_page: 30)
       img = res["hits"].first
-      img_url = img['largeImageURL']
+      if !img.nil?
+        img_url = img['largeImageURL']
+      end
     end
   end
 
