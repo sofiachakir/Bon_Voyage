@@ -120,17 +120,27 @@ a:hover {
 .nav-item.nav-link.active {
   background-color: #EF1852;
   border-color: #EF1852;
+  border: 1px solid #FFF;
 }
 
 .nav-link {
   color: #EF1852;
-  border: 1px solid #FFF;
 }
 
-.nav-link:active {
+/* Boutons Vue Globale, Vue Détaillée */
+
+.nav-item.nav-link.active:active {
   border: 1px solid #EF1852;
 }
 
-.nav-link:hover {
+.nav-item.nav-link.active:hover {
+  border: 1px solid #EF1852;
+}
+
+.nav-item.nav-link:active {
+  border: 1px solid #EF1852;
+}
+
+.nav-item.nav-link:hover {
   border: 1px solid #EF1852;
 }
