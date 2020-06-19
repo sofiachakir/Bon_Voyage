@@ -34,7 +34,6 @@ html, body {
   border-color: #D20F43;
 }
 
-
 .btn-outline-danger {
   color: #FFF;
   border-color: #FFF;
@@ -69,6 +68,34 @@ html, body {
   color: #EF1852;
 }
 
+/*Boutons des notes*/
+
+.btn-outline-note {
+  color: #666;
+  border-color: #666;
+}
+
+.btn-outline-note i {
+  color: #EF1852;
+}
+.btn-outline-note:hover i , .btn-outline-note:focus i {
+  color: #FFF;
+}
+
+.btn-outline-note:hover, .btn-outline-event:focus {
+  background-color: #EF1852;
+  border-color: #FFF;
+  color: #FFF;
+}
+
+.btn-outline-note:not(:disabled):not(.disabled):active {
+  background-color: #FFF;
+  border-color: #EF1852;
+  color: #EF1852;
+}
+
+/*-----------------*/
+
 a {
   color: #EF1852;
 }
@@ -84,4 +111,16 @@ a:hover {
 
 .nav-link {
   color: #EF1852;
+  border: 1px solid #FFF;
+}
+
+.nav-link:active {
+border: 1px solid #EF1852;
+
+}
+
+
+.nav-link:hover {
+border: 1px solid #EF1852;
+
 }

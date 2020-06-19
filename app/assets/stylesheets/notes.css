@@ -14,8 +14,9 @@ box-shadow: none;
 }
 
 .justify-self-end {
-  position: relative;
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .grab:hover {
