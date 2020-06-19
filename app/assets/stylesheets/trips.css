@@ -41,6 +41,15 @@
   margin-right: 5px;
 }
 
+.event-icons i {
+  opacity: 0.5;
+}
+
+.event-icons:hover i {
+  opacity: 1;
+}
+
+
 .card-trip-title {
 	color: #666 !important;
   min-height: 3.3rem;
