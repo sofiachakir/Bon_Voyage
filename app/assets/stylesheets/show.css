@@ -1,4 +1,27 @@
+
+/* Bouttons d'ajout des événements */
+
+#addeventbtn {
+  font-size: 0.79rem;
+}
+
+#eventlist {
+  padding: 0.40rem 0rem;
+}
+
+/* Boutton Voir Plus & Voir Moins */
+
+.viewMore[aria-expanded="false"]:before {
+  content:"Voir plus";
+}
+
+.viewMore[aria-expanded="true"]:before {
+  content:"Voir moins";
+}
+
+
 /* Formulaire popup du nom de profil */
+
 .form-popup {
   display: none;
   bottom: 100px;
@@ -25,47 +48,43 @@
   top: 0;
 }
 
+/* Image du profil */
+
 .profil .img-fluid {
   height: 14rem;
   width: 14rem;
   object-fit: cover;
 }
 
-#addeventbtn {
-  font-size: 0.79rem;
-}
-
-#eventlist {
-  padding: 0.40rem 0rem;
-}
+/* Pour l'impression des Voyages */
 
 @media print {
-    /* les styles d'impression commencent ici */
-    @page {
-        margin: 1cm;
-    }
+  /* Les styles d'impression commencent ici */
+  @page {
+      margin: 1cm;
+  }
 
-    .page-footer{
-      display: none;
-    }
+  .page-footer{
+    display: none;
+  }
 
-    .little-jumbo {
-      display: none;
-    }
+  .little-jumbo {
+    display: none;
+  }
 
-    .btn {
-      display: none;
-    }
+  .btn {
+    display: none;
+  }
 
-    .fas.fa-pencil-alt {
-      display: none;
-    }
+  .fas.fa-pencil-alt {
+    display: none;
+  }
 
-    .fas.fa-trash-alt {
-      display: none;
-    }
+  .fas.fa-trash-alt {
+    display: none;
+  }
 
-    .collapse {
-      height: auto !important;
-    }
+  .collapse {
+    height: auto !important;
+  }
 }

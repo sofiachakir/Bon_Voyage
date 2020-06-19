@@ -1,15 +1,28 @@
+
+/* Import de la police Ubuntu */
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 
-html, body, h1, h2, h3, h4, h5, h6, .btn, .navbar
- {
-   font-family: 'Ubuntu', sans-serif !important;
+html, body, h1, h2, h3, h4, h5, h6, .btn, .navbar {
+  font-family: 'Ubuntu', sans-serif !important;
 }
 
 html, body {
   color: #666;
   background-color: #fdfdfd;
 }
+
+a {
+  text-decoration: none !important;
+  color: #EF1852;
+}
+
+a:hover {
+  color: #D20F43;
+}
+
+/* Couleurs des Textes */
 
 .text-primary {
   color: #EF1852 !important;
@@ -18,6 +31,10 @@ html, body {
 .text-grey {
   color: #666 !important;
 }
+
+/* Aspect des Bouttons */
+
+/*Bouton pricinpal*/
 
 .btn-primary {
   background-color: #EF1852;
@@ -33,6 +50,8 @@ html, body {
   background-color: #D20F43;
   border-color: #D20F43;
 }
+
+/*Bouton secondaire*/
 
 .btn-outline-danger {
   color: #FFF;
@@ -51,6 +70,8 @@ html, body {
   color: #EF1852;
 }
 
+/*Bouton des événements*/
+
 .btn-outline-event {
   color: #EF1852;
   border-color: #EF1852;
@@ -68,7 +89,7 @@ html, body {
   color: #EF1852;
 }
 
-/*Boutons des notes*/
+/*Bouton des notes*/
 
 .btn-outline-note {
   color: #666;
@@ -94,15 +115,7 @@ html, body {
   color: #EF1852;
 }
 
-/*-----------------*/
-
-a {
-  color: #EF1852;
-}
-
-a:hover {
-  color: #D20F43;
-}
+/*Bouton de la NavBar*/
 
 .nav-item.nav-link.active {
   background-color: #EF1852;
@@ -115,12 +128,9 @@ a:hover {
 }
 
 .nav-link:active {
-border: 1px solid #EF1852;
-
+  border: 1px solid #EF1852;
 }
 
-
 .nav-link:hover {
-border: 1px solid #EF1852;
-
+  border: 1px solid #EF1852;
 }
