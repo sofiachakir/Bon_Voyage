@@ -5,7 +5,7 @@
 		<h2 class="my-5 text-center">Bienvenue sur votre profil</h2>
 	<% end %>
 
-	<div class="row">
+	<div class="row  pt-5">
 		<div class="col-sm-4 profil">
 			<!-- Image avatar -->
 			<%if @user.avatar.attached?%>
@@ -47,7 +47,7 @@
 
 			<!-- Bouton modif avatar -->
       <% if current_user! %>
-			<button type="button" class="btn btn-secondary  btn-sm mt-4" data-toggle="modal" data-target="#myModal">Modifier mon avatar</button>
+			<button type="button" class="btn btn-outline-event  btn-sm mt-4" data-toggle="modal" data-target="#myModal">Modifier mon avatar</button>
   		<!-- Modal -->
   		<div class="modal fade" id="myModal" role="dialog">
     		<div class="modal-dialog modal-dialog-centered">
@@ -76,7 +76,7 @@
 			<!-- Lien vers éditer mon profil -->
 			<div class="edit-profil mt-4">
 				<% if current_user! %>
-					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-secondary  btn-sm' %>
+					<%= link_to 'Editer mon profil',edit_user_registration_path , class:'btn btn-outline-event  btn-sm' %>
 				<% end %>
 			</div>
 
