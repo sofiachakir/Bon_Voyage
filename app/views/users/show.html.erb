@@ -1,7 +1,9 @@
 <div class="container fluid my-5">
 <!-- Bannière avec le username et modification du profil -->
 
-	<h2 class="my-5 text-center">Bienvenue sur votre profil</h2>
+	<% if current_user! %>
+		<h2 class="my-5 text-center">Bienvenue sur votre profil</h2>
+	<% end %>
 
 	<div class="row  pt-5">
 		<div class="col-sm-4 profil">
@@ -17,40 +19,38 @@
 
 			<!-- formulaire pour ajouter son nom -->
 			<div class="user-name">
-				<!-- Si pas de username, on affiche son email -->
-				<% if @user.user_name %>
-					<h2 class="textname text-primary"><%= @user.user_name %></h2>
-				<!-- formulaire pour ajouter son nom -->
-				<% if current_user! && @user.user_name == '' %>
-					<%= render 'form' %>
-				<% end %>
-				<!-- formulaire pour modifier son nom -->
-				<% if current_user! && @user.user_name != ''%>
-					<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
-				<div class="form-popup" id="myForm">
-					<%= form_for @user do |form| %>
-						<div class="form-group mb-2">
-							<%= form.text_field :user_name, class: 'form-control' %>
-						</div>
-					<%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
-					<button class="btn btn-primary btn-sm" onclick="closeForm()">Retour</button>
-					<% end %>
-				</div>
-				<% end %>
-
-				<% else %>
+				<% if @user.user_name == '' || @user.user_name.nil? %>
 					<% if current_user! %>
 						<%= render 'form' %>
+					<% else %>
+						<h2 class="textname text-primary"><%= @user.email %></h2>
+					<% end %>
+				<% else %>
+					<h2 class="textname text-primary"><%= @user.user_name %></h2>
+					<% if current_user! %>
+						<a onclick="openForm()"><i class="fas fa-pencil-alt mr-5"></i></a>
+						<div class="form-popup" id="myForm">
+							<%= form_for @user do |form| %>
+								<div class="form-group mb-2">
+									<%= form.text_field :user_name, class: 'form-control' %>
+								</div>
+								<%= form.submit 'Enregistrer', class: 'btn btn-primary btn-sm' %>
+								<div class="btn btn-primary btn-sm" onclick="closeForm()">Retour</div>
+							<% end %>
+						</div>
 					<% end %>
 				<% end %>
 			</div>
+
+
+
 
 			<!-- Bouton modif avatar -->
       <% if current_user! %>
 			<button type="button" class="btn btn-outline-event  btn-sm mt-4" data-toggle="modal" data-target="#myModal">Modifier mon avatar</button>
   		<!-- Modal -->
   		<div class="modal fade" id="myModal" role="dialog">
-    		<div class="modal-dialog">
+    		<div class="modal-dialog modal-dialog-centered">
       		<!-- Modal content-->
       		<div class="modal-content">
         		<div class="modal-header">
@@ -59,7 +59,7 @@
         		</div>
         		<div class="modal-body">
          		 	<%= form_tag user_avatars_path(@user), multipart: true do %>
-          		<%= file_field_tag :avatar %>
+          		<%= file_field_tag :avatar, required: true %>
           		<%if @user.avatar.attached? %>
           		<%= image_tag @user.avatar, alt: 'avatar', size: '100', class: "img-fluid rounded mb-3 mb-md-0" %>
           		<%end%>

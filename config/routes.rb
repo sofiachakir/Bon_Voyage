@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :trips do
     resources :pictures, only: [:create]
-    resources :events do
+    resources :events, only: [:create, :update, :destroy] do
       member do
         get 'copy'
       end
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show,:edit, :update] do
+  resources :users, only: [:show, :edit, :update] do
     resources :avatars, only: [:create]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
