@@ -64,5 +64,6 @@ Rails.application.configure do
 
 #config.action_mailer.delivery_method = :letter_opener
 config.action_mailer.perform_deliveries = true
+#config.action_view.automatically_disable_submit_tag = false
 
 end

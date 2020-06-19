@@ -24,6 +24,7 @@
         <% else %>
           <!-- Bouton pour modifier-->
           <a type="button" data-toggle="modal" class="text-primary" data-target="#myModalEdit<%= event.id %>"><i class="fas fa-edit" title="Modifier l'évènement"></i></a>
+
           <!-- Bouton pour supprimer-->
           <%= link_to trip_event_path(event.trip, event), method: :delete, data: {confirm: "Etes-vous sûr?"} , remote: true do %><i class="ml-2 fas fa-times" title="Supprimer l'évènement"></i><% end %>
         <% end %>

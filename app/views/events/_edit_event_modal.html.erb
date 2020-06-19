@@ -11,20 +11,20 @@
 
       <div class="modal-body">
         <h4 class="mb-4 text-primary"><%= l(day.to_date, format: '%A %d')%></h4>
-        <%= form_with url: trip_event_path(event.trip, event), method: "patch", local: true do %>
+        <%= simple_form_for [@trip, event], action: :update, remote: true do |form| %>
 
         <div class="form-group mb-4">
           <div class="row">
             <div class="col-6">
-              <%= label_tag :city_name, 'Ville' %>
-              <%= text_field_tag :city_name, event.city_name, class: 'form-control city-name',required: true %>
+              <%= form.label :city_name, 'Ville' %>
+              <%= form.text_field :city_name, class: 'form-control city-name',required: true %>
             </div>
           </div>
         </div>
 
         <div class="form-group mb-4">
-          <%= label_tag :name_event, 'Donnez un nom à votre évènement' %>
-          <%= text_field_tag :name_event, event.name_event, class: 'form-control', placeholder: 'Viste des musées de Paris', required: true %>
+          <%= form.label :name_event, 'Donnez un nom à votre évènement' %>
+          <%= form.text_field :name_event, class: 'form-control', placeholder: 'Viste des musées de Paris', required: true %>
         </div>
 
         <div class="form-group mb-4">
@@ -38,19 +38,19 @@
         <div class="form-group mb-4">
           <div class="row">
             <div class="col-6">
-              <%= label_tag :start_time, "Heure de début" %>
-              <%= time_select :start_time, nil, class: 'form-control' %>
+              <%= form.label :start_time, "Heure de début" %>
+              <%= form.time_select :start_time, class: 'form-control' %>
             </div>
             <div class="col-6">
-              <%= label_tag :end_time, "Heure de fin" %>
-              <%= time_select :end_time, nil, class: 'form-control' %>
+              <%= form.label :end_time, "Heure de fin" %>
+              <%= form.time_select :end_time, class: 'form-control' %>
             </div>
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <%= submit_tag 'Modifier mon évènement', class: 'btn btn-primary btn-lg mx-auto' %>
+        <%= form.submit 'Modifier mon évènement', class: 'btn btn-primary btn-lg mx-auto' %>
         <% end %>
       </div>
 

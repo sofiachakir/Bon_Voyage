@@ -75,3 +75,4 @@ gem "letter_opener", "~> 1.7"
 gem 'pixabay-api', require: 'pixabay'
 gem 'geocoder'
 gem 'jquery-rails'
+gem 'simple_form'

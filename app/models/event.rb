@@ -57,7 +57,11 @@ class Event < ApplicationRecord
   end
 
   def day
-    self.start_time.to_date.to_datetime
+    if start_time.nil?
+      Time.now.to_datetime
+    else
+      self.start_time.to_date.to_datetime
+    end
   end
 
 end

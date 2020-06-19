@@ -11,7 +11,7 @@
 
       <div class="modal-body">
 
-        <%= form_with model: @note, url: trip_event_notes_path(@trip, event), method: "post", local: true do |form| %>
+        <%= simple_form_for event.notes.build, url: trip_event_notes_path(@trip, event), method: "post" do |form| %>
 
         <div class="form-group mb-4">
           <%= form.label :image, 'Uploader une image de votre ordinateur' %>

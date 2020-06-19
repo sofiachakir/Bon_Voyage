@@ -47,11 +47,7 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    note_params = Hash.new
-    note_params = { title: params[:title],
-                     image_url: params[:image_url],
-                     text: params[:text],
-                     image: params[:image]}
+    params.require(:note).permit(:title, :image_url, :text, :image)
   end
 
 end
