@@ -1,7 +1,0 @@
-$('.modal').modal('hide');
-
-$('#global_events_<%= @event.day.to_i%>').append("<%= j render 'event_global_tab' , event: @event %>");
-$('#list_event_<%= @event.id %>').remove();
-
-$('.detailed_events_<%= @event.day.to_i%>').append("<%= j render 'event' , event: @event %>");
-$('#event_<%= @event.id %>').fadeOut(500).remove();

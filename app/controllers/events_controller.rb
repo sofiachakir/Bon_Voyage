@@ -1,60 +1,29 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-  before_action :is_trip_creator?, only: [:new, :create]
-  before_action :is_event_creator?, only: [:edit, :update, :destroy]
-
-  def index
-    @trip = Trip.find(params[:trip_id])
-    @events = @trip.events.geocoded
-
-    @markers = @events.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        infoWindow: render_to_string(partial: "trips/info_window", locals: {event: event})
-      }
-    end
-  end
-
-  def show
-    @event = Event.find(params[:id])
-    @trip = Trip.find(params[:trip_id])
-  end
-
-  def new
-    @event = Event.new
-    @day = params[:format]
-  end
+  before_action :authenticate_user!
+  before_action :is_trip_creator?, only: [:create]
+  before_action :is_event_creator?, only: [:update, :destroy]
 
   def create
     @event = Event.new(event_params)
     @trip = Trip.find(params[:trip_id])
     @event.trip = @trip
     @day = @event.day
-
     if @event.save
       flash[:success] = "Votre évènement a été créé"
+      redirect_to trip_path(@trip)
     else
       flash[:error] = @event.errors.full_messages
       redirect_to trip_path(@trip)
     end
-
-  end
-
-  def edit
-    @event = Event.find(params[:id])
-    @trip = Trip.find(params[:trip_id])
-    @day = params[:format]
   end
 
   def update
     @event = Event.find(params[:id])
-
     params[:new_trip_id] == nil ? @trip = Trip.find(params[:trip_id]) : @trip = Trip.find(params[:new_trip_id])
     @event.trip = @trip
-
     if @event.update(event_params)
       flash[:success] = "Votre évènement a été mis à jour"
+      redirect_to trip_path(@trip)
     else
       flash[:error] = @event.errors.full_messages
       redirect_to trip_path(@trip)
