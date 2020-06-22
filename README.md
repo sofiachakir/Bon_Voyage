@@ -2,7 +2,7 @@
 
 Bienvenue dans notre projet final de fin de formation **The Hacking Project**.
 
-https://www.youtube.com/watch?v=pJFWtHXx3O0&feature=youtu.be
+https://www.youtube.com/watch?v=TcW0CJ-bRC4&feature=youtu.be
 
 ## Pourquoi ce projet :
 Tous ceux qui ont déjà voyagé et qui aiment bien planifier tout ou un minimum de choses avant le départ, savent que bien préparer son voyage est parfois long et fastidieux. Nous faisons des recherches et nous récupérons sur différents sites (TripAdvisor, Google, Blogs de voyageurs, routard...) les meilleurs endroits à visiter, les meilleures activités... On met tout ça dans ses marque-pages, sur des bouts de papier... et une fois sur place c'est la galère pour tout retrouver, on perd du temps, du temps sur notre voyage !!!
