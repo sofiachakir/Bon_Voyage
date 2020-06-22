@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     params[:new_trip_id] == nil ? @trip = Trip.find(params[:trip_id]) : @trip = Trip.find(params[:new_trip_id])
     @event.trip = @trip
     if @event.update(event_params)
-      if params[:new_trip_id] != nil
+      if params[:new_trip_id] != nil || params[:comment] != nil
         flash[:success] = "Votre évènement a été mis à jour"
         redirect_to trip_path(@trip)
       end
