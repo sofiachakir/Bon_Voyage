@@ -32,7 +32,7 @@ Trip.create(title: "Weekend en amoureux",
             country_name: "Italie",
             city_name: "Venise",
             start_date: "20200418",
-            end_date: "20200420",
+            end_date: "20200419",
             user_id: 1)
 
 Event.create(city_name: "Venise",
