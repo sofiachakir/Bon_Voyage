@@ -21,7 +21,7 @@ class Trip < ApplicationRecord
 
 # cette méthode nous renvoie le nombre de jour que l'on a dans un voyage
   def duration
-    ((self.end_date - self.start_date) / 60 / 60 / 24).to_i
+    ((self.end_date - self.start_date) / 60 / 60 / 24).to_i + 1
   end
 
   def days

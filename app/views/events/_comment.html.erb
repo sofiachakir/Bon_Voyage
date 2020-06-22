@@ -1,4 +1,4 @@
-<div class="mx-5 mt-5">
+<div id="comment-card" class="mx-5 mt-5">
     <% if event.is_past? %>
       <!-- Si le voyage est passé, si je suis le créateur du voyage, si il n'y a pas de commentaire -->
       <% if user_trip_owner?(@trip) && event.comment == nil %>

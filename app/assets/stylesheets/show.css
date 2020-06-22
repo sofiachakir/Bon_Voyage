@@ -88,3 +88,16 @@
     height: auto !important;
   }
 }
+
+@media all and (max-width: 720px) {
+  #detail-card {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .card-header.h6 {
+    font-size: 0.75rem;
+  }
+  #day-card {
+    display: block !important;
+  }
+}

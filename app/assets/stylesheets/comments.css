@@ -43,3 +43,9 @@
 .card-text small {
   font-size: 90%;
 }
+
+@media all and (max-width: 720px) {
+  #comment-card {
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+  }
